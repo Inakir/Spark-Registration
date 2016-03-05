@@ -1,0 +1,28 @@
+<%= form_for( @admin, :url => changelogin_admin_path(@admin) ) do |f| %>
+  <% if @admin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
+
+      <ul>
+      <% @admin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% f.hidden_field :name, :value => @admin.name %>
+  <% f.hidden_field :right_sig_url, :value => @admin.right_sig_url %>
+  <% f.hidden_field :mkt_place_url, :value => @admin.mkt_place_url %>
+  <% f.hidden_field :phone, :value => @admin.phone %>
+  <% f.hidden_field :fax, :value => @admin.fax %>
+  <% f.hidden_field :password, :value => @admin.password %>
+  <% f.hidden_field :password_confirmation, :value => @admin.password_confirmation %>
+  <% f.hidden_field :password_digest, :value => @admin.password_digest %>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

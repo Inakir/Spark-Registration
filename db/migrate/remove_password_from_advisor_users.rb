@@ -1,0 +1,2 @@
+class RemovePasswordFromAdvisorUsers
+end

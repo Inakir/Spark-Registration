@@ -1,0 +1,37 @@
+<p id="notice"><font color="orange" size="5"><%= notice %></font></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @student_user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @student_user.last_name %>
+</p>
+
+<p>
+  <strong>School level:</strong>
+  <%= @student_user.school_level %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student_user.email %>
+</p>
+
+<p>
+  <strong>School name:</strong>
+  <%= @student_user.school_name %>
+</p>
+
+<p>
+  <strong>Team Code:</strong>
+  <%= @student_user.team_code %>
+</p>
+
+<p><font size="3" color="orange">If this information is correct, please click continue</font></p>
+
+<%= link_to 'Edit', edit_student_user_path(@student_user) %> |
+<%= link_to 'Continue', '/payment/index' %>
+

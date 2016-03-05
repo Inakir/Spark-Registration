@@ -1,0 +1,42 @@
+<%= form_for(@advisor_user) do |f| %>
+  <% if @advisor_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@advisor_user.errors.count, "error") %> prohibited this advisor_user from being saved:</h2>
+
+      <ul>
+      <% @advisor_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %>(email)<br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :school_name %><br>
+    <%= f.text_field :school_name %>
+  </div>
+  <div class="field">
+    <%= f.label :school_level %><br>
+    
+    <%= f.select :school_name, options_for_select(%w[Elementary Middle High]) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

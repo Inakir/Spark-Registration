@@ -1,0 +1,14 @@
+<div id = "main content">
+<div id = "title"><h1>High School Registration</h1></div>
+
+<% result = params['team_code_search_result'] 
+	success_message = "Team joined successfully!"
+	failure_message = "Failed to join team!"
+%>
+	
+	<% if(result == nil) %> <b style="color:red"><%= failure_message %></b>
+	<% else %> <b style="color:green"><%= success_message %></b>
+	
+	<% end %>
+
+</div>

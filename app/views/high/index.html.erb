@@ -1,0 +1,52 @@
+<div id = "main content">
+<div id = "title"><h1>High School Registration</h1></div>
+<p style="text-align:center">Please provide the information below to sign up for SPARK</p>
+
+<div style="text-align:center">
+<p>Team or Individual?</p>
+
+<!--
+<form action="../join_team/index">
+	<input type="submit" value="Team">
+</form>
+
+
+<form action="../student_users/new?student_level=High">
+	<input type="submit" value="Individual">
+</form>
+-->
+
+<script >
+
+	function go_to_new_student()
+	{
+		window.location="../student_users/new?student_level=High";
+	}
+	
+	function go_to_join_team()
+	{
+		window.location="../join_team/index";
+	}
+	
+	function redirect_to(path)
+	{
+		window.location = path;
+	}
+
+</script>
+
+
+<div style="text-align:center">
+	<button type="button" onclick=go_to_new_student()>Individual</button>
+	
+	<button type="button" onclick=go_to_join_team()>Team</button>
+	
+	
+	
+	<br><br><br><br>
+</div>
+
+</div>
+
+</div>
+

@@ -1,0 +1,30 @@
+<% if admin_logged_in? %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @admin.email %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @admin.name %>
+</p>
+<p>
+  <strong>Phone:</strong>
+  <%= @admin.phone %>
+</p>
+<p>
+  <strong>Right Signature URL:</strong>
+  <%= @admin.right_sig_url %>
+</p>
+<p>
+  <strong>Market Place URL:</strong>
+  <%= @admin.mkt_place_url %>
+</p>
+
+<%= link_to 'Edit', edit_admin_path(@admin) %> |
+<%= link_to 'Change Email', changelogin_admin_path(@admin) %> |
+<%= link_to 'Change Password', changepassword_admin_path(@admin) %>
+
+<% end %>

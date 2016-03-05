@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @advisor_user.username %>
+</p>
+
+<p>
+  <strong>Team Name:</strong>
+  <%= @advisor_user.team_name %>
+</p>
+
+<p>
+  <strong>Team Code:</strong>
+  <%= @advisor_user.team_code %>
+</p>
+
+<%= link_to 'Edit', edit_advisor_user_path(@advisor_user) %> |
+<%= link_to 'Login', login_path %>

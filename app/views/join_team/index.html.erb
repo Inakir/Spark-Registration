@@ -1,0 +1,20 @@
+<div id = "main content">
+<div id = "title"><h1>High School Registration</h1></div>
+
+<div style="text-align:center">
+<% message = "Could not validate team code." %>
+	<% if(session[:team_code_valid] == false) %>
+		<p style="color:red"><%= message %></p>
+		<% session[:team_code_valid] = nil %>
+	<% end %>
+</div>
+
+<div style="text-align:center">
+<p> Enter your team code below to register for a team: </p>
+<%= form_tag :action => 'parse_comments' do %>
+  <%= label_tag(:q, "Enter Team Code:") %>
+  <%= text_field_tag(:team_code) %>
+  <%= submit_tag("Join Team") %>
+<% end %>
+</div>
+</div>

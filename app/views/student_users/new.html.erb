@@ -1,0 +1,11 @@
+
+<div style="text-align:center">
+<h1>Spark Registration</h1>
+
+<% temp=CGI.parse(URI.parse(request.original_url).query) %>
+
+<% session[:student_level]=temp["student_level"][0] %>
+
+<%= render 'form' %>
+
+</div>

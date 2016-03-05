@@ -1,0 +1,27 @@
+<% flash.each do |key, value| %>
+  <div class="flash_message">
+    <%= value %>
+  </div>
+<% end %>
+
+<div id="main_content">
+
+  <div id="title"><h1>Team Creation Page</h1></div>
+
+  <% if !current_user.team_code.nil? %>
+    You can now create multiple teams with your account.
+  <% end %>
+
+  <form action="create_team">
+  <fieldset>
+  <legend>Team information:</legend>
+  Team name:<br>
+  <input type="text" name="teamname" value="">
+  <br><br>
+  <input type="submit" value="Submit"></fieldset>
+  </form>
+  
+  <%= link_to 'Back', '/advisor/index' %>
+
+</div>
+

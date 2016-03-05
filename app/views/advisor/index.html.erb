@@ -1,0 +1,68 @@
+<% flash.each do |key, value| %>
+  <div class="flash_message">
+    <%= value %>
+  </div>
+<% end %>
+
+<div id="main_content">
+	<div id="title"><h1>Advisor Page</h1></div>
+
+	<!--<% if current_user.school_level=="High" %>-->
+	<!--<p>Your team name:</p>-->
+	<!--<%= current_user.team_name %>-->
+        <!--<p>Your team code:</p>-->
+        <!--<%= current_user.team_code %>-->
+	<!--<% end %>-->
+
+    <% if current_user.school_level=="High" %>
+        <h2> Your teams </h2>
+        <table>
+          <thead>
+            <tr>
+                <th>Team code</th>
+                <th>Team name</th>
+                <th colspan="3"></th>
+            </tr>
+          </thead>
+
+            <tbody>
+                <% Team.all.each do |team| %>
+                    <% if team.advisor_user_id == current_user.id %>
+                        <tr>
+                          <td><%= team.team_code %></td>
+                          <td><%= team.team_name %></td>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+    <% end %>
+
+	<br>
+	<br>
+	
+	<div id="school_button_contain">
+		<a href="/advisor/info">
+			<div class="school_buttons">
+                SEC contact info for payment.
+			</div>
+		</a>
+		<% if current_user.school_level=="High" %>
+                <a href="/advisor/team">
+			<div class="school_buttons">
+				Create a new team.
+			</div>
+		</a>
+                	<a href="/advisor/see_team">
+			  	<div class="school_buttons">
+			  		See students on your teams.
+				</div>
+			</a>
+		<% end %>
+	</div>
+
+</div>
+
+
+
+

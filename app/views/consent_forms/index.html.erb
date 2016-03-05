@@ -1,0 +1,39 @@
+
+<div id = "main content">
+<div id = "title"><h1>Consent Forms</h1></div>
+<p style="text-align:center">Please provide the information below to sign up for SPARK</p>
+</div>
+
+<% 
+	right_signature_url = Admin.first.right_sig_url
+%>
+
+
+
+<!-- BEGIN Right Signature iframe -->
+<div style="text-align:center">
+<div>
+	<iframe frameborder="0" height="500" scrolling="no" src=<%= right_signature_url %> width="706">
+	</iframe>
+	<div style="font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;line-height:13px !important;text-align:center;margin-top: 6px !important;">
+		<a href="https://rightsignature.com" target="_blank" style="color:#AAA;text-decoration:none;">
+		Digital Signature Software
+		</a> 
+		by RightSignature &copy; &nbsp;&bull;&nbsp; 
+		<a href="https://rightsignature.com/terms" target="_blank" style="color:#888;">
+		Terms of Service</a> &nbsp;&bull;&nbsp; 
+		<a href="https://rightsignature.com/privacy" target="_blank" style="color:#888;">
+		Privacy Policy
+		</a>
+	</div>
+</div>
+</div>
+<!-- END Right Signature iframe -->
+<br><br>
+<div style="text-align:center">
+<b>Once you have submitted the consent forms, please continue to the payment section:</b>
+<form action="../payment/index">
+	<input type="submit" value="Continue to Payment">
+</form>
+</div>
+

@@ -1,0 +1,17 @@
+<div id="center_form">
+
+<%= render 'form' %>
+
+<% if logged_in? %>
+
+<%= link_to 'Show', @advisor_user %>
+<%= link_to 'Back', advisor_users_path %>
+
+<% end %>
+
+<% if admin_logged_in? %>
+
+<%= link_to 'Back', '/admins/see_info' %>
+
+<% end %>
+</div>

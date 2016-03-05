@@ -1,0 +1,30 @@
+<div id = "main content">
+<div id = "title"><h1>Marketplace</h1></div>
+<p style="text-align:center">Please provide the information below to sign up for SPARK</p>
+</div>
+
+
+
+<!-- BEGIN marketplace iframe  https://secure.touchnet.com/C21490_ustores/web/product_detail.jsp?PRODUCTID=5474    -->
+<div style="text-align:center">
+<div>
+	<iframe frameborder="0" height="500" scrolling="yes" src=<%= Admin.first.mkt_place_url %> width="990">
+	</iframe>
+	<div style="font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;line-height:13px !important;text-align:center;margin-top: 6px !important;">
+		<a href="https://rightsignature.com" target="_blank" style="color:#AAA;text-decoration:none;">
+		Digital Signature Software
+		</a> 
+		by RightSignature &copy; &nbsp;&bull;&nbsp; 
+		<a href="https://rightsignature.com/terms" target="_blank" style="color:#888;">
+		Terms of Service</a> &nbsp;&bull;&nbsp; 
+		<a href="https://rightsignature.com/privacy" target="_blank" style="color:#888;">
+		Privacy Policy
+		</a>
+	</div>
+</div>
+</div>
+<!-- END marketplace iframe -->
+<br><br>
+<form action="../registration_complete/index" style="text-align:center">
+	<input type="submit" value="Continue">
+</form>

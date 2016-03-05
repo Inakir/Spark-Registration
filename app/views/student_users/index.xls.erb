@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">First</Data></Cell>
+        <Cell><Data ss:Type="String">Last</Data></Cell>
+        <Cell><Data ss:Type="String">School Level</Data></Cell>
+        <Cell><Data ss:Type="String">School Name</Data></Cell>
+	<Cell><Data ss:Type="String">Team Name</Data></Cell>
+	<Cell><Data ss:Type="String">Team Code</Data></Cell>
+        <Cell><Data ss:Type="String">Pay Code</Data></Cell>
+      </Row>
+    <% @student_users.each do |student| %>
+      <Row>
+	    <Cell><Data ss:Type="String"><%= student.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.school_level %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.school_name %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= student.team_name %></Data></Cell>
+	<Cell><Data ss:Type="String"><%= student.team_code %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.pay_code %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

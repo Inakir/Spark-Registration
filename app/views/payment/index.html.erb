@@ -1,0 +1,42 @@
+<div id = "main content">
+<div id = "title">
+  <h1>Consent Form and Payment</h1>
+</div>
+  <h1>
+    <p style="text-align:center">Please provide the information below to sign up for SPARK</p>
+  </h1>
+
+<%
+ right_signature_url = Admin.first.right_sig_url
+%>
+
+<%
+ marketplace_url = Admin.first.mkt_place_url
+%>
+
+<div style="text-align:center">
+    <b>
+    <p style="color:red"><%= notice %></p>
+    <hr>
+    <p>
+      Please fill out the consent form
+      <%= link_to 'here', right_signature_url, :target => "_blank" %>
+    </p>
+    <hr>
+    If you have a payment code enter it here
+    <%= form_tag :action => 'checkpay' do %>
+        <%= text_field_tag(:pay_code) %>
+        <%= submit_tag("Submit Pay Code") %>
+    <% end %>
+    <br>
+    If you DO NOT have a payment code, please pay on the marketplace
+    <%= link_to 'here', marketplace_url, :target => "_blank" %>
+    <hr>
+    </b>
+</div>
+
+<form action="../registration_complete/index" style="text-align:center">
+<input type="submit" value="Continue">
+</form>
+
+</div>

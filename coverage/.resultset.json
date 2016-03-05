@@ -1,0 +1,301 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/home/jake/RoR/final/new/Red-Ninja/test/models/post_test.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/jake/RoR/final/new/Red-Ninja/app/models/post.rb": [
+        1,
+        null
+      ],
+      "/home/jake/RoR/final/new/Red-Ninja/app/models/advisor_user.rb": [
+        1,
+        2,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1429893442
+  },
+  "Unit Tests": {
+    "coverage": {
+      "/home/zlewis/Red-Ninja/test/controllers/advisor_controller_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/test/controllers/advisor_users_controller_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        7,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/test/controllers/elementary_controller_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/test/controllers/high_controller_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/test/controllers/middle_controller_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/test/controllers/registration_home_controller_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/models/advisor_user.rb": [
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/models/post.rb": [
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/controllers/middle_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/helpers/advisor_helper.rb": [
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/helpers/advisor_users_helper.rb": [
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/helpers/elementary_helper.rb": [
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/helpers/high_helper.rb": [
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/helpers/middle_helper.rb": [
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/helpers/registration_home_helper.rb": [
+        1,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/controllers/advisor_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/controllers/advisor_users_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        2,
+        1,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        2,
+        1,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        2,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/controllers/high_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/controllers/elementary_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/zlewis/Red-Ninja/app/controllers/registration_home_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1429106672
+  }
+}

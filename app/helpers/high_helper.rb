@@ -1,0 +1,2 @@
+module HighHelper
+end

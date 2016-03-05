@@ -1,0 +1,63 @@
+<% flash.each do |key, value| %>
+  <div class="flash_message">
+    <%= value %>
+  </div>
+<% end %>
+
+
+<div style="text-align:center">
+<% team_code_valid = session[:team_code_valid]  
+	success_message = "Team joined Successfully!"
+	failure_message = "Team joined Failed!"
+	team_code_value = ""
+%>
+	<% if(team_code_valid) %>
+		<b style="color:green"> <%= success_message %> </b>
+		<%team_code_value = session[:team_code]%>
+	<% end %>
+</div>
+
+<%= form_for(@student_user) do |f| %>
+  <% if @student_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_user.errors.count, "error") %> prohibited this student_user from being saved:</h2>
+
+      <ul>
+      <% @student_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div>
+	  <div class="field">
+		<%= f.label :first_name %><br>
+		<%= f.text_field :first_name %>
+	  </div>
+	  <div class="field">
+		<%= f.label :last_name %><br>
+		<%= f.text_field :last_name %>
+	  </div>
+	  <div class="field">
+		<%= f.label :email %><br>
+		<%= f.text_field :email %>
+	  </div>
+	  <div class="field">
+		<%= f.label :school_name %><br>
+		<%= f.text_field :school_name %>
+	  </div>
+	  <!--
+	  <div class="field">
+		<%= f.label :grade_level %><br>
+		<%= f.select :school_level, options_for_select(%w[Elementary Middle High]), :value => session[:student_level] %>
+	  </div>
+	  -->
+	  <div class="field">
+		<%= f.text_field :team_code, :value => team_code_value, :hidden => true %>
+	  </div>
+	  <div class="actions">
+		<%= f.submit :value => "Register Student"%>
+	  </div>
+  </div>
+<% end %>
