@@ -5,5 +5,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include AdminsHelper
   def registration_login
+    render 'application/registration_login'
   end
 end
