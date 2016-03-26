@@ -7,6 +7,9 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def login
+  end
+
   def admin_new
     @email = session[:cas_user] + "@tamu.edu"
     admin = Admin.where(:email => @email).first()
