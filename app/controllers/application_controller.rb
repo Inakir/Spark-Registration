@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include AdminsHelper
   def registration_login
+    render :partial => 'partial_name'
     render 'application/registration_login'
   end
 end
