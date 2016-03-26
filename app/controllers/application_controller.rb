@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   include AdminsHelper
+  def registration_login
+    render :partial => 'partial_name'
+    render 'application/registration_login'
+  end
 end
