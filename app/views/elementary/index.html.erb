@@ -1,37 +1,12 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $.ajax({url: "demo_test.txt", success: function(result){
-            $("#div1").html(result);
-        }});
-    });
-});
-</script>
-</head>
-<body>
-
-<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
-
-<button>Get External Content</button>
-
-</body>
-</html>
-
-<!--
 <div id = "main content">
 <div id = "title"><h1>Elementary School Signup</h1></div>
 <p style="text-align:center">Please provide the information below to sign up for SPARK</p>
 </div>
 
-<!-- BEGIN Right Signature iframe "https://rightsignature.com/forms/SampleAgrement1-73ddb0/embedded/4ea6cb910a3?height=500"
+<!-- BEGIN Right Signature iframe "https://rightsignature.com/forms/SampleAgrement1-73ddb0/embedded/4ea6cb910a3?height=500"-->
 <div style="text-align:center">
 <div>
-	<iframe frameborder="0" height="500" scrolling="no" src=<%=Admin.first.right_sig_url%> width="706">
+	<iframe frameborder="0" height="500" scrolling="no" src=<"http://www.google.com"> width="706">
 	</iframe>
 	<div style="font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;line-height:13px !important;text-align:center;margin-top: 6px !important;">
 		<a href="https://rightsignature.com" target="_blank" style="color:#AAA;text-decoration:none;">
