@@ -63,7 +63,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   
-  get 'registration_login'
+  get 'sessions/registration_login'
 
   resources :advisor_users
   get 'advisor/index'
