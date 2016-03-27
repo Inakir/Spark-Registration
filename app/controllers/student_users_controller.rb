@@ -1,5 +1,5 @@
 class StudentUsersController < ApplicationController
-  before_action :set_student_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_student_user, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
 
   # GET /student_users
   # GET /student_users.json
