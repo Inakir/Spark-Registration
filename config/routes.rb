@@ -63,8 +63,6 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
   
-  get 'sessions/new_student'
-  
   get 'application/registration_login'
 
   resources :advisor_users
