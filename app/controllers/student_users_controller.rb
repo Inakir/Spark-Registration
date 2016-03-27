@@ -30,6 +30,8 @@ class StudentUsersController < ApplicationController
   # POST /student_users.json
   def create
     @student_user = StudentUser.new(student_user_params)
+    
+    @student_user.usertype ="student"
 
 	session[:team_code] = nil
 	session[:team_code_valid] = nil
