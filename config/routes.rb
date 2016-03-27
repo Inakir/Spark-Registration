@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   get 'advisor/index'
   
   #get 'advisor_user/export_csv' => 'advisor_user#export_csv'
+  
+  get 'student_users/index'
 
   get 'high/index'
 
