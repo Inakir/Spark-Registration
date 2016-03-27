@@ -61,11 +61,6 @@ class SessionsController < ApplicationController
               flash.now[:flash] = 'Successfully logged in'
               student_log_in user
               render 'student_users'
-            else
-              #create an error message
-              flash.now[:danger] = 'Invalid email/password combination'
-              render 'new'
-            end
         #create an error message
         flash.now[:danger] = 'Invalid email/password combination'
         render 'new'
