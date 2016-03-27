@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161203113004) do
 
   # These are extensions that must be enabled in order to support this database
@@ -83,7 +84,10 @@ ActiveRecord::Schema.define(version: 20161203113004) do
   create_table "teams", force: :cascade do |t|
     t.string  "team_name"
     t.string  "team_code"
-    t.integer "advisor_users_id"
+    t.integer "advisor_user_id"
   end
+
+
+  add_foreign_key "teams", "advisor_users"
 
 end
