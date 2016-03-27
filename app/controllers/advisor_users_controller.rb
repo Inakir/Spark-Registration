@@ -53,7 +53,7 @@ class AdvisorUsersController < ApplicationController
         format.html { redirect_to @advisor_user, notice: 'Advisor user was successfully created.' }
         format.json { render :show, status: :created, location: @advisor_user }
       else
-        format.html { render :new }
+        format.html { render "_form" }
         format.json { render json: @advisor_user.errors, status: :unprocessable_entity }
       end
     end
