@@ -42,7 +42,7 @@ class StudentUsersController < ApplicationController
         format.html { redirect_to @student_user, notice: 'Please review this information to ensure it is correct' }
         format.json { render :show, status: :created, location: @student_user }
       else
-        format.html { render 'form' }
+        format.html { render :new }
         format.json { render json: @student_user.errors, status: :unprocessable_entity }
       end
     end
