@@ -1,3 +1,4 @@
+<body>
 <div id="main content">
         <div id="title"><h1>SPARK Registration</h1></div>
         <div id="school_button_contain">
@@ -24,3 +25,12 @@
       </div>
 	  
 </div>
+ <script language="javascript">
+        function autoResizeDiv()
+        {
+            document.getElementById('main').style.height = window.innerHeight +'px';
+        }
+        window.onresize = autoResizeDiv;
+        autoResizeDiv();
+    </script>
+</body>
