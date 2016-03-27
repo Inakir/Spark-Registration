@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
         log_in user
         render 'advisor/index'
       else
-          user=StudentUser.find_by(username: params[:session][:email].downcase)
+          user=StudentUser.find_by(email: params[:session][:email].downcase)
             if user && user.authenticate(params[:session][:password])
               flash.now[:flash] = 'Successfully logged in'
               student_log_in user
