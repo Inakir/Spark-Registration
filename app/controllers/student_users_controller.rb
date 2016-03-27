@@ -1,5 +1,5 @@
 class StudentUsersController < ApplicationController
-  before_action :set_student_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_student_user, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
 
   # GET /student_users
   # GET /student_users.json
@@ -30,6 +30,8 @@ class StudentUsersController < ApplicationController
   # POST /student_users.json
   def create
     @student_user = StudentUser.new(student_user_params)
+    
+    @student_user.usertype ="student"
 
 	session[:team_code] = nil
 	session[:team_code_valid] = nil
@@ -78,7 +80,7 @@ class StudentUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_user_params
-      params.require(:student_user).permit(:first_name, :last_name, :school_level, :school_name, :team_name, :pay_code, :team_code, :email)
+      params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
 	
 	def sdgsdgsgsd(school_level)
