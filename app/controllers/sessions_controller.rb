@@ -60,7 +60,7 @@ class SessionsController < ApplicationController
             if user && user.authenticate(params[:session][:password])
               flash.now[:flash] = 'Successfully logged in student'
               student_log_in user
-              render 'new'
+              render 'student_users'
             else
               #create an error message
               flash.now[:danger] = 'Invalid email/password combination 1'
