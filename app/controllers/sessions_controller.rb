@@ -20,6 +20,10 @@ class SessionsController < ApplicationController
       render 'admins/home'
     end
   end
+  
+  def new_student
+  
+  end
 
   def log_out
     CASClient::Frameworks::Rails::Filter.logout(self)
