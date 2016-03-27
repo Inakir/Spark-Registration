@@ -19,8 +19,10 @@ class StudentUsersController < ApplicationController
 
   # GET /student_users/new
   def new
-    temp=CGI.parse(URI.parse(request.original_url).query)
-    session[:student_level]=temp["student_level"][0]
+    if session[:student_level].nil?
+      temp=CGI.parse(URI.parse(request.original_url).query)
+      session[:student_level]=temp["student_level"][0]
+    end
     @student_user = StudentUser.new
   end
 
