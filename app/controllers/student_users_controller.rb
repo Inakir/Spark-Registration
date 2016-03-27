@@ -19,6 +19,8 @@ class StudentUsersController < ApplicationController
 
   # GET /student_users/new
   def new
+    temp=CGI.parse(URI.parse(request.original_url).query)
+    session[:student_level]=temp["student_level"][0]
     @student_user = StudentUser.new
   end
 
@@ -36,7 +38,7 @@ class StudentUsersController < ApplicationController
 	session[:team_code] = nil
 	session[:team_code_valid] = nil
 	@student_user.school_level=session[:student_level]
-	
+	session[:has_school_lvl]=true
     respond_to do |format|
       if @student_user.save
         format.html { redirect_to @student_user, notice: 'Please review this information to ensure it is correct' }
