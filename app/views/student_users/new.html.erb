@@ -2,9 +2,7 @@
 <div style="text-align:center">
 <h1>Spark Registration</h1>
 
-<% if(!session[:student_level])
-    temp=CGI.parse(URI.parse(request.original_url).query
-    end) %>
+<% if(!(session[:has_school_lvl]==true))temp=CGI.parse(URI.parse(request.original_url).query)%>
 
 <% session[:student_level]=temp["student_level"][0] %>
 
