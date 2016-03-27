@@ -61,9 +61,6 @@
 		<%= f.select :school_level, options_for_select(%w[Elementary Middle High]), :value => session[:student_level] %>
 	  </div>
 	-->
-		<div class = "field">
-		<%= f.label :password %><br>
-		<%= f.text_field :password %>
 		</div>
 	  <div class="field">
 		<%= f.text_field :team_code, :value => team_code_value, :hidden => true %>
