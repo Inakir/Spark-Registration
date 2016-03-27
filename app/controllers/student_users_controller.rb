@@ -65,6 +65,18 @@ class StudentUsersController < ApplicationController
       end
     end
   end
+  
+  def changepassword
+    respond_to do |format|
+     if @student_user.update(student_user_params)
+       format.html { redirect_to @student_user, notice: 'Your password was successfully updated!' }
+       format.json { render :show, status: :ok, location: @student_user }
+     else
+       format.html { redirect_to changepassword_student_path(@student_user), notice: 'Password must be at least 6 characters long and must match confirmation' } 
+       format.json { render json: @student_user.errors, status: :unprocessable_entity }
+     end
+    end
+  end
 
   # DELETE /student_users/1
   # DELETE /student_users/1.json

@@ -11,10 +11,9 @@
       </ul>
     </div>
   <% end %>
-  <% f.hidden_field :name, :value => @student_user.name %>
+  <% f.hidden_field :name, :value => @student_user.first_name %>
   <% f.hidden_field :password, :value => @student_user.password %>
   <% f.hidden_field :password_confirmation, :value => @student_user.password_confirmation %>
-  <!-- password field needs to be created in schema -->
   <% f.hidden_field :password_digest, :value => @student_user.password_digest %>
   <div class="field">
     <%= f.label :email %><br>
