@@ -22,7 +22,16 @@ class SessionsController < ApplicationController
   end
   
   def new_student
-  
+    user=StudentUser.find_by(username: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      flash.now[:flash] = 'Successfully logged in'
+      student_log_in user
+      render 'student_users/index'
+    else
+      #create an error message
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new'
+    end
   end
 
   def log_out
