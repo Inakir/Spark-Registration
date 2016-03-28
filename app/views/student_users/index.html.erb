@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h1> Your Information</h1>
+<p> Full Name:  <% @student_user.first_name @student_user.last_name %></p>
+<p> Email:  <% @student_user.email %></p>
+<p> School Name:  <% @student_user.school_name %></p>
+<p> School Level:  <% @student_user.school_level %></p>
 
 <%= link_to 'New Student user', new_student_user_path %>
