@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1> Your Information</h1>
-<p> Full Name:  <% :session[:current_user].first_name%> <%:session[:current_user].last_name %></p>
-<p> Email:  <% :session[:current_user].email %></p>
-<p> School Name:  <% :session[:current_user].school_name %></p>
-<p> School Level:  <% :session[:current_user].school_level %></p>
+<p> Full Name:  <% :session[:student_current_user].first_name%></p>
+<p> Email:  <% :session[:student_current_user].email %></p>
+<p> School Name:  <% :session[:student_current_user].school_name %></p>
+<p> School Level:  <% :session[:student_current_user].school_level %></p>
 
 <%= link_to 'New Student user', new_student_user_path %>
