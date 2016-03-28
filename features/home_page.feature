@@ -17,18 +17,16 @@ Feature: Have the basic registration home page running
 	  Given I am on the elementary school registration page.
 	  When I fill "student_user[first_name]" with "Eric"
 	  And I fill "student_user[last_name]" with "Ramon"
-	  And I fill "student_user[email]" with "Eric7@yahoo.com"
+	  And I fill "student_user[email]" with "Eric9@yahoo.com"
 	  And I fill "student_user[password]" with "444444"
 	  And I fill "student_user[password_confirmation]" with "444444"
 	  And I fill "student_user[school_name]" with "TAMU"
 	  And I click the button, "Register Student"
 	  Then I should see "Eric"
 	  And I should see "Ramon"
-	  And I should see "Eric7@yahoo.com"
+	  And I should see "Eric9@yahoo.com"
 	  And I should see "TAMU"
 	  And I should see a link that says "Continue"
-	  And I should click the link, "Continue"
-	  And I should click the button, "Continue"
 	  
 	Scenario: Login as Elementary Schooler
 	 Given I am on the registration home page.
