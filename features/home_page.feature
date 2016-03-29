@@ -17,7 +17,7 @@ Feature: Have the basic registration home page running
 	  Given I am on the elementary school registration page.
 	  When I fill "student_user[first_name]" with "Eric"
 	  And I fill "student_user[last_name]" with "Ramon"
-	  And I fill "student_user[email]" with "Eric9@yahoo.com"
+	  And I fill "student_user[email]" with "Eric10@yahoo.com"
 	  And I fill "student_user[password]" with "444444"
 	  And I fill "student_user[password_confirmation]" with "444444"
 	  And I fill "student_user[school_name]" with "TAMU"
@@ -31,7 +31,7 @@ Feature: Have the basic registration home page running
 	Scenario: Login as Elementary Schooler
 	 Given I am on the registration home page.
 	 When I click the link, "Login"
-	 And I fill "session[email]" with "Eric7@yahoo.com"
+	 And I fill "session[email]" with "Eric10@yahoo.com"
 	 And I fill "session[password]" with "444444"
 	 And I click the button, "Log in"
 	# Then I should see "Successfully Logged in!"
