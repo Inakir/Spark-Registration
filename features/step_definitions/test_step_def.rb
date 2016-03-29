@@ -1,5 +1,8 @@
 require_relative '../../spec/spec_helper'
 require_relative '../../spec/rails_helper'
+require 'simplecov'
+SimpleCov.start
+
 ######################################Given
 Given (/^I am on the registration home page\.$/) do
   visit '/'

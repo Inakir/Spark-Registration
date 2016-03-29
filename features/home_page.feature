@@ -12,7 +12,7 @@ Feature: Have the basic registration home page running
 	  And I should see "Email"
 	  And I should see "Password"
 	  And I should see "School name"
-	  
+	
 	Scenario: Register as Elementary Schooler
 	  Given I am on the elementary school registration page.
 	  When I fill "student_user[first_name]" with "Eric"
@@ -34,5 +34,5 @@ Feature: Have the basic registration home page running
 	 And I fill "session[email]" with "Eric7@yahoo.com"
 	 And I fill "session[password]" with "444444"
 	 And I click the button, "Log in"
-	 Then I should see a link that says "New Student user"
+	# Then I should see "Successfully Logged in!"
 	  
