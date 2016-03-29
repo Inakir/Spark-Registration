@@ -19,7 +19,7 @@ class StudentUsersController < ApplicationController
 
   # GET /student_users/new
   def new
-    if session[:student_level].nil?
+    if session[:has_school_lvl].nil? || session[:has_school_lvl]==false
       temp=CGI.parse(URI.parse(request.original_url).query)
       session[:student_level]=temp["student_level"][0]
     end
@@ -43,7 +43,7 @@ class StudentUsersController < ApplicationController
 	session[:has_school_lvl]=true
     respond_to do |format|
       if @student_user.save
-        session.delete(:student_level)
+        session[:has_school_lvl]=false
         format.html { redirect_to @student_user, notice: 'Please review this information to ensure it is correct' }
         format.json { render :show, status: :created, location: @student_user }
       else
