@@ -1,4 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>Sucessfully Logged in!</p>
+<div id="main_content">
+	<div id="title"><h1>Advisor Page</h1></div>
+    <tbody>
+    <tr>
+        <td><%= student_current_user.first_name %></td>
+        <td><%= student_current_user.last_name %></td>
+        <td><%= student_current_user.school_level %></td>
+        <td><%= student_current_user.school_name %></td>
+        <td><%= student_current_user.team_name %></td>
+        <td><%= student_current_user.pay_code %></td>
+        <td><%= link_to 'Show', student_current_user %></td>
+        <td><%= link_to 'Edit', edit_student_user_path(student_current_user) %></td>
+        <td><%= link_to 'Destroy', student_current_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    </tbody>
+</div>
 <%= link_to 'New Student user', new_student_user_path %>
