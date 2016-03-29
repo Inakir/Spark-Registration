@@ -43,6 +43,7 @@ class StudentUsersController < ApplicationController
 	session[:has_school_lvl]=true
     respond_to do |format|
       if @student_user.save
+        session.delete(:student_level)
         format.html { redirect_to @student_user, notice: 'Please review this information to ensure it is correct' }
         format.json { render :show, status: :created, location: @student_user }
       else
