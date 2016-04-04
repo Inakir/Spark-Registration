@@ -19,7 +19,7 @@ class StudentUsersController < ApplicationController
 
   # GET /student_users/new
   def new
-    if session[:student_level].nil?
+    if session[:has_school_lvl].nil? || session[:has_school_lvl]==false
       temp=CGI.parse(URI.parse(request.original_url).query)
       session[:student_level]=temp["student_level"][0]
     end
@@ -43,10 +43,11 @@ class StudentUsersController < ApplicationController
 	session[:has_school_lvl]=true
     respond_to do |format|
       if @student_user.save
+        session[:has_school_lvl]=false
         format.html { redirect_to @student_user, notice: 'Please review this information to ensure it is correct' }
         format.json { render :show, status: :created, location: @student_user }
       else
-        format.html { render :form }
+        format.html { render :new }
         format.json { render json: @student_user.errors, status: :unprocessable_entity }
       end
     end
@@ -63,6 +64,18 @@ class StudentUsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @student_user.errors, status: :unprocessable_entity }
       end
+    end
+  end
+  
+  def changepassword
+    respond_to do |format|
+     if @student_user.update(student_user_params)
+       format.html { redirect_to @student_user, notice: 'Your password was successfully updated!' }
+       format.json { render :show, status: :ok, location: @student_user }
+     else
+       format.html { redirect_to changepassword_student_path(@student_user), notice: 'Password must be at least 6 characters long and must match confirmation' } 
+       format.json { render json: @student_user.errors, status: :unprocessable_entity }
+     end
     end
   end
 

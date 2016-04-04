@@ -56,19 +56,16 @@ class SessionsController < ApplicationController
         log_in user
         render 'advisor/index'
       else
-          user=StudentUser.find_by(username: params[:session][:email].downcase)
+          user=StudentUser.find_by(email: params[:session][:email].downcase)
             if user && user.authenticate(params[:session][:password])
-              flash.now[:flash] = 'Successfully logged in'
+              flash.now[:flash] = 'Successfully logged in student'
               student_log_in user
               render 'student_users/index'
             else
               #create an error message
-              flash.now[:danger] = 'Invalid email/password combination'
+              flash.now[:danger] = 'Invalid email/password combination 1'
               render 'new'
             end
-        #create an error message
-        flash.now[:danger] = 'Invalid email/password combination'
-        render 'new'
       end
     end
   end
