@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<<<<<<< HEAD
 <h1> Your Information</h1>
 <p> Full Name:  <% session[:student_current_user].first_name%></p>
 <!--<p> Email:  <% session[:student_current_user][:email] %></p>
@@ -7,3 +8,22 @@
 <p> School Level:  <% session[:student_current_user].:school_level] %></p> -->
 
 <%= link_to 'New Student user', new_student_user_path %>
+=======
+<p>Sucessfully Logged in!</p>
+<div id="main_content">
+	<div id="title"><h1>Student Page</h1></div>
+    <tbody>
+    <tr>
+        <td><%= student_current_user.first_name %></td>
+        <td><%= student_current_user.last_name %></td>
+        <td><%= student_current_user.school_level %></td>
+        <td><%= student_current_user.school_name %></td>
+        <td><%= student_current_user.team_name %></td>
+        <td><%= student_current_user.pay_code %></td>
+        <td><%= link_to 'Show', student_current_user %></td>
+        <td><%= link_to 'Edit', edit_student_user_path(student_current_user) %></td>
+        <td><%= link_to 'Destroy', student_current_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    </tbody>
+</div>
+>>>>>>> ee0033d1a658b56d1793bc23c5c6e22743b92dc3
