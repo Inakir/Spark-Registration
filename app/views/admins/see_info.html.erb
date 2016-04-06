@@ -1,7 +1,7 @@
 <% #if session[:cas_user]  %>
 <% #@email = session[:cas_user] + "@tamu.edu" %>
 <% admin = Admin.where(:email => @email).first() %>
-<% if !admin.nil? %>
+<% #if !admin.nil? %>
 <p id="notice"><%= notice %></p>
 
 <h1>Advisor Users</h1>
@@ -117,5 +117,5 @@
   <% end %>
   </tbody>
 </table>
-<% end %>
+<% #end %>
 <%# end %>
