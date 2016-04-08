@@ -84,7 +84,8 @@ class AdminsController < ApplicationController
   def mark_paid
     @student_user = StudentUser.find(params[:id])
     @student_user.pay_status = "yes"
-    @student_user.save
+    #@student_user.save
+    @student_user.update(student_user_params)
     render 'admins/see_info'
   end
 
