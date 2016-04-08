@@ -121,4 +121,7 @@ class AdminsController < ApplicationController
     def admin_params
       params.require(:admin).permit(:email, :password, :password_confirmation, :name, :phone, :fax, :right_sig_url, :mkt_place_url)
     end
+     def student_user_params
+      params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
+    end
 end
