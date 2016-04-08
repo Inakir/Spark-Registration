@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$("#emailuser").click(function() {
-  $("#dialog").dialog("open");
-  return false;
-});
+#$("#emailuser").click(function() {
+ # $("#dialog").dialog("open");
+  #return false;
+#});
