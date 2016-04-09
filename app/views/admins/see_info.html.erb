@@ -39,7 +39,6 @@
 <h1>Unpaid Students</h1> <%= link_to "CSV", student_users_path(format: "csv") %> | <%= link_to "Excel", student_users_path(format: "xls") %> <br></br>
 <thead>
   <%= form_tag("unpaid_email_group") do %>
-  <%= hidden_field_tag('id', student.id) %>
   <td><%= submit_tag("Send Email") %></td>
   <% end %>
 </thead>
