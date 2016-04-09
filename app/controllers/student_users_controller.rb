@@ -57,7 +57,10 @@ class StudentUsersController < ApplicationController
   # PATCH/PUT /student_users/1.json
   def update
     respond_to do |format|
-      if @student_user.update_attribute(:pay_status , params[:student_user][:pay_status])
+      if @student_user.update_attribute(:pay_status , params[:student_user][:pay_status]) |
+         @student_user.update_attribute(:first_name, params[:student_user][:first_name]) |
+         @student_user.update_attribute(:email , params[:student_user][:email]) | @student_user.update_attribute(:password , params[:student_user][:password]) |
+         @student_user.update_attribute(:school_name , params[:student_user][:school_name])
       else
         format.html { render :edit }
         format.json { render json: @student_user.errors, status: :unprocessable_entity }
