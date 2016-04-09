@@ -82,9 +82,9 @@ class AdminsController < ApplicationController
 
   # Mark the student as paid.
   def mark_paid
-    @student_user = StudentUser.find(params[:id])
+    @student_user = StudentUser.find(params[:id]) #finds correct student
     @student_user.pay_status = "yes"
-    #@student_user.save!
+    @student_user.save(validate: false) #validate: false prevents it from asking for a password upon update
     render 'admins/see_info'
   end
 
@@ -92,6 +92,15 @@ class AdminsController < ApplicationController
     @student_user = StudentUser.find(params[:id])
     UserMailer.welcome_email(@student_user.email).deliver_now
     render 'admins/see_info'
+  end
+
+  def unpaid_email_group
+      StudentUser.all.each do |student|
+        if (student.pay_status != "yes")
+          UserMailer.welcome_email(student.email).deliver
+        end
+      end
+       render 'admins/see_info'
   end
 
   #Changes password, password must be 6 characters long and match confirmation
@@ -119,5 +128,8 @@ class AdminsController < ApplicationController
     end
     def admin_params
       params.require(:admin).permit(:email, :password, :password_confirmation, :name, :phone, :fax, :right_sig_url, :mkt_place_url)
+    end
+     def student_user_params
+      params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
 end
