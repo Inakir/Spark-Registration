@@ -8,6 +8,6 @@ class UserMailer < ActionMailer::Base
   
   def unpaid_email_groups(email)
     @email = email
-        mail(:to => email, :subject => "Please make your payment1.")
+        mail(:to => email, :subject => "Please make your payment1.", :body 'something')
   end
 end

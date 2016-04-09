@@ -100,8 +100,8 @@ class AdminsController < ApplicationController
           @student_user = StudentUser.find(params[:id])
           UserMailer.unpaid_email_groups(@student_user.email).deliver
         end
-        render 'admins/see_info'
       end
+       render 'admins/see_info'
   end
 
   #Changes password, password must be 6 characters long and match confirmation
