@@ -45,6 +45,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'puma'
 
+gem 'test-unit'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -1,9 +1,19 @@
 require_relative '../../spec/spec_helper'
 require_relative '../../spec/rails_helper'
+require 'rubygems'
+require 'test/unit'
+
+include Test::Unit::Assertions
+
 require 'simplecov'
 SimpleCov.start
 
 ######################################Given
+
+Given(/^we are on the admins new page\.$/) do
+  visit 'admins/new'
+end
+
 Given (/^I am on the registration home page\.$/) do
   visit '/'
 end
@@ -33,4 +43,8 @@ end
 
 Then(/^I should see "([^"]*)"$/) do |arg1|
   page.should have_text arg1
+end
+
+Then(/^I should be on the "([^"]*)" page\.$/) do |arg1|
+  assert page.current_path == '/login'
 end
