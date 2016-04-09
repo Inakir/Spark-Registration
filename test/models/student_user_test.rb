@@ -46,7 +46,7 @@ class StudentUserTest < ActiveSupport::TestCase
     end
     test "assert false school_level should only be Elementary, Middle, or High" do
       @student_user.school_level = "Intermediate"
-      assert_not @student_user.valid?,"should be in a level"
+      assert_not @student_user.valid?, "should be in a level"
     end
     test "assert true school_level should only be Elementary, Middle, or High" do
       @student_user.school_level = "Elementary"

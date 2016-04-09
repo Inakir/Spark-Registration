@@ -60,6 +60,7 @@ class SessionsController < ApplicationController
             if user && user.authenticate(params[:session][:password])
               flash.now[:flash] = 'Successfully logged in student'
               student_log_in user
+              @student_current_user=user
               render 'student_users/index'
             else
               #create an error message

@@ -45,6 +45,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'puma'
 
+gem 'test-unit'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -53,7 +55,7 @@ gem 'puma'
 
 gem 'rubycas-client', :git => 'git://github.com/rubycas/rubycas-client.git'
 
-group :development, :test do
+group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
