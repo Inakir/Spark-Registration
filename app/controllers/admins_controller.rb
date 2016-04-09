@@ -94,6 +94,16 @@ class AdminsController < ApplicationController
     render 'admins/see_info'
   end
 
+  def unpaid_email_group
+      StudentUser.all.each do |student|
+        if (student.pay_status != "yes")
+          @student_user = StudentUser.find(params[:id])
+          UserMailer.unpaid_email_groups(@student_user.email).deliver
+        end
+        render 'admins/see_info'
+      end
+  end
+
   #Changes password, password must be 6 characters long and match confirmation
   def changepassword
     respond_to do |format|
