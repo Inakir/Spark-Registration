@@ -98,7 +98,7 @@ class AdminsController < ApplicationController
       @student_user = StudentUser.find(params[:id])
       StudentUser.all.each do |student|
         if (student.pay_status != "yes")
-          UserMailer.unpaid_email_groups(@student_user.email).deliver
+          UserMailer.unpaid_email_groups(student.email).deliver
         end
       end
        render 'admins/see_info'
