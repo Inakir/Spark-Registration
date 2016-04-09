@@ -84,8 +84,7 @@ class AdminsController < ApplicationController
   def mark_paid
     @student_user = StudentUser.find(params[:id]) #finds correct student
     @student_user.pay_status = "yes"
-    #@student_user.password = @student_user.password
-    @student_user.save(validate: false)
+    @student_user.save(validate: false) #validate: false prevents it from asking for a password upon update
     render 'admins/see_info'
   end
 
