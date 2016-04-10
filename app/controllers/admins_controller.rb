@@ -102,6 +102,23 @@ class AdminsController < ApplicationController
       end
        render 'admins/see_info'
   end
+  
+   def email_all
+      StudentUser.all.each do |student|
+          UserMailer.welcome_email(student.email).deliver
+      end
+      AdvisorUser.all.each do |advisor|
+          UserMailer.welcome_email(advisor.email).deliver
+      end
+       render 'admins/see_info'
+   end
+   
+  def email_advisors
+      AdvisorUser.all.each do |advisor|
+          UserMailer.unpaid_email_groups(advisor.email).deliver
+      end
+       render 'admins/see_info'
+  end
 
   #Changes password, password must be 6 characters long and match confirmation
   def changepassword
