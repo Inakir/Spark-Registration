@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   post 'admins/mark_paid' => 'admins#mark_paid'
   post 'admins/send_email' => 'admins#send_email'
   post 'admins/unpaid_email_group' => 'admins#unpaid_email_group'
-   post 'admins/email_advisors' => 'admins#email_advisors'
-
+  post 'admins/email_advisors' => 'admins#email_advisors'
+  post 'admins/email_all' => 'admins#email_all'
   resources :admins do
 	member do
 	  put 'changelogin' => 'admins#changelogin'

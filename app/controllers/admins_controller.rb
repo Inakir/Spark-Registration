@@ -108,7 +108,10 @@ class AdminsController < ApplicationController
           UserMailer.welcome_email(student.email).deliver
       end
       AdvisorUser.all.each do |advisor|
-          UserMailer.welcome_email(advisor.email).deliver
+          UserMailer.welcome_email(advisor.username).deliver
+      end
+      Admin.all.each do |admin|
+          UserMailer.welcome_email(admin.username).deliver
       end
        render 'admins/see_info'
    end
