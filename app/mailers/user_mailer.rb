@@ -10,4 +10,9 @@ class UserMailer < ActionMailer::Base
     @email = email
         mail(:to => email, :subject => "Please make your payment1.", body: "something")
   end
+  
+  def thanks_email(email)
+    @email = email
+    mail(:to => email, :subject => "SPARK Registration")
+  end
 end

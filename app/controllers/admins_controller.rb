@@ -105,7 +105,7 @@ class AdminsController < ApplicationController
   
    def email_all
       StudentUser.all.each do |student|
-          UserMailer.welcome_email(student.email).deliver
+          UserMailer.thanks_email(student.email).deliver
       end
       AdvisorUser.all.each do |advisor|
           UserMailer.welcome_email(advisor.username).deliver
