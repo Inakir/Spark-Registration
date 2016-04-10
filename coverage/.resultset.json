@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/test/Spark-Registration/features/step_definitions/test_step_def.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/features/step_definitions/test_step_def.rb": [
         1,
         1,
         1,
@@ -46,7 +46,7 @@
         null,
         null,
         1,
-        6,
+        7,
         null,
         null,
         1,
@@ -55,9 +55,13 @@
         null,
         1,
         1,
+        null,
+        null,
+        1,
+        0,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/spec/spec_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/spec/spec_helper.rb": [
         null,
         null,
         null,
@@ -151,87 +155,87 @@
         null,
         null,
         null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ubuntu/workspace/test/Spark-Registration/spec/rails_helper.rb": [
-        null,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        null
-      ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/environment.rb": [
-        null,
-        1,
-        null,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
         null,
         null,
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/application.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/spec/rails_helper.rb": [
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/config/environment.rb": [
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/config/application.rb": [
         1,
         null,
         1,
@@ -260,12 +264,12 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/boot.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/environments/test.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/config/environments/test.rb": [
         1,
         null,
         null,
@@ -309,7 +313,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/initializers/assets.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -322,7 +326,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/initializers/backtrace_silencers.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -331,48 +335,48 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/initializers/cookies_serializer.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/config/initializers/cookies_serializer.rb": [
         null,
         null,
         1
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/initializers/filter_parameter_logging.rb": [
-        null,
-        null,
-        null,
-        1
-      ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/initializers/inflections.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/initializers/mime_types.rb": [
-        null,
+      "/home/ubuntu/workspace/Spark-Registration/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/initializers/session_store.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/config/initializers/inflections.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/config/initializers/mime_types.rb": [
+        null,
+        null,
         null,
         null,
         1
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/initializers/wrap_parameters.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/config/initializers/session_store.rb": [
+        null,
+        null,
+        1
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -388,7 +392,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/config/routes.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/config/routes.rb": [
         1,
         null,
         1,
@@ -415,6 +419,7 @@
         1,
         null,
         null,
+        1,
         1,
         1,
         null,
@@ -529,7 +534,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/admins_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/admins_helper.rb": [
         1,
         null,
         1,
@@ -547,35 +552,35 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/advisor_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/advisor_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/advisor_users_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/advisor_users_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/elementary_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/elementary_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/high_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/high_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/middle_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/middle_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/registration_home_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/registration_home_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/sessions_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/sessions_helper.rb": [
         1,
         null,
         1,
@@ -604,15 +609,22 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/student_users_helper.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/student_users_helper.rb": [
+        1,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/app/helpers/students_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/helpers/students_helper.rb": [
-        1,
-        null
-      ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/controllers/admins_controller.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/controllers/admins_controller.rb": [
         1,
         1,
         1,
@@ -699,7 +711,7 @@
         1,
         0,
         0,
-        null,
+        0,
         0,
         null,
         null,
@@ -709,6 +721,15 @@
         0,
         null,
         null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
         null,
         1,
         0,
@@ -734,10 +755,13 @@
         null,
         1,
         1,
+        null,
+        1,
+        0,
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -750,7 +774,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/models/admin.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/models/admin.rb": [
         null,
         1,
         null,
@@ -760,116 +784,117 @@
         null,
         null,
         null,
-        1,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/controllers/registration_home_controller.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/controllers/sessions_controller.rb": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        1,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        2,
-        null,
-        2,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        0,
-        0,
-        null,
-        null,
-        2,
-        2,
-        null,
-        0,
-        0,
-        0,
-        null,
-        2,
-        2,
-        0,
-        0,
-        0,
-        null,
-        null,
-        2,
-        2,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null
-      ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/models/advisor_user.rb": [
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
         1,
         1,
         1,
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/models/student_user.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/controllers/registration_home_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/app/controllers/sessions_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        2,
+        null,
+        2,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        0,
+        null,
+        null,
+        2,
+        2,
+        null,
+        0,
+        0,
+        0,
+        null,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        2,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/app/models/advisor_user.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/app/models/student_user.rb": [
         1,
         1,
         0,
@@ -897,7 +922,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/test/Spark-Registration/app/controllers/student_users_controller.rb": [
+      "/home/ubuntu/workspace/Spark-Registration/app/controllers/student_users_controller.rb": [
         1,
         1,
         null,
@@ -957,9 +982,12 @@
         null,
         1,
         0,
+        null,
+        null,
+        null,
+        null,
         0,
-        0,
-        0,
+        null,
         null,
         0,
         0,
@@ -1010,7 +1038,7 @@
         null
       ]
     },
-    "timestamp": 1460220728
+    "timestamp": 1460328494
   },
   "RSpec": {
     "coverage": {

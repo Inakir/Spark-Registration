@@ -11,7 +11,8 @@ Scenario: Forcefully creating a new admin
 Scenario: Admin login
   Given I am on the registration home page.
   When I click the link, "Login"
-  And I fill "session[email]" with "eramon224@tamu.edu"
-  And I fill "session[password]" with "444444"
+  And I fill "session[email]" with "austinktang@gmail.com"
+  And I fill "session[password]" with "test123"
   And I click the button, "Log in"
   Then I should be on the login page.
+  And I should see "Invalid email/password combination"
