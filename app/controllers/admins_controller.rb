@@ -115,7 +115,7 @@ class AdminsController < ApplicationController
    
   def email_advisors
       AdvisorUser.all.each do |advisor|
-          UserMailer.unpaid_email_groups(advisor.email).deliver
+          UserMailer.unpaid_email_groups(advisor.username).deliver
       end
        render 'admins/see_info'
   end
