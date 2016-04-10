@@ -48,3 +48,7 @@ end
 Then(/^I should be on the "([^"]*)" page\.$/) do |arg1|
   assert page.current_path == '/login'
 end
+
+Then(/^I should be on the login page\.$/) do
+  assert page.current_path == '/login'
+end

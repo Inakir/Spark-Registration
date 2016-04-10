@@ -51,6 +51,10 @@
         null,
         1,
         1,
+        null,
+        null,
+        1,
+        1,
         null
       ],
       "/home/ubuntu/workspace/test/Spark-Registration/spec/spec_helper.rb": [
@@ -1006,7 +1010,7 @@
         null
       ]
     },
-    "timestamp": 1460218966
+    "timestamp": 1460220728
   },
   "RSpec": {
     "coverage": {
