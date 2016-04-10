@@ -74,7 +74,7 @@
                 <%= hidden_field_tag('id', student.id) %>
                 <td><%= submit_tag("Mark paid") %></td>
             <% end %>
-            <%= form_tag("email_all") do %>
+            <%= form_tag("send_email") do %>
                 <%= hidden_field_tag('id', student.id) %>
                 <td><%= submit_tag("Send Email") %></td>
             <% end %>
