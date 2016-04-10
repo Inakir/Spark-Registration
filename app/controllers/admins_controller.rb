@@ -111,7 +111,7 @@ class AdminsController < ApplicationController
           UserMailer.welcome_email(advisor.username).deliver
       end
       Admin.all.each do |admin|
-          UserMailer.welcome_email(admin.username).deliver
+          UserMailer.welcome_email(admin.email).deliver
       end
        render 'admins/see_info'
    end
