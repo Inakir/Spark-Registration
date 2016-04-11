@@ -22,8 +22,11 @@ Rails.application.routes.draw do
   #patch 'admins/edit' => 'admins#update'
 
   get 'admins/see_info'
+  get 'admins/email_page' => 'admins#email_page'
 
-
+  post 'admins/email_unpaid' => 'admins#email_unpaid'
+  post 'admins/send_stud_email' => 'admins#send_stud_email'
+  post 'admins/edit_email' => 'admins#edit_email'
   post 'admins/mark_paid' => 'admins#mark_paid'
   post 'admins/send_email' => 'admins#send_email'
   post 'admins/unpaid_email_group' => 'admins#unpaid_email_group'
@@ -69,10 +72,12 @@ Rails.application.routes.draw do
   get 'admin_login' => 'admins#new'
   post 'admin_login' => 'admins#create'
   delete 'admin_logout' => 'admins#destroy'
-
+  
+ 
+  
   get 'advisor/create_team' => 'advisor#create_team'
   get 'advisor/see_team'
-
+  
   get 'advisor/team'
 
   get 'advisor/info'

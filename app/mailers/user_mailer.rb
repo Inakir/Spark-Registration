@@ -1,14 +1,14 @@
 class UserMailer < ActionMailer::Base
   default :from => "admin@spark.com"
 
-  def welcome_email(email)
+  def welcome_email(email,subject_text,text)
     @email = email
-    mail(:to => email, :subject => "Please make your payment.")
+    mail(:to => email, :subject => subject_text,body: text)
   end
   
-  def unpaid_email_groups(email)
+  def unpaid_email_groups(email,subject,text)
     @email = email
-        mail(:to => email, :subject => "Please make your payment1.", body: "something")
+        mail(:to => email, :subject => subject_text, body: text)
   end
   
   def thanks_email(email)

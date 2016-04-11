@@ -935,4 +935,22 @@ table {
    color: #777;
 }
 
+#email_popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  width: 200px;
+  height: 200px;
 
+  z-index: 200;
+}
+#button {
+  cursor: pointer;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
