@@ -1,5 +1,6 @@
 <% #if session[:cas_user]  %>
 <% #@email = session[:cas_user] + "@tamu.edu" %>
+<%= javascript_include_tag "application" %>
 <% admin = Admin.where(:email => @email).first() %>
 <% #if !admin.nil? %>
 <p id="notice"><%= notice %></p>
@@ -86,7 +87,7 @@
 </table>
 <button id="button">Show Popup</button>
 <div id="overlay"></div>
-<div id ="email_popup">
+<div id="email_popup">
     <div class="subject">
       <form action="" id="email">Subject
       <input type="text" name="subject">
