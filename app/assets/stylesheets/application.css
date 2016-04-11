@@ -947,7 +947,7 @@ table {
   z-index: 100;
 }
 #email_popup {
-  display: default;
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
