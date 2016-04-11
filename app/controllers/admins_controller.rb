@@ -108,8 +108,7 @@ class AdminsController < ApplicationController
       end
        render 'admins/see_info'
   end
-  
-<<<<<<< HEAD
+
   #email_page action
   def email_page
     puts session.inspect
@@ -140,7 +139,6 @@ class AdminsController < ApplicationController
     end
       
   end
-=======
   #send email to all users, advisors, and admins
    def email_all
       StudentUser.all.each do |student|
@@ -163,7 +161,6 @@ class AdminsController < ApplicationController
        render 'admins/see_info'
   end
 
->>>>>>> 96f9a8b391d66898630bcaa87c6aca836797c04a
   #Changes password, password must be 6 characters long and match confirmation
   def changepassword
     respond_to do |format|
