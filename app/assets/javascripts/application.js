@@ -28,4 +28,4 @@ closePopup.onclick = function() {
 button.onclick = function() {
   overlay.style.display = 'block';
   popup.style.display = 'block';
-}
+};
