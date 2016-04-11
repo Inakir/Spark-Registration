@@ -114,10 +114,10 @@ class AdminsController < ApplicationController
     @email_text=params[:email_text]
     @subject= params[:subject]
     if @send_to_who == "unpaid"
-      Admin.unpaid_email_group
+      Admins.unpaid_email_group
       render 'admins/see_info'
     else
-      Admin.send_email
+      Admins.send_email
       render 'admins/see_info'
     end
       
