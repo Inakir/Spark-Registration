@@ -8,6 +8,12 @@ include Test::Unit::Assertions
 require 'simplecov'
 SimpleCov.start
 
+Before do |scenario|
+  if Admin.count == 0
+    load Rails.root.join('db/seeds.rb')
+  end
+end
+
 ######################################Given
 
 Given(/^we are on the admins new page\.$/) do
@@ -47,12 +53,4 @@ end
 
 Then(/^I should be on the "([^"]*)" page\.$/) do |arg1|
   assert page.current_path == '/login'
-end
-
-Then(/^I should be on the login page\.$/) do
-  assert page.current_path == '/login'
-end
-
-Then(/^I should see the link, "([^"]*)"$/) do |arg1|
-  page.should have_link arg1
 end
