@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 	  patch 'changepassword' => 'admins#changepassword'
 	  get 'changepassword' => 'admins#editpassword'
 	  #post 'changelogin' => 'admins#editlogin'
-	  get 'sessions/admin_new'
+	  #get 'sessions/admin_new'
 	end
   end
   #get 'changeadminlogin' => 'admins#editlogin'
