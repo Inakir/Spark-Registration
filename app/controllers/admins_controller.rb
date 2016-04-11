@@ -88,8 +88,8 @@ class AdminsController < ApplicationController
     render 'admins/see_info'
   end
 
-  def send_email
-    @student_user = StudentUser.find(params[:id])
+  def send_email(id)
+    @student_user = StudentUser.find(id)
     UserMailer.welcome_email(@student_user.email).deliver_now
     render 'admins/see_info'
   end
@@ -102,7 +102,17 @@ class AdminsController < ApplicationController
       end
        render 'admins/see_info'
   end
-
+  #email_page action
+  
+  def edit_email
+    @send_to_who = params[:selector]
+    if selector== "unpaid"
+      
+    else
+      @id=params[:id]
+      Admin.send_email(@id)
+      
+  end
   #Changes password, password must be 6 characters long and match confirmation
   def changepassword
     respond_to do |format|
