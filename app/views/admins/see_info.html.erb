@@ -41,7 +41,7 @@
   <!--<%#= form_tag("unpaid_email_group") do %>-->
   <!--<td><%#= submit_tag("Email All Unpaid Users") %></td>-->
   <!--<%# end %>-->
-  <%= button_to "Email All Unpaid Users", admins_email_page_path(:method => "get",:student_id => 0 ,:selector => "unpaid") %>
+  <%= button_to "Email All Unpaid Users", admins_email_page_path(resource,:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
 </thead>
 
 <table border="1">
