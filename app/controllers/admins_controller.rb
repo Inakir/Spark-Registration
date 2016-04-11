@@ -91,20 +91,54 @@ class AdminsController < ApplicationController
   
   #send email to a specific student
   def send_email
-    @student_user = StudentUser.find(params[:id])
-    UserMailer.welcome_email(@student_user.email).deliver_now
+    @student_user = StudentUser.find(session[:student_id])
+    @subject= params[:subject]
+    @text= params[:email_text]
+    UserMailer.welcome_email(@student_user.email,@subject,@text).deliver_now
     render 'admins/see_info'
   end
   #send payment email to all unpaid users
   def unpaid_email_group
+    @subject= params[:subject]
+    @text= params[:email_text]
       StudentUser.all.each do |student|
         if (student.pay_status != "yes")
-          UserMailer.welcome_email(student.email).deliver
+          UserMailer.welcome_email(student.email,@subject,@text).deliver
         end
       end
        render 'admins/see_info'
   end
+
+  #email_page action
+  def email_page
+    puts session.inspect
+    @student_id= session[:student_id]
+    @selector=session[:selector]
+  end
   
+  def email_unpaid
+    session[:selector]="unpaid"
+    session[:student_id]= params[:student_id]
+    render 'admins/email_page'
+  end
+  
+  def send_stud_email
+    session[:selector]=""
+    session[:student_id]= params[:student_id]
+    render 'admins/email_page'
+  end
+  
+  def edit_email
+    @send_to_who = session[:selector]
+    @email_text=params[:email_text]
+    @subject= params[:subject]
+    if @send_to_who == "unpaid"
+      unpaid_email_group()
+    else
+      send_email()
+    end
+      
+  end
   #send email to all users, advisors, and admins
    def email_all
       StudentUser.all.each do |student|
