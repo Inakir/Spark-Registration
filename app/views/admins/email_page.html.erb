@@ -1,16 +1,16 @@
 <div class=center>
+<%= form_tag("edit_email") do %>
 <table>
     <tbody>
         <tr><h1>Subject</h1>
-            <form action="" id="email">
-            <input type="text" name="subject">
+            <%= text_field_tag :subject %>
             <br></form>
         </tr>
         <tr><h1>Email Content</h1>
-            <textarea rows="20" cols="80" name="email_text" form="email">Enter text here...</textarea>
+            <% text_area_tag(:email_text, cols: 20, rows: 80) %>
         </tr>
         <tr>
-              <%= form_tag("edit_email") do %>
+              
               <%= submit_tag("Submit email") %>
               <% end %>
         </tr>
