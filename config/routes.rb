@@ -26,7 +26,23 @@ Rails.application.routes.draw do
 
   post 'admins/mark_paid' => 'admins#mark_paid'
   post 'admins/send_email' => 'admins#send_email'
+  post 'admins/unpaid_email_group' => 'admins#unpaid_email_group'
 
+  resources :admins do
+	member do
+	  put 'changelogin' => 'admins#changelogin'
+          patch 'changelogin' => 'admins#changelogin'
+	  get 'changelogin' => 'admins#editlogin'
+	  put 'changepassword' => 'admins#changepassword'
+	  patch 'changepassword' => 'admins#changepassword'
+	  get 'changepassword' => 'admins#editpassword'
+	  post 'changelogin' => 'admins#editlogin'
+	  get 'sessions/admin_new'
+	end
+  end
+
+  post 'admins/email_advisors' => 'admins#email_advisors'
+  post 'admins/email_all' => 'admins#email_all'
   resources :admins do
 	member do
 	  put 'changelogin' => 'admins#changelogin'
@@ -38,11 +54,11 @@ Rails.application.routes.draw do
 	  #post 'changelogin' => 'admins#editlogin'
 	end
   end
+
   #get 'changeadminlogin' => 'admins#editlogin'
   #put 'changeadminlogin/:id' => 'admins#changelogin'
   #patch 'changeadminlogin/:id' => 'admins#changelogin'
 
-  get 'sessions/admin_new'
   get 'admin/log_out' => 'sessions#log_out'
 
 

@@ -57,9 +57,12 @@ class StudentUsersController < ApplicationController
   # PATCH/PUT /student_users/1.json
   def update
     respond_to do |format|
-      if @student_user.update(student_user_params)
-        format.html { redirect_to @student_user, notice: 'Student user was successfully updated.' }
-        format.json { render :show, status: :ok, location: @student_user }
+      if @student_user.update_attribute(:pay_status , params[:student_user][:pay_status]) |
+         @student_user.update_attribute(:first_name, params[:student_user][:first_name]) |
+         @student_user.update_attribute(:email , params[:student_user][:email]) | 
+         @student_user.update_attribute(:password , params[:student_user][:password]) |
+         @student_user.update_attribute(:school_name , params[:student_user][:school_name])
+         #@student_user.save!
       else
         format.html { render :edit }
         format.json { render json: @student_user.errors, status: :unprocessable_entity }
@@ -97,7 +100,7 @@ class StudentUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_user_params
-      params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
+      params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
 	
 	def sdgsdgsgsd(school_level)
