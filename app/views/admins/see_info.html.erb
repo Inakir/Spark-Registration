@@ -41,7 +41,7 @@
   <!--<%#= form_tag("unpaid_email_group") do %>-->
   <!--<td><%#= submit_tag("Email All Unpaid Users") %></td>-->
   <!--<%# end %>-->
-  <%= button_to "Email All Unpaid Users", admins_email_page_path(:id => 0 ,:selector => "unpaid"), :method => "get" %>
+  <%= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
 </thead>
 
 <table border="1">
@@ -75,7 +75,7 @@
                 <%= hidden_field_tag('id', student.id) %>
                 <td><%= submit_tag("Mark paid") %></td>
             <% end %>
-                <td><%= button_to "Send Email", admins_email_page_path(),:student_id => 0,:selector => "none", :method => "get" %></td>
+                <td><%= button_to "Send Email", admins_email_page_path(:student_id => 0,:selector => "none"), :method => "get" %></td>
             <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
       <% end %>

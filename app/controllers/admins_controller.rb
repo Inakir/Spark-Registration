@@ -108,6 +108,10 @@ class AdminsController < ApplicationController
   end
   
   #email_page action
+  def email_page
+    @student_id= params[:student_id]
+    @selector=params[:selector]
+  end
   
   def edit_email
     @send_to_who = params[:selector]

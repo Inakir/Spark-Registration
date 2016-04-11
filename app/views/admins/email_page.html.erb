@@ -10,8 +10,8 @@
             <%= text_area_tag(:email_text,"enter text here", cols: 80, rows: 20) %>
         </tr>
         <tr>
-              <%= hidden_field_tag :id, :value => params[:student_id]%>
-              <%= hidden_field_tag :selector, :value => params[:selector]%>
+              <%= hidden_field_tag :id, :value => @student_id%>
+              <%= hidden_field_tag :selector, :value => @selector]%>
               <%= submit_tag("Submit email") %>
               <% end %>
         </tr>
