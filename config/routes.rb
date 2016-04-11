@@ -54,7 +54,8 @@ Rails.application.routes.draw do
   get 'admin_login' => 'admins#new'
   post 'admin_login' => 'admins#create'
   delete 'admin_logout' => 'admins#destroy'
-  get 'admin/email_page'
+  get 'admins/email_page'
+  
   get 'advisor/create_team' => 'advisor#create_team'
   get 'advisor/see_team'
   
