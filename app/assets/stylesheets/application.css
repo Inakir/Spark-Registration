@@ -935,27 +935,14 @@ table {
    color: #777;
 }
 
-#overlay {
-  display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  background: #999;
-  width: 100%;
-  height: 100%;
-  opacity: 0.8;
-  z-index: 100;
-}
 #email_popup {
-  display: none;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   background: #fff;
   width: 200px;
   height: 200px;
-  margin-left: -100px; /*Half the value of width to center div*/
-  margin-top: -100px; /*Half the value of height to center div*/
+
   z-index: 200;
 }
 #popupclose {
