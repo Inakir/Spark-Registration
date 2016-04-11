@@ -90,14 +90,18 @@ class AdminsController < ApplicationController
 
   def send_email
     @student_user = StudentUser.find(params[:id])
-    UserMailer.welcome_email(@student_user.email).deliver_now
+    @subject= params[:subject]
+    @text= params[:email_text]
+    UserMailer.welcome_email(@student_user.email,@subject,@text).deliver_now
     render 'admins/see_info'
   end
 
   def unpaid_email_group
+    @subject= params[:subject]
+    @text= params[:email_text]
       StudentUser.all.each do |student|
         if (student.pay_status != "yes")
-          UserMailer.welcome_email(student.email).deliver
+          UserMailer.welcome_email(student.email,@subject,@text).deliver
         end
       end
        render 'admins/see_info'
@@ -107,9 +111,9 @@ class AdminsController < ApplicationController
   
   def edit_email
     @send_to_who = params[:selector]
+    @email_text=params[:email_text]
+    @subject= params[:subject]
     if @send_to_who == "unpaid"
-      @email_text=params[:email_text]
-      @subject= params[:subject]
       Admin.unpaid_email_group
       render 'admins/see_info'
     else
