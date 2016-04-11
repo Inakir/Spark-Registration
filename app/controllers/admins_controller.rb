@@ -89,7 +89,7 @@ class AdminsController < ApplicationController
   end
 
   def send_email
-    @student_user = StudentUser.find(params[:id])
+    @student_user = StudentUser.find(session[:student_id])
     @subject= params[:subject]
     @text= params[:email_text]
     UserMailer.welcome_email(@student_user.email,@subject,@text).deliver_now
@@ -109,20 +109,31 @@ class AdminsController < ApplicationController
   
   #email_page action
   def email_page
-    @student_id= params[:student_id]
-    @selector=params[:selector]
+    puts session.inspect
+    @student_id= session[:student_id]
+    @selector=session[:selector]
+  end
+  
+  def email_unpaid
+    session[:selector]="unpaid"
+    session[:student_id]= params[:student_id]
+    render 'admins/email_page'
+  end
+  
+  def send_stud_email
+    session[:selector]=""
+    session[:student_id]= params[:student_id]
+    render 'admins/email_page'
   end
   
   def edit_email
-    @send_to_who = params[:selector]
+    @send_to_who = session[:selector]
     @email_text=params[:email_text]
     @subject= params[:subject]
     if @send_to_who == "unpaid"
       unpaid_email_group()
-      render 'admins/see_info'
     else
       send_email()
-      render 'admins/see_info'
     end
       
   end

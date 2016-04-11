@@ -38,10 +38,10 @@
 
 <h1>Unpaid Students</h1> <%= link_to "CSV", student_users_path(format: "csv") %> | <%= link_to "Excel", student_users_path(format: "xls") %> <br></br>
 <thead>
-  <!--<%#= form_tag("unpaid_email_group") do %>-->
-  <!--<td><%#= submit_tag("Email All Unpaid Users") %></td>-->
-  <!--<%# end %>-->
-  <%= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
+  <%= form_tag("email_unpaid") do %>
+  <td><%= submit_tag("Email All Unpaid Users") %></td>
+  <% end %>
+  <%#= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
 </thead>
 
 <table border="1">
@@ -75,7 +75,11 @@
                 <%= hidden_field_tag('id', student.id) %>
                 <td><%= submit_tag("Mark paid") %></td>
             <% end %>
-                <td><%= button_to "Send Email", admins_email_page_path(:student_id => 0,:selector => "none"), :method => "get" %></td>
+              
+            <%= form_tag("send_stud_email") do %>
+                <%= hidden_field_tag('student_id', student.id)%>
+              <td><%= submit_tag("send email") %></td>
+              <% end %>
             <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
       <% end %>
