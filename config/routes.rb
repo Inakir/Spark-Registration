@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'admins/see_info'
   get 'admins/email_page'
 
+  post 'admins/edit_email' => 'admins#edit_email'
   post 'admins/mark_paid' => 'admins#mark_paid'
   post 'admins/send_email' => 'admins#send_email'
   post 'admins/unpaid_email_group' => 'admins#unpaid_email_group'
