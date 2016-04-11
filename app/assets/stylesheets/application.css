@@ -945,17 +945,6 @@ table {
 
   z-index: 200;
 }
-#popupclose {
-  float: right;
-  padding: 10px;
-  cursor: pointer;
-}
-.subject {
-  padding: 10px;
-}
-.email_text {
-  padding: 10px;
-}
 #button {
   cursor: pointer;
 }
