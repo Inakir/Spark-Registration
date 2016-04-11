@@ -36,8 +36,8 @@ Rails.application.routes.draw do
 	  put 'changepassword' => 'admins#changepassword'
 	  patch 'changepassword' => 'admins#changepassword'
 	  get 'changepassword' => 'admins#editpassword'
-	  #post 'changelogin' => 'admins#editlogin'
-	  #get 'sessions/admin_new'
+	  post 'changelogin' => 'admins#editlogin'
+	  get 'sessions/admin_new'
 	end
   end
 
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 	  #post 'changelogin' => 'admins#editlogin'
 	end
   end
->>>>>>> 9ab527248511b8aed98c055b065283d081485c9d
+
   #get 'changeadminlogin' => 'admins#editlogin'
   #put 'changeadminlogin/:id' => 'admins#changelogin'
   #patch 'changeadminlogin/:id' => 'admins#changelogin'
