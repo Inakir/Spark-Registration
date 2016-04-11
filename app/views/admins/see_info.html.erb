@@ -1,6 +1,5 @@
 <% #if session[:cas_user]  %>
 <% #@email = session[:cas_user] + "@tamu.edu" %>
-<script src="application.js"></script>
 <% admin = Admin.where(:email => @email).first() %>
 <% #if !admin.nil? %>
 <p id="notice"><%= notice %></p>
