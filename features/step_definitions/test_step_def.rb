@@ -52,3 +52,7 @@ end
 Then(/^I should be on the login page\.$/) do
   assert page.current_path == '/login'
 end
+
+Then(/^I should see the link, "([^"]*)"$/) do |arg1|
+  page.should have_link arg1
+end
