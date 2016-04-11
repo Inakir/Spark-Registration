@@ -38,8 +38,13 @@
 
 <h1>Unpaid Students</h1> <%= link_to "CSV", student_users_path(format: "csv") %> | <%= link_to "Excel", student_users_path(format: "xls") %> <br></br>
 <thead>
+<<<<<<< HEAD
   <%= form_tag("email_unpaid") do %>
   <td><%= submit_tag("Email All Unpaid Users") %></td>
+=======
+  <%= form_tag("unpaid_email_group") do %>
+  <td><%= submit_tag("Send Payment Email to All Unpaid Users") %></td>
+>>>>>>> 96f9a8b391d66898630bcaa87c6aca836797c04a
   <% end %>
   <%#= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
 </thead>
@@ -75,7 +80,6 @@
                 <%= hidden_field_tag('id', student.id) %>
                 <td><%= submit_tag("Mark paid") %></td>
             <% end %>
-              
             <%= form_tag("send_stud_email") do %>
                 <%= hidden_field_tag('student_id', student.id)%>
               <td><%= submit_tag("send email") %></td>

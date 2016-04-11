@@ -85,9 +85,11 @@ class AdminsController < ApplicationController
     @student_user = StudentUser.find(params[:id]) #finds correct student
     @student_user.pay_status = "yes"
     @student_user.save(validate: false) #validate: false prevents it from asking for a password upon update
+    UserMailer.thanks_email(@student_user.email).deliver_now
     render 'admins/see_info'
   end
-
+  
+  #send email to a specific student
   def send_email
     @student_user = StudentUser.find(session[:student_id])
     @subject= params[:subject]
@@ -95,7 +97,7 @@ class AdminsController < ApplicationController
     UserMailer.welcome_email(@student_user.email,@subject,@text).deliver_now
     render 'admins/see_info'
   end
-
+  #send payment email to all unpaid users
   def unpaid_email_group
     @subject= params[:subject]
     @text= params[:email_text]
@@ -107,6 +109,7 @@ class AdminsController < ApplicationController
        render 'admins/see_info'
   end
   
+<<<<<<< HEAD
   #email_page action
   def email_page
     puts session.inspect
@@ -137,6 +140,30 @@ class AdminsController < ApplicationController
     end
       
   end
+=======
+  #send email to all users, advisors, and admins
+   def email_all
+      StudentUser.all.each do |student|
+          UserMailer.welcome_email(student.email).deliver
+      end
+      AdvisorUser.all.each do |advisor|
+          UserMailer.welcome_email(advisor.username).deliver
+      end
+      Admin.all.each do |admin|
+          UserMailer.welcome_email(admin.email).deliver
+      end
+       render 'admins/see_info'
+   end
+  
+  #send email to all advisors
+  def email_advisors
+      AdvisorUser.all.each do |advisor|
+          UserMailer.unpaid_email_groups(advisor.username).deliver
+      end
+       render 'admins/see_info'
+  end
+
+>>>>>>> 96f9a8b391d66898630bcaa87c6aca836797c04a
   #Changes password, password must be 6 characters long and match confirmation
   def changepassword
     respond_to do |format|
