@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   #patch 'admins/edit' => 'admins#update'
 
   get 'admins/see_info'
-  get 'admins/email_page'
+  get 'admins/email_page' => 'admins#email_page'
 
   post 'admins/edit_email' => 'admins#edit_email'
   post 'admins/mark_paid' => 'admins#mark_paid'
