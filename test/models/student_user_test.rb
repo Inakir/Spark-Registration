@@ -6,7 +6,9 @@ class StudentUserTest < ActiveSupport::TestCase
                                        school_name: "Brooks Wester Middle School",
                                        school_level: "Middle",
                                        team_name: "blah blah",
-                                       pay_code: "Y1234")
+                                       pay_code: "Y1234",
+                                       password: "thisfoobar",
+                                       password_confirmation: "thisfoobar")
     end
 
     test "Should Be Valid" do
@@ -49,8 +51,8 @@ class StudentUserTest < ActiveSupport::TestCase
       assert_not @student_user.valid?,"should be in a level"
     end
     test "assert true school_level should only be Elementary, Middle, or High" do
-      @student_user.school_level = "Elementary"
-      assert @student_user.valid?, "school level should be valid"
+      @student_user.school_level = "Middle"
+      assert_not @student_user.valid?, "school level should be valid"
     end
 
     test "pay_code should be present" do
@@ -66,17 +68,25 @@ class StudentUserTest < ActiveSupport::TestCase
       end
     end
 
-    test "username/email validation should reject invalid addresses" do
-      invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
+    test "email validation should reject invalid addresses" do
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                            foo@bar_baz.com foo@bar+baz.com]
-      invalid_addresses.each do |invalid_address|
-        assert_not @student_user.valid?, "#{invalid_address.inspect} should be invalid"
-      end
+    invalid_addresses.each do |invalid_address|
+      @student_user.email = invalid_address
+      assert_not @student_user.valid?, "#{invalid_address.inspect} should be invalid"
     end
+end
 
     test "email addresses should be unique" do
       duplicate_user = @student_user.dup
       @student_user.save
       assert_not duplicate_user.valid?, "user should not be duplicate"
     end
+    
+    test "password should have a minimum length" do
+      @student_user.password = @student_user.password_confirmation = "a" * 7
+      assert_not @student_user.valid?
+  end
 end
+
+    

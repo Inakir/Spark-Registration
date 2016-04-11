@@ -53,7 +53,7 @@ gem 'puma'
 
 gem 'rubycas-client', :git => 'git://github.com/rubycas/rubycas-client.git'
 
-group :development, :test do
+group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
