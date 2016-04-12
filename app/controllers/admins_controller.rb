@@ -151,11 +151,10 @@ class AdminsController < ApplicationController
       unpaid_email_group()
     if @send_to_who == "all_stud"
       stud_email_group()
-    end
     else
       send_email()
     end
-    
+    end
    
   end
   #send email to all users, advisors, and admins
