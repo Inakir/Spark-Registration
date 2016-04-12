@@ -156,7 +156,7 @@ class AdminsController < ApplicationController
       send_email()
     end
     
-      
+   
   end
   #send email to all users, advisors, and admins
    def email_all
