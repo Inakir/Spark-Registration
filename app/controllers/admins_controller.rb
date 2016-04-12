@@ -108,6 +108,15 @@ class AdminsController < ApplicationController
       end
        render 'admins/see_info'
   end
+  
+  def stud_email_group
+    @subject= params[:subject]
+    @text= params[:email_text]
+      StudentUser.all.each do |student|
+          UserMailer.welcome_email(student.email,@subject,@text).deliver
+      end
+       render 'admins/see_info'
+  end
 
   #email_page action
   def email_page
@@ -128,12 +137,20 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
+  def send_all_stud_email
+    session[:selector]="all_stud"
+    session[:student_id]= params[:student_id]
+    render 'admins/email_page'
+  end
+  
   def edit_email
     @send_to_who = session[:selector]
     @email_text=params[:email_text]
     @subject= params[:subject]
     if @send_to_who == "unpaid"
       unpaid_email_group()
+    else if @send_to_who == "all_stud"
+      stud_email_group()
     else
       send_email()
     end
