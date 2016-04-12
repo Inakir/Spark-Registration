@@ -87,12 +87,6 @@
 </table>
 <h1> send_email</h1><%= link_to "send_email", admins_email_page_path %>
 <h1>Paid Students</h1> <%= link_to "CSV", student_users_path(format: "csv") %> | <%= link_to "Excel", student_users_path(format: "xls") %>  <br></br>
-<thead>
-  <%= form_tag("send_all_stud_email") do %>
-  <td><%= submit_tag("Email All Students") %></td>
-  <% end %>
-  <%#= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
-</thead>
 
 
 <table border="1">

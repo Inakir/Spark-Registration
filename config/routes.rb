@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   post 'admins/mark_paid' => 'admins#mark_paid'
   post 'admins/send_email' => 'admins#send_email'
   post 'admins/unpaid_email_group' => 'admins#unpaid_email_group'
-  post 'admins/stud_email_group' => 'admins#stud_email_group'
-   post 'admins/send_all_stud_email' => 'admins/send_all_stud_email'
+ #post 'admins/stud_email_group' => 'admins#stud_email_group'
+ #post 'admins/send_all_stud_email' => 'admins/send_all_stud_email'
 
   resources :admins do
 	member do
