@@ -83,8 +83,7 @@ ActiveRecord::Schema.define(version: 20161203113004) do
   create_table "teams", force: :cascade do |t|
     t.string  "team_name"
     t.string  "team_code"
-    t.integer "advisor_user_id"
+    t.integer "advisor_users_id"
   end
 
-  add_foreign_key "teams", "advisor_users"
 end
