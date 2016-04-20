@@ -122,6 +122,12 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
+   def email_paid
+    session[:selector]="paid"
+    session[:student_id]= params[:student_id]
+    render 'admins/email_page'
+   end
+  
   def send_stud_email
     session[:selector]=""
     session[:student_id]= params[:student_id]
