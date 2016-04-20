@@ -154,9 +154,8 @@ class AdminsController < ApplicationController
     else
       send_email()
     end
-    if @send_to_who == "paid"
+    if @send_to_who == "unpaid"
       paid_email_group()
-      
     end
       
   end
