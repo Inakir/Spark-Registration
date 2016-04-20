@@ -62,6 +62,8 @@ class StudentUsersController < ApplicationController
          @student_user.update_attribute(:email , params[:student_user][:email]) | 
          @student_user.update_attribute(:password , params[:student_user][:password]) |
          @student_user.update_attribute(:school_name , params[:student_user][:school_name])
+        format.html { redirect_to @student_user, notice: 'Student user was successfully updated.' }
+        format.json { render :show, status: :ok, location: @student_user }
          #@student_user.save!
       else
         format.html { render :edit }
