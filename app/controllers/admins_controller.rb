@@ -151,11 +151,12 @@ class AdminsController < ApplicationController
     @subject= params[:subject]
     if @send_to_who == "unpaid"
       unpaid_email_group()
+    else if @send_to_who == "paid"
+      paid_email_group()
     else
       send_email()
-    end
-    if @send_to_who == "unpaid"
-      paid_email_group()
+    end  
+    
     end
       
   end
