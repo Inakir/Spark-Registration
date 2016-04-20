@@ -4,6 +4,12 @@
 <% #if !admin.nil? %>
 <p id="notice"><%= notice %></p>
 
+<thead>
+  <%= form_tag("send_all") do %>
+  <td><%= submit_tag("Email All Users") %></td>
+  <% end %>
+  <%#= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
+</thead>
 <h1>Advisor Users</h1>
 
 <table border="1">

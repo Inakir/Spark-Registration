@@ -145,6 +145,11 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
+  def send_all
+    session[:selector]="all"
+    render 'admins/email_page'
+  end
+  
   def edit_email
     @send_to_who = session[:selector]
     @email_text=params[:email_text]
@@ -153,12 +158,16 @@ class AdminsController < ApplicationController
       unpaid_email_group()
     else if @send_to_who == "paid"
       paid_email_group()
+    else if @send_to_who == "all"
+      email_all()
     else
       send_email()
-    end  
+    end
     
     end
-      
+    
+    end
+  
   end
   #send email to all users, advisors, and admins
    def email_all
