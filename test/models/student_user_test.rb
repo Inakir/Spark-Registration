@@ -7,8 +7,8 @@ class StudentUserTest < ActiveSupport::TestCase
                                        school_level: "Middle",
                                        team_name: "blah blah",
                                        pay_code: "Y1234",
-                                       password: "thisfoobar",
-                                       password_confirmation: "thisfoobar")
+                                       password: "MyPassword123",
+                                       password_confirmation: "MyPassword123")
     end
 
     test "Should Be Valid" do
@@ -74,8 +74,8 @@ class StudentUserTest < ActiveSupport::TestCase
     invalid_addresses.each do |invalid_address|
       @student_user.email = invalid_address
       assert_not @student_user.valid?, "#{invalid_address.inspect} should be invalid"
+      end
     end
-end
 
     test "email addresses should be unique" do
       duplicate_user = @student_user.dup

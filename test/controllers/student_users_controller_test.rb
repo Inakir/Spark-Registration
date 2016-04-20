@@ -3,12 +3,6 @@ require 'test_helper'
 class StudentUsersControllerTest < ActionController::TestCase
   setup do
     @student_user = student_users(:one)
-    @update = { first_name: @student_user.first_name,
-                last_name: @student_user.last_name,
-                pay_code: @student_user.pay_code,
-                school_level: @student_user.school_level,
-                school_name: @student_user.school_name,
-                team_name: @student_user.team_name }
   end
 
   test "should get index" do
@@ -24,7 +18,7 @@ class StudentUsersControllerTest < ActionController::TestCase
 
   test "should create student_user" do
     assert_difference ('StudentUser.count') do
-      post :create, student_user: @update
+      post :create, student_user: { first_name: @student_user.first_name, last_name: @student_user.last_name, school_level: @student_user.school_level, school_name: @student_user.school_name, team_name: @student_user.team_name, pay_code: @student_user.pay_code}
     end
 
     assert_redirected_to student_user_path(assigns(:student_user))
@@ -41,7 +35,8 @@ class StudentUsersControllerTest < ActionController::TestCase
   end
 
   test "should update student_user" do
-    patch :update, id: @student_user, student_user: @update
+    patch :update, id: @student_user, student_user: 
+              { first_name: @student_user.first_name, last_name: @student_user.last_name, school_level: @student_user.school_level, school_name: @student_user.school_name, team_name: @student_user.team_name, pay_code: @student_user.pay_code}
     assert_redirected_to student_user_path(assigns(:student_user))
   end
 
@@ -52,9 +47,4 @@ class StudentUsersControllerTest < ActionController::TestCase
 
     assert_redirected_to student_users_path
   end
-=begin
-  def student_user_params
-     params.require(:student_user).permit(:first_name, :last_name, :pay_code, :school_level, :school_name, :team_name)
-  end
-=end
 end

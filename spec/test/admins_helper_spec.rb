@@ -22,5 +22,4 @@ RSpec.describe AdminsHelper, :type => :helper do
       end
     end
   end
-end
 =end
