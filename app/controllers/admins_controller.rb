@@ -108,6 +108,17 @@ class AdminsController < ApplicationController
       end
        render 'admins/see_info'
   end
+  
+    def paid_email_group
+    @subject= params[:subject]
+    @text= params[:email_text]
+      StudentUser.all.each do |student|
+        if (student.pay_status == "yes")
+          UserMailer.welcome_email(student.email,@subject,@text).deliver
+        end
+      end
+       render 'admins/see_info'
+  end
 
   #email_page action
   def email_page
@@ -142,6 +153,10 @@ class AdminsController < ApplicationController
       unpaid_email_group()
     else
       send_email()
+    end
+    if @send_to_who == "paid"
+      paid_email_group()
+      
     end
       
   end
