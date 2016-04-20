@@ -171,6 +171,8 @@ class AdminsController < ApplicationController
   end
   #send email to all users, advisors, and admins
    def email_all
+      @subject= params[:subject]
+      @text= params[:email_text]
       StudentUser.all.each do |student|
           UserMailer.welcome_email(student.email,@subject,@text).deliver
       end
