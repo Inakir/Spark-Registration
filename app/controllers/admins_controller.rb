@@ -172,13 +172,13 @@ class AdminsController < ApplicationController
   #send email to all users, advisors, and admins
    def email_all
       StudentUser.all.each do |student|
-          UserMailer.welcome_email(student.email).deliver
+          UserMailer.welcome_email(student.email,@subject,@text).deliver
       end
       AdvisorUser.all.each do |advisor|
-          UserMailer.welcome_email(advisor.username).deliver
+          UserMailer.welcome_email(advisor.username,@subject,@text).deliver
       end
       Admin.all.each do |admin|
-          UserMailer.welcome_email(admin.email).deliver
+          UserMailer.welcome_email(admin.email,@subject,@text).deliver
       end
        render 'admins/see_info'
    end
