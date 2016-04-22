@@ -1,5 +1,6 @@
 class PaymentController < ApplicationController
   def index
+  	reset_session
   end
 
 	# Checks paycode.
