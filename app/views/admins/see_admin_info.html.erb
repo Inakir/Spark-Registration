@@ -26,7 +26,7 @@
         <td><%= admin.email %></td>
         <td><%= admin.phone %></td>
         <td><%= admin.fax %></td>
-        <%= form_tag("send_stud_email") do %>
+        <%= form_tag("admin_email") do %>
               <%= hidden_field_tag('admin_id', admin.id)%>
             <td><%= submit_tag("send email") %></td>
             <% end %>
