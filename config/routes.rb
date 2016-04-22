@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
 
   get 'admins/see_info'
-  get 'admins/see_admin_info'
+  get 'admins/index'
   get 'admins/email_page' => 'admins#email_page'
 
   post 'admins/email_unpaid' => 'admins#email_unpaid'

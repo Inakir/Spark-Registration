@@ -103,7 +103,7 @@ class AdminsController < ApplicationController
     @subject= params[:subject]
     @text= params[:email_text]
     UserMailer.welcome_email(@admin.email,@subject,@text).deliver_now
-    render 'admins/see_admin_info'
+    render 'admins/index'
    end
   #send payment email to all unpaid users
   def unpaid_email_group

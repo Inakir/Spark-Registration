@@ -1,5 +1,5 @@
 class StudentUsersController < ApplicationController
-  before_action :set_student_user,:check_permission, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
+  before_action :set_student_user,:check_permission, only: [:show, :edit, :update, :destroy, :index]  # add :changepassword, :editpassword, :changelogin, :editlogin
   
   # GET /student_users
   # GET /student_users.json
@@ -101,8 +101,8 @@ class StudentUsersController < ApplicationController
       @student_user = StudentUser.find(params[:id])
     end
     def check_permission
-      if (session[:register].nil? || session[:register]==false) #&&
-         #(session[:student_current_user].nil? session[:student_current_user]==false))
+      if ((session[:register].nil? || session[:register]==false) &&
+         (session[:student_current_user].nil? || session[:student_current_user]==false))
         flash[:alert]= "You don't have access"
         redirect_to "/registration_home/index"
       end
