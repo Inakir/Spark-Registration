@@ -5,11 +5,22 @@ class AdminsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
-  describe AdminsController do
-    test "should be all" do
-      controller.index should == Admin.all  
-    end
+  
+  test "get index" do
+    get :index
+    assert_response :success
   end
+  
+  # describe AdminsController do
+  #   describe "GET index" do
+  #     it 'render a list of admins' do
+  #       ad = create(:Admin)
+  #       Admin.should_receive(:all)
+  #       get :index
+  #       response.response_code.should == 200
+  #     end
+  #   end
+  # end
   # test "should be all" do
   #   newAdmin = Admin.create
   #   get :index
