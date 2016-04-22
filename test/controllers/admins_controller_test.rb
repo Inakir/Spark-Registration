@@ -5,5 +5,10 @@ class AdminsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
-
+  
+  # test "should be all" do
+  #   newAdmin = Admin.create
+  #   get :index
+  #   expect(assigns(:newAdmin)).to eq([newAdmin])
+  # end
 end

@@ -1,8 +1,8 @@
 class AdminsController < ApplicationController
   before_action :set_advisor_user, only: [:show, :edit, :update, :destroy, :editlogin, :changelogin, :changepassword, :editpassword]
-  def index
-    @admin = Admin.all
-  end
+  # def index
+  #   @admin = Admin.all
+  # end
 
   def new
     @admin = Admin.new
