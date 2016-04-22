@@ -95,6 +95,14 @@ class AdminsController < ApplicationController
     @subject= params[:subject]
     @text= params[:email_text]
     UserMailer.welcome_email(@student_user.email,@subject,@text).deliver_now
+    render 'admins/see_info'
+  end
+  
+   def send_admin_email
+    @admin = admin.find(session[:admin_id])
+    @subject= params[:subject]
+    @text= params[:email_text]
+    UserMailer.welcome_email(@admin.email,@subject,@text).deliver_now
     render 'admins/see_admin_info'
   end
   #send payment email to all unpaid users
@@ -145,6 +153,12 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
+   def admin_email
+    session[:selector]="admin"
+    session[:admin_id]= params[:admin_id]
+    render 'admins/email_page'
+  end
+  
   def send_all
     session[:selector]="all"
     render 'admins/email_page'
@@ -158,6 +172,8 @@ class AdminsController < ApplicationController
       unpaid_email_group()
     else if @send_to_who == "paid"
       paid_email_group()
+    else if @send_to_who == "admin"
+      send_admin_email()
     else if @send_to_who == "all"
       email_all()
     else
