@@ -104,7 +104,7 @@ class AdminsController < ApplicationController
     @text= params[:email_text]
     UserMailer.welcome_email(@admin.email,@subject,@text).deliver_now
     render 'admins/see_admin_info'
-  end
+   end
   #send payment email to all unpaid users
   def unpaid_email_group
     @subject= params[:subject]
@@ -126,7 +126,7 @@ class AdminsController < ApplicationController
         end
       end
        render 'admins/see_info'
-  end
+    end
 
   #email_page action
   def email_page
@@ -157,7 +157,7 @@ class AdminsController < ApplicationController
     session[:selector]="admin"
     session[:admin_id]= params[:admin_id]
     render 'admins/email_page'
-  end
+   end
   
   def send_all
     session[:selector]="all"
@@ -180,6 +180,8 @@ class AdminsController < ApplicationController
       send_email()
     end
     
+    end
+  
     end
     
     end
