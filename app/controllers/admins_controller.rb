@@ -95,7 +95,7 @@ class AdminsController < ApplicationController
     @subject= params[:subject]
     @text= params[:email_text]
     UserMailer.welcome_email(@student_user.email,@subject,@text).deliver_now
-    render 'admins/see_info'
+    render 'admins/see_admin_info'
   end
   #send payment email to all unpaid users
   def unpaid_email_group
@@ -207,9 +207,16 @@ class AdminsController < ApplicationController
   end
 
 #Delete the admin
+
+  
   def destroy
     @admin.destroy
+    respond_to do |format|
+      format.html { redirect_to '/admins/see_admin_info', notice: 'Admin was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_advisor_user

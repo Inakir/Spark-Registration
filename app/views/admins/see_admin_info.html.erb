@@ -1,0 +1,36 @@
+<% #if session[:cas_user]  %>
+<% #@email = session[:cas_user] + "@tamu.edu" %>
+<% admin = Admin.where(:email => @email).first() %>
+<% #if !admin.nil? %>
+<p id="notice"><%= notice %></p>
+
+<h1>Current Admins</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>phone</th>
+      <th>fax</th>
+      <th>Destroy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Admin.all.each do |admin| %>
+      <tr>
+        <td><%= admin.name %></td>
+        <td><%= admin.email %></td>
+        <td><%= admin.phone %></td>
+        <td><%= admin.fax %></td>
+        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<% #end %>
+<%# end %>
