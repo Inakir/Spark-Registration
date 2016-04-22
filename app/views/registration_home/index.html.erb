@@ -1,4 +1,7 @@
 <div id="main content">
+        <% if flash[:alert] %>
+          <div class="notice"><%= flash[:alert] %></div>
+        <% end %>
         <div id="title"><h1>SPARK Registration</h1></div>
         <div id="school_button_contain">
           <a href="/student_users/new?student_level=Elementary">
