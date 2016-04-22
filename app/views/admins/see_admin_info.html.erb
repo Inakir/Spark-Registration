@@ -14,6 +14,7 @@
       <th>phone</th>
       <th>fax</th>
       <th>Destroy</th>
+      <th>Send Email</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,6 +26,10 @@
         <td><%= admin.email %></td>
         <td><%= admin.phone %></td>
         <td><%= admin.fax %></td>
+        <%= form_tag("send_stud_email") do %>
+              <%= hidden_field_tag('student_id', student.id)%>
+            <td><%= submit_tag("send email") %></td>
+            <% end %>
         <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
