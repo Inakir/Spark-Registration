@@ -3,7 +3,7 @@ Feature: Have the basic registration home page running
   Scenario: Look for Admin Login link.
     Given I am on the registration home page.
 	  Then I should see a link that says "Admin Login"
-	
+	  
 	Scenario: Begin register as Elementary Schooler
 	  Given I am on the registration home page.
 	  When I click the link, "Elementary School Registration"
@@ -35,5 +35,3 @@ Feature: Have the basic registration home page running
 	 And I fill "session[password]" with "444444"
 	 And I click the button, "Log in"
 	 Then I should be on the "admins/see_info" page.
-	# Then I should see "Successfully Logged in!"
-	  

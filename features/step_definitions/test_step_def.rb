@@ -23,9 +23,14 @@ end
 Given (/^I am on the registration home page\.$/) do
   visit '/'
 end
-
+#levelPage = 'student_users/new?student_level=' + arg1.slice(0,1).capitalize + arg1.slice(1..-1)
+  #visit levelPage
 Given(/^I am on the elementary school registration page\.$/) do
   visit '/student_users/new?student_level=Elementary'
+end
+
+Given(/^I am on the middle school registration page\.$/) do
+  visit '/student_users/new?student_level=Middle'
 end
 
 ######################################When
@@ -48,7 +53,7 @@ Then(/^I should see a link that says "([^"]*)"$/) do |text|
 end
 
 Then(/^I should see "([^"]*)"$/) do |arg1|
-  page.should have_text arg1
+  page.should have_content arg1
 end
 
 Then(/^I should be on the "([^"]*)" page\.$/) do |arg1|
