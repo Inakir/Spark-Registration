@@ -5,7 +5,11 @@ class AdminsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
-  
+  describe AdminsController do
+    test "should be all" do
+      controller.index should == Admin.all  
+    end
+  end
   # test "should be all" do
   #   newAdmin = Admin.create
   #   get :index
