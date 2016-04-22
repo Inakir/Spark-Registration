@@ -1,6 +1,6 @@
 class StudentUsersController < ApplicationController
-  before_action :set_student_user, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
-
+  before_action :set_student_user,:check_permission, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
+  
   # GET /student_users
   # GET /student_users.json
   def index
@@ -44,6 +44,7 @@ class StudentUsersController < ApplicationController
     respond_to do |format|
       if @student_user.save
         session[:has_school_lvl]=false
+        session[:register]=true
         format.html { redirect_to @student_user, notice: 'Please review this information to ensure it is correct' }
         format.json { render :show, status: :created, location: @student_user }
       else
@@ -99,7 +100,13 @@ class StudentUsersController < ApplicationController
     def set_student_user
       @student_user = StudentUser.find(params[:id])
     end
-
+    def check_permission
+      if (session[:register].nil? || session[:register]==false) #&&
+         #(session[:student_current_user].nil? session[:student_current_user]==false))
+        flash[:alert]= "You don't have access"
+        redirect_to "/registration_home/index"
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_user_params
       params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)

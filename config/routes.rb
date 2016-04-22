@@ -20,6 +20,13 @@ Rails.application.routes.draw do
   #get 'admins/new' => 'admins#new'
   #put 'admins/edit' => 'admins#update'
   #patch 'admins/edit' => 'admins#update'
+  
+   #Dealing w/ student Logout###########################################3
+  get 'students/log_out' => 'sessions#log_out_students'
+  get 'students/log_out_students' => 'sessions#log_out_students'
+#######################################################################
+
+
 
   get 'admins/see_info'
   get 'admins/see_admin_info'
