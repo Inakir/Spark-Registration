@@ -99,7 +99,7 @@ class AdminsController < ApplicationController
   end
   
    def send_admin_email
-    @admin = admin.find(session[:admin_id])
+    @admin = Admin.find(session[:admin_id])
     @subject= params[:subject]
     @text= params[:email_text]
     UserMailer.welcome_email(@admin.email,@subject,@text).deliver_now
