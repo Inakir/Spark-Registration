@@ -2,12 +2,23 @@ require 'casclient'
 require 'casclient/frameworks/rails/filter'
 
 class SessionsController < ApplicationController
-  before_action CASClient::Frameworks::Rails::Filter, :except => [:create, :new,:new_student, :log_out_students, :admin_new,:log_out, :login]
+  before_action CASClient::Frameworks::Rails::Filter, :check_session, :except => [:create, :new,:new_student, :log_out_students]#, :admin_new,:log_out, :login]
 
   def new
   end
 
   def login
+      if (session.nil?)
+        flash[:alert]= "You don't have access"
+        redirect_to "/registration_home/index"
+      end
+  end
+  
+  def check_permission
+    if(session[:current_user].nil?)
+        flash[:alert]= "You Shall Not Pass!"
+        redirect_to "/registration_home/index"
+    end
   end
 
   def admin_new
@@ -22,6 +33,7 @@ class SessionsController < ApplicationController
   end
   
   def new_student
+    
      @email = session[:student_current_user]
      user Student.where(:email=>@email).first()
     if admin.nil?
@@ -37,8 +49,6 @@ class SessionsController < ApplicationController
   end
   
   def log_out_students#logout for non-CAS users aka students/advisors
-    session.delete(:current_user)
-    session.delete(:student_current_user)
     reset_session
     flash.now[:danger] = 'You have sucessfully Logged Out! :)'
     redirect_to root_path
@@ -78,7 +88,11 @@ class SessionsController < ApplicationController
               @student_current_user=user
               render 'student_users/index'
             else
-              #create an error message
+               if(session.nil? || session[:password] = nil || session[:email] = nil)
+                  flash[:alert]= "You Shall Not Pass!"
+                  redirect_to "/registration_home/index"
+               end
+                  #create an error message
               flash.now[:danger] = 'Invalid email/password combination 1'
               render 'new'
             end
