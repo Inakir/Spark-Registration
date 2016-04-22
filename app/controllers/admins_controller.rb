@@ -108,6 +108,17 @@ class AdminsController < ApplicationController
       end
        render 'admins/see_info'
   end
+  
+    def paid_email_group
+    @subject= params[:subject]
+    @text= params[:email_text]
+      StudentUser.all.each do |student|
+        if (student.pay_status == "yes")
+          UserMailer.welcome_email(student.email,@subject,@text).deliver
+        end
+      end
+       render 'admins/see_info'
+  end
 
   #email_page action
   def email_page
@@ -122,9 +133,20 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
+   def email_paid
+    session[:selector]="paid"
+    session[:student_id]= params[:student_id]
+    render 'admins/email_page'
+   end
+  
   def send_stud_email
     session[:selector]=""
     session[:student_id]= params[:student_id]
+    render 'admins/email_page'
+  end
+  
+  def send_all
+    session[:selector]="all"
     render 'admins/email_page'
   end
   
@@ -134,21 +156,31 @@ class AdminsController < ApplicationController
     @subject= params[:subject]
     if @send_to_who == "unpaid"
       unpaid_email_group()
+    else if @send_to_who == "paid"
+      paid_email_group()
+    else if @send_to_who == "all"
+      email_all()
     else
       send_email()
     end
-      
+    
+    end
+    
+    end
+  
   end
   #send email to all users, advisors, and admins
    def email_all
+      @subject= params[:subject]
+      @text= params[:email_text]
       StudentUser.all.each do |student|
-          UserMailer.welcome_email(student.email).deliver
+          UserMailer.welcome_email(student.email,@subject,@text).deliver
       end
       AdvisorUser.all.each do |advisor|
-          UserMailer.welcome_email(advisor.username).deliver
+          UserMailer.welcome_email(advisor.username,@subject,@text).deliver
       end
       Admin.all.each do |admin|
-          UserMailer.welcome_email(admin.email).deliver
+          UserMailer.welcome_email(admin.email,@subject,@text).deliver
       end
        render 'admins/see_info'
    end
