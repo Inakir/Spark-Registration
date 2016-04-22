@@ -97,6 +97,14 @@ class AdminsController < ApplicationController
     UserMailer.welcome_email(@student_user.email,@subject,@text).deliver_now
     render 'admins/see_info'
   end
+  
+   def send_admin_email
+    @admin = Admin.find(session[:admin_id])
+    @subject= params[:subject]
+    @text= params[:email_text]
+    UserMailer.welcome_email(@admin.email,@subject,@text).deliver_now
+    render 'admins/see_admin_info'
+   end
   #send payment email to all unpaid users
   def unpaid_email_group
     @subject= params[:subject]
@@ -118,7 +126,7 @@ class AdminsController < ApplicationController
         end
       end
        render 'admins/see_info'
-  end
+    end
 
   #email_page action
   def email_page
@@ -145,6 +153,12 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
+   def admin_email
+    session[:selector]="admin"
+    session[:admin_id]= params[:admin_id]
+    render 'admins/email_page'
+   end
+  
   def send_all
     session[:selector]="all"
     render 'admins/email_page'
@@ -158,12 +172,16 @@ class AdminsController < ApplicationController
       unpaid_email_group()
     else if @send_to_who == "paid"
       paid_email_group()
+    else if @send_to_who == "admin"
+      send_admin_email()
     else if @send_to_who == "all"
       email_all()
     else
       send_email()
     end
     
+    end
+  
     end
     
     end
@@ -207,9 +225,16 @@ class AdminsController < ApplicationController
   end
 
 #Delete the admin
+
+  
   def destroy
     @admin.destroy
+    respond_to do |format|
+      format.html { redirect_to '/admins/see_admin_info', notice: 'Admin was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_advisor_user
