@@ -9,6 +9,8 @@ class AdminsController < ApplicationController
   end
   
   def home
+    @current_admin= admin_current_user
+    @id = '100'
     render 'admins/home'
   end
 
@@ -72,6 +74,7 @@ class AdminsController < ApplicationController
   # Updates admin email data based on the changes and redirects to admin home page.
   # Throws out error "Email Invalid" for invalid entries (not following standard template user@domain.com)
   def changelogin
+    @admin = session[:current_admin]
     respond_to do |format|
       if @admin.update_attribute(:email, params[:admin][:email])
       #if @admin.update_attributes(:email => params[:admin][:email])
