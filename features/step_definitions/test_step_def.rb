@@ -23,14 +23,13 @@ end
 Given (/^I am on the registration home page\.$/) do
   visit '/'
 end
-#levelPage = 'student_users/new?student_level=' + arg1.slice(0,1).capitalize + arg1.slice(1..-1)
-  #visit levelPage
+
 Given(/^I am on the elementary school registration page\.$/) do
   visit '/student_users/new?student_level=Elementary'
 end
 
-Given(/^I am on the middle school registration page\.$/) do
-  visit '/student_users/new?student_level=Middle'
+Given(/^I am seeing student info$/) do
+  visit '/see_info'
 end
 
 ######################################When
@@ -56,6 +55,10 @@ Then(/^I should see "([^"]*)"$/) do |arg1|
   page.should have_content arg1
 end
 
-Then(/^I should be on the "([^"]*)" page\.$/) do |arg1|
+Then(/^I should be on the "([^"]*)" page.$/) do |arg1|
   assert page.current_path == '/login'
+end
+
+Then (/^I should get a download with the filename "([^\"]*)"$/) do |filename|
+  page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
 end

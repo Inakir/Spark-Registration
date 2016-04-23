@@ -7,6 +7,10 @@ class AdminsController < ApplicationController
   def new
     @admin = Admin.new
   end
+  
+  def home
+    render 'admins/home'
+  end
 
   def show
   end
@@ -76,8 +80,8 @@ class AdminsController < ApplicationController
      else
        format.html { redirect_to changelogin_admin_path(@admin), notice: 'Email invalid! Must follow  \'user\' @ \'domain\' . \'com\'  standard template' } 
        format.json { render json: @admin.errors, status: :unprocessable_entity }
+      end
      end
-    end
   end
 
   # Mark the student as paid.
@@ -88,6 +92,13 @@ class AdminsController < ApplicationController
     UserMailer.thanks_email(@student_user.email).deliver_now
     render 'admins/see_info'
   end
+  
+    def mark_unpaid
+    @student_user = StudentUser.find(params[:id]) #finds correct student
+    @student_user.pay_status = "no"
+    @student_user.save(validate: false) #validate: false prevents it from asking for a password upon update
+    render 'admins/see_info'
+    end
   
   #send email to a specific student
   def send_email
@@ -103,7 +114,7 @@ class AdminsController < ApplicationController
     @subject= params[:subject]
     @text= params[:email_text]
     UserMailer.welcome_email(@admin.email,@subject,@text).deliver_now
-    render 'admins/see_admin_info'
+    render 'admins/index'
    end
   #send payment email to all unpaid users
   def unpaid_email_group

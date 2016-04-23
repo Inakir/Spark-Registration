@@ -6,15 +6,37 @@
     
 	<div id="title"><h1>Student Page</h1></div>
     <tbody>
+    <table>
     <tr>
-        <td><%= student_current_user.first_name %></td>
-        <td><%= student_current_user.last_name %></td>
-        <td><%= student_current_user.school_level %></td>
-        <td><%= student_current_user.school_name %></td>
-        <td><%= student_current_user.team_name %></td>
-        <td><%= student_current_user.pay_code %></td>
-        <td><%= link_to 'Show', student_current_user %></td>
-        <td><%= link_to 'Edit', edit_student_user_path(student_current_user) %></td>
+        <td>First Name:</td>
+        <td><%= @student_current_user.first_name %></td>
     </tr>
+    <tr>
+        <td>Last Name:</td>
+        <td><%= @student_current_user.last_name %></td>
+    </tr>
+    <tr>
+        <td>School level:</td>
+        <td><%= @student_current_user.school_level %></td>
+    </tr>
+    <tr>
+        <td>School name:</td>
+        <td><%= @student_current_user.school_name %></td>
+    </tr>
+    <tr>
+        <td>team:</td>
+        <td><%= @student_current_user.team_name %></td>
+    </tr>
+    <tr>
+        <td>pay code:</td>
+        <td><%= @student_current_user.pay_code %></td>
+    </tr>
+    <tr>
+        <td><%= link_to 'Show', student_current_user %></td>
+    </tr>
+    <tr>
+        <td><%= link_to 'Edit', edit_student_user_path(@student_current_user) %></td>
+    </tr>
+    </table>
     </tbody>
 </div>

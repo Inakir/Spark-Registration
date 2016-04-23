@@ -1,6 +1,5 @@
 Feature: This should not work
   
-
 Scenario: Forcefully creating a new admin
   Given we are on the admins new page.
   When I fill "admin[email]" with "eramon224@tamu.edu"
@@ -8,7 +7,7 @@ Scenario: Forcefully creating a new admin
   And I fill "admin[password_confirmation]" with "4444444"
   Then I click the button, "Create Admin"
   
-Scenario: Admin cannot login
+Scenario: Admin wants to send email to all unpaid users
   Given I am on the registration home page.
   When I click the link, "Login"
   And I fill "session[email]" with "austinktang@gmail.com"
@@ -16,4 +15,26 @@ Scenario: Admin cannot login
   And I click the button, "Log in"
   And I click the link, "Advisor & Student Information"
   And I click the button, "Email All Unpaid Users"
-  
+  And I click the button, "Submit email"
+  Then I should see "Advisor Users"
+
+Scenario: Admin wants to send email to one unpaid user
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "austinktang@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Advisor & Student Information"
+  And I click the button, "send email"
+  And I click the button, "Submit email"
+  Then I should see "Advisor Users"
+
+Scenario: Admin wants to see list of users
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "austinktang@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Advisor & Student Information"
+  And I click the link, "CSV"
+  Then I should get a download with the filename "student_users.csv"

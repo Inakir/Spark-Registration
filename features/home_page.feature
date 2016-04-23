@@ -3,7 +3,7 @@ Feature: Have the basic registration home page running
   Scenario: Look for Admin Login link.
     Given I am on the registration home page.
 	  Then I should see a link that says "Admin Login"
-	  
+	
 	Scenario: Begin register as Elementary Schooler
 	  Given I am on the registration home page.
 	  When I click the link, "Elementary School Registration"
@@ -35,35 +35,5 @@ Feature: Have the basic registration home page running
 	 And I fill "session[password]" with "444444"
 	 And I click the button, "Log in"
 	 Then I should be on the "admins/see_info" page.
-	 
-	Scenario: Begin register as Middle Schooler
-	  Given I am on the registration home page.
-	  When I click the link, "Middle School Registration"
-	  Then I should see "First name"
-	  And I should see "Last name"
-	  And I should see "Email"
-	  And I should see "Password"
-	  And I should see "School name"
-	
-	Scenario: Register as Middle Schooler
-	  Given I am on the middle school registration page.
-	  When I fill "student_user[first_name]" with "Gary"
-	  And I fill "student_user[last_name]" with "Oak"
-	  And I fill "student_user[email]" with "garyoak10@yahoo.com"
-	  And I fill "student_user[password]" with "123123"
-	  And I fill "student_user[password_confirmation]" with "123123"
-	  And I fill "student_user[school_name]" with "TAMU"
-	  And I click the button, "Register Student"
-	  Then I should see "Gary"
-	  And I should see "Oak"
-	  And I should see "garyoak10@yahoo.com"
-	  And I should see "TAMU"
-	  And I should see a link that says "Continue"
+	# Then I should see "Successfully Logged in!"
 	  
-	Scenario: Login as Middle Schooler
-	 Given I am on the registration home page.
-	 When I click the link, "Login"
-	 And I fill "session[email]" with "garyoak10@yahoo.com"
-	 And I fill "session[password]" with "123123"
-	 And I click the button, "Log in"
-	 Then I should be on the "admins/see_info" page.

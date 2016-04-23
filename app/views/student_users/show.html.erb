@@ -31,5 +31,11 @@
 </p>
 
 <p><font size="3" color="orange">If this information is correct, please click continue</font></p>
-<%= link_to 'Edit', edit_student_user_path(@student_user) %> |
-<%= link_to 'Continue', '/payment/index' %>
+
+<%if @login%>
+  <%= link_to 'Edit', edit_student_user_path(@student_user) %> |
+  <%= link_to 'Continue', student_users_path ,:method => "get"%>
+<%else%>
+  <%= link_to 'Edit', edit_student_user_path(@student_user) %> |
+  <%= link_to 'Continue', '/payment/index' %>
+<%end%>

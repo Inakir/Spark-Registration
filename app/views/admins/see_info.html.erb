@@ -3,7 +3,7 @@
 <% admin = Admin.where(:email => @email).first() %>
 <% #if !admin.nil? %>
 <p id="notice"><%= notice %></p>
-
+ <div align = "right"><%= button_to "Return Home", admins_home_path, :method => "get" %></div>
 <thead>
   <%= form_tag("send_all") do %>
   <td><%= submit_tag("Email All Users") %></td>
@@ -79,7 +79,7 @@
             <td><%= student.team_code %></td>
             <%= form_tag("mark_paid") do %>
                 <%= hidden_field_tag('id', student.id) %>
-                <td><%= submit_tag("Mark paid") %></td>
+                <td><%= submit_tag("Mark Paid") %></td>
             <% end %>
             <%= form_tag("send_stud_email") do %>
                 <%= hidden_field_tag('student_id', student.id)%>
@@ -127,6 +127,14 @@
             <td><%= student.school_name %></td>
             <td><%= student.school_level %></td>
             <td><%= student.team_code %></td>
+            <%= form_tag("mark_unpaid") do %>
+                <%= hidden_field_tag('id', student.id) %>
+                <td><%= submit_tag("Mark Unpaid") %></td>
+            <% end %>
+            <%= form_tag("send_stud_email") do %>
+                <%= hidden_field_tag('student_id', student.id)%>
+              <td><%= submit_tag("send email") %></td>
+              <% end %>
             <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
           <% end %>
