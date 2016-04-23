@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
 
   get 'admins/see_info'
+  get 'admins/home' => 'admins#home'
   get 'admins/index'
   get 'admins/email_page' => 'admins#email_page'
 

@@ -7,6 +7,10 @@ class AdminsController < ApplicationController
   def new
     @admin = Admin.new
   end
+  
+  def home
+    render 'admins/home'
+  end
 
   def show
   end
@@ -93,7 +97,6 @@ class AdminsController < ApplicationController
     @student_user = StudentUser.find(params[:id]) #finds correct student
     @student_user.pay_status = "no"
     @student_user.save(validate: false) #validate: false prevents it from asking for a password upon update
-    UserMailer.thanks_email(@student_user.email).deliver_now
     render 'admins/see_info'
     end
   
