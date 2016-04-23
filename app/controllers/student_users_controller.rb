@@ -1,6 +1,6 @@
 class StudentUsersController < ApplicationController
-  before_action :set_student_user,:check_permission, only: [:show, :edit, :update, :destroy, :index]  # add :changepassword, :editpassword, :changelogin, :editlogin
-  
+  before_action :set_student_user,:check_permission, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
+  before_action :check_permission, only: [:show, :edit, :update, :destroy, :index]
   # GET /student_users
   # GET /student_users.json
   def index
@@ -15,6 +15,11 @@ class StudentUsersController < ApplicationController
   # GET /student_users/1
   # GET /student_users/1.json
   def show
+    if session[:student_current_user].nil?
+      @login= false
+    else
+      @login=true
+    end
   end
 
   # GET /student_users/new
