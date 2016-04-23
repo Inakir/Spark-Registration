@@ -40,6 +40,7 @@ Rails.application.routes.draw do
    post 'admins/admin_email' => 'admins#admin_email'
   post 'admins/edit_email' => 'admins#edit_email'
   post 'admins/mark_paid' => 'admins#mark_paid'
+  post 'admins/mark_unpaid' => 'admins#mark_unpaid'
   post 'admins/send_email' => 'admins#send_email'
   post 'admins/unpaid_email_group' => 'admins#unpaid_email_group'
  #post 'admins/stud_email_group' => 'admins#stud_email_group'
