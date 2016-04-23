@@ -45,6 +45,15 @@ When(/^I click the button, "([^"]*)"$/) do |arg1|
   click_button(arg1)
 end
 
+When (/^I expect to click "([^"]*)" on a confirmation box saying "([^"]*)"$/) do |option, message|
+  retval = (option == 'OK') ? 'true' : 'false'
+  page.evaluate_script("window.confirm = function (msg) {
+    document.cookie = msg
+    return #{retval}
+  }")
+  @expected_message = message.gsub("\\n", "\n")
+end
+
 ######################################Then
 
 Then(/^I should see a link that says "([^"]*)"$/) do |text|

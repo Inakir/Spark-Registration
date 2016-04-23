@@ -37,7 +37,7 @@ Scenario: Admin wants to destroy user
   And I click the button, "Log in"
   And I click the link, "Advisor & Student Information"
   And I click the link, "Destroy"
-  And I click the button, "OK"
+  And I expect to click "OK" on a confirmation box saying "Are you sure?"
   Then I should see "Student user was successfully destroyed."
   
 # Scenario: Admin wants to see list of users
