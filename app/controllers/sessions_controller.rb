@@ -67,7 +67,12 @@ class SessionsController < ApplicationController
         if user.authenticate(params[:session][:password])
           flash.now[:flash] = 'Successfully logged in'
           admin_log_in user
-          render 'admins/home'
+          if user.super_admin == true
+            render 'admins/super'
+          else  
+            render 'admins/home'
+          end
+        
         else
           #create an error message
           flash.now[:danger] = 'Invalid email/password combination'

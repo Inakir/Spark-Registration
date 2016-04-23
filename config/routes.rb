@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 #######################################################################
 
 
-
+  get 'admins/super' => 'admins#super_admin'
   get 'admins/see_info'
   get 'admins/home' => 'admins#home'
   get 'admins/index'
