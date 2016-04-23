@@ -67,7 +67,7 @@ class SessionsController < ApplicationController
         if user.authenticate(params[:session][:password])
           flash.now[:flash] = 'Successfully logged in'
           admin_log_in user
-          if Admin.super_admin == True
+          if user.super_admin == True
             render 'admins/super'
           else  
             render 'admins/home'
