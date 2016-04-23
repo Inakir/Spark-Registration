@@ -7,6 +7,10 @@ class AdminsController < ApplicationController
   def new
     @admin = Admin.new
   end
+  
+  def home
+    render 'admins/home'
+  end
 
   def show
   end
