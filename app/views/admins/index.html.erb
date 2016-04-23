@@ -21,6 +21,7 @@
 
   <tbody>
     <% Admin.all.each do |admin| %>
+     <% if (Admin.super_admin != true) %>
       <tr>
         <td><%= admin.name %></td>
         <td><%= admin.email %></td>
