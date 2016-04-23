@@ -52,7 +52,7 @@ Then(/^I should see a link that says "([^"]*)"$/) do |text|
 end
 
 Then(/^I should see "([^"]*)"$/) do |arg1|
-  page.should have_content arg1
+  page.should have_text arg1
 end
 
 Then(/^I should be on the "([^"]*)" page.$/) do |arg1|

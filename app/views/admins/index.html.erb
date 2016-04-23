@@ -21,6 +21,7 @@
 
   <tbody>
     <% Admin.all.each do |admin| %>
+     <% if (admin.super_admin != true) %>
       <tr>
         <td><%= admin.name %></td>
         <td><%= admin.email %></td>
@@ -32,6 +33,7 @@
             <% end %>
         <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
