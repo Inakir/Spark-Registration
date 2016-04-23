@@ -34,7 +34,7 @@
 
 <%if @login%>
   <%= link_to 'Edit', edit_student_user_path(@student_user) %> |
-  <%= link_to 'Continue', '/student_users/index' %>
+  <%= link_to 'Continue', student_users_path ,:method => "get"%>
 <%else%>
   <%= link_to 'Edit', edit_student_user_path(@student_user) %> |
   <%= link_to 'Continue', '/payment/index' %>

@@ -1,15 +1,15 @@
 class StudentUsersController < ApplicationController
-  before_action :set_student_user,:check_permission, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
+  before_action :set_student_user, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
   before_action :check_permission, only: [:show, :edit, :update, :destroy, :index]
   # GET /student_users
   # GET /student_users.json
   def index
-    @student_users = StudentUser.all
-    respond_to do |format|
-    format.html
-    format.csv { send_data @student_users.to_csv }
-    format.xls # { send_data @student_users.to_csv(col_sep: "\t") }
-    end
+    @student_current_user=StudentUser.find_by(id: session[:user_id])
+    # @student_users = StudentUser.all
+    # respond_to do |format|
+    # format.html
+    # format.csv { send_data @student_users.to_csv }
+    # format.xls # { send_data @student_users.to_csv(col_sep: "\t") }
   end
 
   # GET /student_users/1
@@ -20,6 +20,7 @@ class StudentUsersController < ApplicationController
     else
       @login=true
     end
+    @student_current_user=session[:student_current_user]
   end
 
   # GET /student_users/new
@@ -42,10 +43,10 @@ class StudentUsersController < ApplicationController
     
     @student_user.usertype ="student"
 
-	session[:team_code] = nil
-	session[:team_code_valid] = nil
-	@student_user.school_level=session[:student_level]
-	session[:has_school_lvl]=true
+  	session[:team_code] = nil
+  	session[:team_code_valid] = nil
+  	@student_user.school_level=session[:student_level]
+  	session[:has_school_lvl]=true
     respond_to do |format|
       if @student_user.save
         session[:has_school_lvl]=false
@@ -105,6 +106,7 @@ class StudentUsersController < ApplicationController
     def set_student_user
       @student_user = StudentUser.find(params[:id])
     end
+    
     def check_permission
       if ((session[:register].nil? || session[:register]==false) &&
          (session[:student_current_user].nil? || session[:student_current_user]==false))
