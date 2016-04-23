@@ -2,6 +2,7 @@ module SessionsHelper
 
   def log_in(user)
     session[:user_id] = user.id
+    session[:current_user]= AdvisorUser.find_by(id: session[:user_id])
   end
   # finds current logged in advisor user from the session
   def current_user
@@ -14,6 +15,7 @@ module SessionsHelper
   
   def student_log_in(user)
     session[:user_id] = user.id
+    session[:student_current_user]=StudentUser.find_by(id: session[:user_id])
   end
 
   # find current user in this session
