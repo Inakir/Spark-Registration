@@ -26,6 +26,10 @@ class AdminsController < ApplicationController
     render 'admins/changepassword'
   end
 
+  def super_admin
+    
+  end
+
   def advisor_edit_method
     
   end
