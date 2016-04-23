@@ -20,7 +20,6 @@ class StudentUsersController < ApplicationController
     else
       @login=true
     end
-    @student_current_user=session[:student_current_user]
   end
 
   # GET /student_users/new
