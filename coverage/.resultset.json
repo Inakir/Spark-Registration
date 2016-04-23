@@ -323,14 +323,39 @@
         null,
         null,
         null,
+<<<<<<< HEAD
         0,
+=======
         null,
+        1,
+        1,
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
         null,
         1,
         1,
         1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
+<<<<<<< HEAD
+=======
+        null,
+        1,
+        1,
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
         1,
         1,
         1,
@@ -364,7 +389,7 @@
       "/home/ubuntu/workspace/test/controllers/high_controller_test.rb": [
         1,
         null,
-        1,
+        null,
         1,
         1,
         1,
@@ -388,6 +413,12 @@
         null,
         1,
         1,
+<<<<<<< HEAD
+=======
+        null,
+        null,
+        null,
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
         1,
         1,
         null,
@@ -1108,6 +1139,41 @@
         null,
         null,
         null,
+<<<<<<< HEAD
+=======
+        1,
+        1
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/app/models/student_user.rb": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/app/controllers/admins_controller.rb": [
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
         1,
         1,
         null,
@@ -1170,14 +1236,94 @@
         null,
         null,
         null,
+<<<<<<< HEAD
+        null,
+        null,
+        1,
+=======
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+<<<<<<< HEAD
+=======
         null,
         null,
         1,
         1,
         1,
+        1,
+        null,
+        null,
+        1,
         0,
         0,
         0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        null,
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
         null,
         null,
         1,
@@ -1300,6 +1446,7 @@
         1,
         1,
         1,
+<<<<<<< HEAD
         1,
         1,
         null,
@@ -1307,6 +1454,13 @@
         null,
         null,
         null,
+=======
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/Spark-Registration/app/controllers/student_users_controller.rb": [
+        1,
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
         1,
         null,
         null,
@@ -1354,7 +1508,13 @@
         null,
         null,
         null,
+<<<<<<< HEAD
         1,
+=======
+        0,
+        0,
+        0,
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
         null,
         null,
         0,
@@ -1422,7 +1582,11 @@
         null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1460587778
+=======
+    "timestamp": 1461193197
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
   },
   "Cucumber Features": {
     "coverage": {

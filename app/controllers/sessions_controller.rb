@@ -2,7 +2,7 @@ require 'casclient'
 require 'casclient/frameworks/rails/filter'
 
 class SessionsController < ApplicationController
-  before_action CASClient::Frameworks::Rails::Filter, :except => [:create, :new,:new_student]
+  before_action CASClient::Frameworks::Rails::Filter, :except => [:create, :new,:new_student, :log_out_students, :admin_new,:log_out, :login]
 
   def new
   end
@@ -22,11 +22,26 @@ class SessionsController < ApplicationController
   end
   
   def new_student
-  
+     @email = session[:student_current_user]
+     user Student.where(:email=>@email).first()
+    if admin.nil?
+      flash.now[:flash] = 'Invalid student email name and password'
+    else
+      render 'index'
+    end
   end
 
-  def log_out
-    CASClient::Frameworks::Rails::Filter.logout(self)
+  def log_out#have to change to check first if user is CAS logged-in first. if not, do regular logout
+  CASClient::Frameworks::Rails::Filter.logout(self)
+  #render 'index'
+  end
+  
+  def log_out_students#logout for non-CAS users aka students/advisors
+    session.delete(:current_user)
+    session.delete(:student_current_user)
+    reset_session
+    flash.now[:danger] = 'You have sucessfully Logged Out! :)'
+    redirect_to root_path
   end
 
   # Creates session.

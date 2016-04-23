@@ -82,6 +82,7 @@ class StudentUserTest < ActiveSupport::TestCase
       @student_user.save
       assert_not duplicate_user.valid?, "user should not be duplicate"
     end
+<<<<<<< HEAD
     
     test "password should have a minimum length" do
       @student_user.password = @student_user.password_confirmation = "a" * 7
@@ -90,3 +91,6 @@ class StudentUserTest < ActiveSupport::TestCase
 end
 
     
+=======
+end
+>>>>>>> 88456ee6878653ece1f8b763147e2a3740f79d38
