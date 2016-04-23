@@ -11,6 +11,17 @@ class AdminsControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test "mark_paid" do
+    
+    get :mark_paid
+    assert_response :success
+  end
+  
+  # test "get edit login" do
+  #   get :changelogin
+  #   assert_response :success
+  # end
+  
   # describe AdminsController do
   #   describe "GET index" do
   #     it 'render a list of admins' do

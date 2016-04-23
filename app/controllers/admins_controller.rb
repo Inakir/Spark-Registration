@@ -14,13 +14,13 @@ class AdminsController < ApplicationController
   def edit
   end
   # redirects to admins/changelogin
-  def editlogin
-    render 'admins/changelogin'
-  end
-  # renders admins/changepassword
-  def editpassword
-    render 'admins/changepassword'
-  end
+  # def editlogin
+  #   render 'admins/changelogin'
+  # end
+  # # renders admins/changepassword
+  # def editpassword
+  #   render 'admins/changepassword'
+  # end
 
   def advisor_edit_method
     
