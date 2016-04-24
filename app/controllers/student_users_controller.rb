@@ -124,21 +124,5 @@ class StudentUsersController < ApplicationController
       params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
 	
-<<<<<<< HEAD
-# 	def sdgsdgsgsd(school_level)
-# 		logger.info("Hello World")
-# 	end
-	
-# 	def roomba2(variable)
-# 		flash.now[:flash] = "Hello World!"
-# 	end
-=======
-#	def sdgsdgsgsd(school_level)
-#		logger.info("Hello World")
-#	end
-	
-#	def roomba2(variable)
-#		flash.now[:flash] = "Hello World!"
-#	end
->>>>>>> 480f663f65ec7eed5a6ca1680f20806f577f24bb
+
 end
