@@ -61,7 +61,7 @@ class SessionsController < ApplicationController
           flash.now[:flash] = 'Successfully logged in'
           admin_log_in user
           if user.super_admin == true
-            render 'admins/super' 
+            render 'admins/super_admin' 
           else  
             @id = session[:user_id]
             render 'admins/home'
