@@ -3,7 +3,7 @@
 <% admin = Admin.where(:email => @email).first() %>
 <% #if !admin.nil? %>
 <p id="notice"><%= notice %></p>
-
+ <div align = "right"><%= button_to "Return Home", '/admins/index', :method => "get" %></div>
 <h1>Current Admins</h1>
 
 <table border="1">
