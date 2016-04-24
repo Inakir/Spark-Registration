@@ -28,9 +28,13 @@ Given(/^I am on the elementary school registration page\.$/) do
   visit '/student_users/new?student_level=Elementary'
 end
 
+Given(/^I am seeing student info$/) do
+  visit '/see_info'
+end
+
 ######################################When
 When(/^I click the link, "([^"]*)"$/) do |arg1|
-  click_link(arg1)
+  first(:link, arg1).click
 end
 
 When(/^I fill "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
@@ -38,9 +42,14 @@ When(/^I fill "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
 end
 
 When(/^I click the button, "([^"]*)"$/) do |arg1|
-  click_button(arg1)
+  click_button(arg1, match: :first)
 end
-
+=begin
+When (/^I confirm my decision$/) do 
+  Capybara.javascript_driver = :selenium
+  page.driver.browser.switch_to.alert.accept    
+end
+=end
 ######################################Then
 
 Then(/^I should see a link that says "([^"]*)"$/) do |text|
@@ -51,6 +60,10 @@ Then(/^I should see "([^"]*)"$/) do |arg1|
   page.should have_text arg1
 end
 
-Then(/^I should be on the "([^"]*)" page\.$/) do |arg1|
+Then(/^I should be on the "([^"]*)" page.$/) do |arg1|
   assert page.current_path == '/login'
 end
+=begin
+Then (/^I should get a download with the filename "([^\"]*)"$/) do |filename|
+  page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+=end
