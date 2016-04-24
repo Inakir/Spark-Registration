@@ -4,8 +4,6 @@ require_relative '../../spec/rails_helper'
 require 'rubygems'
 require 'test/unit'
 require 'rspec'
-require 'capybara/rspec'
-include Capybara::DSL
 include Test::Unit::Assertions
 if Admin.count == 0
     load Rails.root.join('db/seeds.rb')
@@ -23,17 +21,16 @@ class AdminsControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  # test "mark_unpaid" do
+  #   visit '/admins/see_info'
+  #   #page.should.have_text 'Eric'
+  #   click_button('Mark Unpaid', match: :first)
+  # end
   test "mark_paid" do
-    visit '/admins/see_info'
-    #page.should have_text('Eric')
-    click_button('Mark Paid', match: :first)
-    assert_redirected_to '/admins/mark_paid'
-  end
-  
-  test "mark_unpaid" do
-    visit '/admins/see_info'
-    #page.should have_text('Eric')
-    click_button('Mark Unpaid', match: :first)
+      visit '/admins/see_info'
+      response.body.should have_content("Eric")
+      click_button('Mark Paid', match: :first)
+      assert_redirected_to '/admins/mark_paid'
   end
   # test "get edit login" do
   #   get :changelogin

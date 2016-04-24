@@ -236,8 +236,6 @@ class AdminsController < ApplicationController
   end
 
 #Delete the admin
-
-  
   def destroy
     @admin.destroy
     respond_to do |format|
