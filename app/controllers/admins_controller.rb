@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
-  before_action :set_advisor_user, only: [:show, :edit, :update, :destroy, :editlogin, :changelogin, :changepassword, :editpassword]
+  before_action :set_advisor_user, only: [:show, :edit, :update, :destroy, :editlogin, :changelogin, :changepassword, :editpassword, :home]
+  
   def index
     @admin = Admin.all
   end
@@ -9,9 +10,10 @@ class AdminsController < ApplicationController
   end
   
   def home
-    @current_admin= admin_current_user
-    @id = '100'
-    render 'admins/home'
+   @id = session[:user_id]
+   #params[:id] = session[:user_id]
+   #flash[:notice] = "Howdy Yall"
+   render 'admins/home'
   end
 
   def show
@@ -19,12 +21,16 @@ class AdminsController < ApplicationController
 
   def edit
   end
-  # redirects to admins/changelogin
+  # renders admins/changelogin
   def editlogin
+     @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
     render 'admins/changelogin'
   end
   # renders admins/changepassword
   def editpassword
+    @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
     render 'admins/changepassword'
   end
 
@@ -59,6 +65,7 @@ class AdminsController < ApplicationController
   #Updates admin username based on the changes and redirects to admin home page
   # updates other admin attributes - identifiers and urls.
   def update
+    @admin = session[:admin_current_user]
     respond_to do |format|
       if @admin.update_attribute(:name , params[:admin][:name]) | @admin.update_attribute(:right_sig_url , params[:admin][:right_sig_url]) |
 								  @admin.update_attribute(:mkt_place_url , params[:admin][:mkt_place_url]) |
@@ -78,7 +85,8 @@ class AdminsController < ApplicationController
   # Updates admin email data based on the changes and redirects to admin home page.
   # Throws out error "Email Invalid" for invalid entries (not following standard template user@domain.com)
   def changelogin
-    @admin = session[:current_admin]
+   @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
     respond_to do |format|
       if @admin.update_attribute(:email, params[:admin][:email])
       #if @admin.update_attributes(:email => params[:admin][:email])
