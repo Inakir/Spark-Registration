@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :set_advisor_user, only: [:show, :edit, :update, :destroy, :editlogin, :changelogin, :changepassword, :editpassword, :home]
+  before_action :check_permission
   
   def index
     @admin = Admin.all
@@ -270,14 +270,19 @@ class AdminsController < ApplicationController
   
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_advisor_user
-      #@admin = Admin.first
-      @admin = Admin.find_by_id(params[:id])
+    
+    def check_permission
+      if (session[:admin_current_user].nil?)
+        flash[:alert]= "You don't have access"
+        redirect_to "/registration_home/index"
+      end
     end
+    
     def admin_params
       params.require(:admin).permit(:email, :password, :password_confirmation, :name, :phone, :fax, :right_sig_url, :mkt_place_url)
     end
-     def student_user_params
+    
+    def student_user_params
       params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
 end
