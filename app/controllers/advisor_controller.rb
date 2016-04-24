@@ -1,4 +1,5 @@
 class AdvisorController < ApplicationController
+  
   def index
   end
   #Creates a team based on id of advisor.
@@ -38,6 +39,6 @@ class AdvisorController < ApplicationController
     end
     return retcode
   end
-  
+
 
 end
