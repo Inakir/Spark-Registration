@@ -20,7 +20,6 @@ class StudentUsersController < ApplicationController
     else
       @login=true
     end
-    @student_current_user=session[:student_current_user]
   end
 
   # GET /student_users/new
@@ -50,7 +49,7 @@ class StudentUsersController < ApplicationController
     respond_to do |format|
       if @student_user.save
         session[:has_school_lvl]=false
-        session[:register]=true
+        session[:register]=@student_user.id
         format.html { redirect_to @student_user, notice: 'Please review this information to ensure it is correct' }
         format.json { render :show, status: :created, location: @student_user }
       else
@@ -104,7 +103,13 @@ class StudentUsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student_user
-      @student_user = StudentUser.find(params[:id])
+      @id=params[:id]
+      if(session[:register].to_s == @id.to_s || session[:student_current_user].to_s == @id.to_s)
+        @student_user = StudentUser.find(params[:id])
+      else
+        flash[:alert]= "You don't have access"
+        redirect_to "/registration_home/index"
+      end
     end
     
     def check_permission
@@ -119,6 +124,7 @@ class StudentUsersController < ApplicationController
       params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
 	
+<<<<<<< HEAD
 # 	def sdgsdgsgsd(school_level)
 # 		logger.info("Hello World")
 # 	end
@@ -126,4 +132,13 @@ class StudentUsersController < ApplicationController
 # 	def roomba2(variable)
 # 		flash.now[:flash] = "Hello World!"
 # 	end
+=======
+#	def sdgsdgsgsd(school_level)
+#		logger.info("Hello World")
+#	end
+	
+#	def roomba2(variable)
+#		flash.now[:flash] = "Hello World!"
+#	end
+>>>>>>> 480f663f65ec7eed5a6ca1680f20806f577f24bb
 end

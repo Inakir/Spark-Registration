@@ -13,14 +13,15 @@
       <th>email</th>
       <th>phone</th>
       <th>fax</th>
-      <th>Destroy</th>
       <th>Send Email</th>
+      <th>Destroy</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% Admin.all.each do |admin| %>
+     <% if (admin.super_admin != true) %>
       <tr>
         <td><%= admin.name %></td>
         <td><%= admin.email %></td>
@@ -32,6 +33,7 @@
             <% end %>
         <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
