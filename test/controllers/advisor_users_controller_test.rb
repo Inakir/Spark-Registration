@@ -19,7 +19,7 @@ class AdvisorUsersControllerTest < ActionController::TestCase
   end
 
   test "should create advisor_user" do
-    assert_difference('AdvisorUser.count') do
+    assert_difference 'AdvisorUser.count', 1 do
       post :create, advisor_user: { password: @advisor_user.password, username: "hollo@tamu.edu", first_name: @advisor_user.first_name,
 					 last_name: @advisor_user.last_name,  school_name: @advisor_user.school_name,
 						school_level: @advisor_user.school_level,  pay_code: "N" }

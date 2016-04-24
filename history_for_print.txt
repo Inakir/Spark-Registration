@@ -1,0 +1,13 @@
+    1  rake test
+    2  bundle exec rspec
+    3  rake test
+    4  pseudo service postgresql start
+    5  sudo service postgresql start
+    6  rake test
+    7  sudo sudo -u postgres psql
+    8  rake test
+    9  bin/rake db:migrate RAILS_ENV=test
+   10  chmod +x bin/*
+   11  bin/rake db:migrate RAILS_ENV=test
+   12  rake test
+   13  history > history_for_print.txt

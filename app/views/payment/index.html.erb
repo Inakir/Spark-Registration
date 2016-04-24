@@ -19,8 +19,10 @@
     <p style="color:red"><%= notice %></p>
     <hr>
     <p>
+      <div id = "consent">
       Please fill out the consent form
       <%= link_to 'here', right_signature_url, :target => "_blank" %>
+      </div>
     </p>
     <hr>
     If you have a payment code enter it here
@@ -38,5 +40,4 @@
 <form action="../registration_complete/index" style="text-align:center">
 <input type="submit" value="Continue">
 </form>
-
 </div>
