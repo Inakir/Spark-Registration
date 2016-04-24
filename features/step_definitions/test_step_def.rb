@@ -34,7 +34,7 @@ end
 
 ######################################When
 When(/^I click the link, "([^"]*)"$/) do |arg1|
-  click_link(arg1)
+  first(:link, arg1).click
 end
 
 When(/^I fill "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
@@ -42,18 +42,15 @@ When(/^I fill "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
 end
 
 When(/^I click the button, "([^"]*)"$/) do |arg1|
-  click_button(arg1)
+  #click_button(arg1)
+  click_button(arg1, match: :first)
 end
-
-When (/^I expect to click "([^"]*)" on a confirmation box saying "([^"]*)"$/) do |option, message|
-  retval = (option == 'OK') ? 'true' : 'false'
-  page.evaluate_script("window.confirm = function (msg) {
-    document.cookie = msg
-    return #{retval}
-  }")
-  @expected_message = message.gsub("\\n", "\n")
+=begin
+When (/^I confirm my decision$/) do 
+  Capybara.javascript_driver = :selenium
+  page.driver.browser.switch_to.alert.accept    
 end
-
+=end
 ######################################Then
 
 Then(/^I should see a link that says "([^"]*)"$/) do |text|
