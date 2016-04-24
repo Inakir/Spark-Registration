@@ -33,14 +33,7 @@ class SessionsController < ApplicationController
   end
   
   def new_student
-    
-     @email = session[:student_current_user]
-     user Student.where(:email=>@email).first()
-    if admin.nil?
-      flash.now[:flash] = 'Invalid student email name and password'
-    else
-      render 'index'
-    end
+
   end
 
   def log_out#have to change to check first if user is CAS logged-in first. if not, do regular logout
@@ -68,8 +61,9 @@ class SessionsController < ApplicationController
           flash.now[:flash] = 'Successfully logged in'
           admin_log_in user
           if user.super_admin == true
-            render 'admins/super'
+            render 'admins/super' 
           else  
+            @id = session[:user_id]
             render 'admins/home'
           end
         

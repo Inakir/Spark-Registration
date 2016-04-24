@@ -42,7 +42,6 @@ When(/^I fill "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
 end
 
 When(/^I click the button, "([^"]*)"$/) do |arg1|
-  #click_button(arg1)
   click_button(arg1, match: :first)
 end
 =begin
@@ -64,7 +63,7 @@ end
 Then(/^I should be on the "([^"]*)" page.$/) do |arg1|
   assert page.current_path == '/login'
 end
-
+=begin
 Then (/^I should get a download with the filename "([^\"]*)"$/) do |filename|
   page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
-end
+=end
