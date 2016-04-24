@@ -123,6 +123,4 @@ class StudentUsersController < ApplicationController
     def student_user_params
       params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
-	
-
 end

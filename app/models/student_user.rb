@@ -4,7 +4,6 @@ class StudentUser < ActiveRecord::Base
     csv << column_names
     all.each do |student|
       csv << student.attributes.values_at(*column_names)
-
     end
   end
 end
