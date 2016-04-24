@@ -202,16 +202,13 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-<<<<<<< HEAD
     seed_dump (3.2.4)
       activerecord (>= 4)
       activesupport (>= 4)
-=======
     selenium-webdriver (2.53.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
->>>>>>> a76effd81d23e416d7c86eaaea18bf2eb804f985
     sexp_processor (4.7.0)
     shotgun (0.9.1)
       rack (>= 1.0)
@@ -280,11 +277,8 @@ DEPENDENCIES
   rubycas-client!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-<<<<<<< HEAD
   seed_dump
-=======
   selenium-webdriver
->>>>>>> a76effd81d23e416d7c86eaaea18bf2eb804f985
   shotgun
   simplecov
   sinatra
