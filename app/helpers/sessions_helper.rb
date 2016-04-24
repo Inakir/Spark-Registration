@@ -3,6 +3,7 @@ module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
     session[:current_user]= AdvisorUser.find_by(id: session[:user_id])
+    session[:advisor_current_user]=user.id
   end
   # finds current logged in advisor user from the session
   def current_user

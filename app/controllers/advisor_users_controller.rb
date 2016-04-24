@@ -1,5 +1,6 @@
 class AdvisorUsersController < ApplicationController
   before_action :set_advisor_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /advisor_users
   # GET /advisor_users.json
@@ -50,6 +51,7 @@ class AdvisorUsersController < ApplicationController
 
     respond_to do |format|
       if @advisor_user.save
+        session[:register]=@advisor_user.id
         format.html { redirect_to @advisor_user, notice: 'Advisor user was successfully created.' }
         format.json { render :show, status: :created, location: @advisor_user }
       else
@@ -96,9 +98,21 @@ class AdvisorUsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_advisor_user
-      @advisor_user = AdvisorUser.find(params[:id])
+      @id=params[:id]
+      if(session[:register].to_s == @id.to_s || session[:advisor_current_user].to_s == @id.to_s)
+        @advisor_user = AdvisorUser.find(params[:id])
+      else
+        flash[:alert]= "You don't have access"
+        redirect_to "/registration_home/index"
+      end
     end
-
+    
+    def check_permission
+      if (session[:register].nil? || session[:register]==false)
+        flash[:alert]= "You don't have access"
+        redirect_to "/registration_home/index"
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def advisor_user_params
       params.require(:advisor_user).permit(:username, :password, :password_confirmation, :first_name, :last_name, :school_level, :school_name, :pay_code)
