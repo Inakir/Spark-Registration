@@ -70,4 +70,8 @@ Scenario: Admin wants mark user as unpaid
 # And I click the button, "Log in"
 # And I click the link, "Advisor & Student Information"
 # And I click the link, "CSV"
+<<<<<<< HEAD
 # Then I should get a download with the filename "student_users.csv"
+=======
+# Then I should get a download with the filename "student_users.csv"
+>>>>>>> 5d8014b3efb68479552322ab5bdeaf29ed1198c5
