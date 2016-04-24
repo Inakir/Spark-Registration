@@ -15,7 +15,7 @@ module SessionsHelper
   
   def student_log_in(user)
     session[:user_id] = user.id
-    session[:student_current_user]=StudentUser.find_by(id: session[:user_id])
+    session[:student_current_user]=session[:user_id]
   end
 
   # find current user in this session

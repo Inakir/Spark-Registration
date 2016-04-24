@@ -49,7 +49,7 @@ class StudentUsersController < ApplicationController
     respond_to do |format|
       if @student_user.save
         session[:has_school_lvl]=false
-        session[:register]=true
+        session[:register]=@student_user.id
         format.html { redirect_to @student_user, notice: 'Please review this information to ensure it is correct' }
         format.json { render :show, status: :created, location: @student_user }
       else
@@ -103,7 +103,13 @@ class StudentUsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student_user
-      @student_user = StudentUser.find(params[:id])
+      @id=params[:id]
+      if(session[:register].to_s == @id.to_s || session[:student_current_user].to_s == @id.to_s)
+        @student_user = StudentUser.find(params[:id])
+      else
+        flash[:alert]= "You don't have access"
+        redirect_to "/registration_home/index"
+      end
     end
     
     def check_permission
