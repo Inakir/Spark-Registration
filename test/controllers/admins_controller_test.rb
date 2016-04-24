@@ -1,6 +1,18 @@
 require 'test_helper'
+require_relative '../../spec/spec_helper'
+require_relative '../../spec/rails_helper'
+require 'rubygems'
+require 'test/unit'
+require 'rspec'
+require 'capybara/rspec'
+include Capybara::DSL
+include Test::Unit::Assertions
+if Admin.count == 0
+    load Rails.root.join('db/seeds.rb')
+end
 
 class AdminsControllerTest < ActionController::TestCase
+  
   test "should get new" do
     get :new
     assert_response :success
@@ -12,11 +24,17 @@ class AdminsControllerTest < ActionController::TestCase
   end
   
   test "mark_paid" do
-    
-    get :mark_paid
-    assert_response :success
+    visit '/admins/see_info'
+    #page.should have_text('Eric')
+    click_button('Mark Paid', match: :first)
+    assert_redirected_to '/admins/mark_paid'
   end
   
+  test "mark_unpaid" do
+    visit '/admins/see_info'
+    #page.should have_text('Eric')
+    click_button('Mark Unpaid', match: :first)
+  end
   # test "get edit login" do
   #   get :changelogin
   #   assert_response :success
