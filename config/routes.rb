@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'payment/index'
   post 'checkpay' => 'payment#checkpay'
   get 'consent_forms/index'
-
+  get 'student_users/generate' => 'student_users#generate'
+  
   resources :student_users
   root 'registration_home#index'
   get 'students/new'
@@ -107,7 +108,9 @@ Rails.application.routes.draw do
   #get 'advisor_user/export_csv' => 'advisor_user#export_csv'
   
   get 'student_users/index'
-
+  
+  
+  
   get 'high/index'
 
   get 'middle/index'
