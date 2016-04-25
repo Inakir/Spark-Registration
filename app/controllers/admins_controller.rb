@@ -17,20 +17,13 @@ class AdminsController < ApplicationController
   end
 
   def show
+     @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
   end
 
   def edit
   end
   
-  # redirects to admins/changelogin
-  # def editlogin
-  #   render 'admins/changelogin'
-  # end
-  # # renders admins/changepassword
-  # def editpassword
-  #   render 'admins/changepassword'
-  # end
-  # renders admins/changelogin
   def editlogin
      @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
@@ -44,7 +37,8 @@ class AdminsController < ApplicationController
   end
 
   def super_admin
-    
+    @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
   end
 
   def advisor_edit_method
@@ -248,6 +242,8 @@ class AdminsController < ApplicationController
 
   #Changes password, password must be 6 characters long and match confirmation
   def changepassword
+    @id = @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
     respond_to do |format|
      if @admin.update(admin_params)
        format.html { redirect_to @admin, notice: 'Admin password was successfully updated!' }
