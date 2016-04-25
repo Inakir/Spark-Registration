@@ -30,7 +30,6 @@ module SessionsHelper
   
   def admin_log_in(user)
     session[:user_id] = user.id
-    session[:admin_current_user]=user.id
   end
 
   # find current user in this session
