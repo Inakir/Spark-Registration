@@ -5,13 +5,18 @@ class StudentUsersController < ApplicationController
   # GET /student_users.json
   def index
     @student_current_user=StudentUser.find_by(id: session[:user_id])
-    # @student_users = StudentUser.all
-    # respond_to do |format|
-    # format.html
-    # format.csv { send_data @student_users.to_csv }
-    # format.xls # { send_data @student_users.to_csv(col_sep: "\t") }
   end
-
+    
+  #Get /student_users/generate used to generate csv or excel
+  def generate
+    @student_users = StudentUser.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @student_users.to_csv }
+      format.xls { send_data @student_users.to_csv(col_sep: "\t") }
+    end
+  end
+  
   # GET /student_users/1
   # GET /student_users/1.json
   def show
@@ -104,7 +109,8 @@ class StudentUsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_student_user
       @id=params[:id]
-      if(session[:register].to_s == @id.to_s || session[:student_current_user].to_s == @id.to_s)
+      if((session[:register].to_s == @id.to_s || session[:student_current_user].to_s == @id.to_s) || 
+        session[:admin_current_user] != nil)
         @student_user = StudentUser.find(params[:id])
       else
         flash[:alert]= "You don't have access"
@@ -114,7 +120,8 @@ class StudentUsersController < ApplicationController
     
     def check_permission
       if ((session[:register].nil? || session[:register]==false) &&
-         (session[:student_current_user].nil? || session[:student_current_user]==false))
+         (session[:student_current_user].nil? || session[:student_current_user]==false) &&
+         (session[:admin_current_user].nil? || session[:admin_current_user]==false))
         flash[:alert]= "You don't have access"
         redirect_to "/registration_home/index"
       end
