@@ -71,6 +71,14 @@ Rails.application.routes.draw do
 	  patch 'changepassword' => 'admins#changepassword'
 	  get 'changepassword' => 'admins#editpassword'
 	  #post 'changelogin' => 'admins#editlogin'
+	   put 'change_market_url' => 'admins#change_market_url'
+          patch 'change_market_url' => 'admins#change_market_url'
+	  get 'change_market_url' => 'admins#edit_market_url'
+	  
+	   put 'change_right_sig_url' => 'admins#change_right_sig_url'
+          patch 'change_right_sig_url' => 'admins#change_right_sig_url'
+	  get 'change_right_sig_url' => 'admins#edit_right_sig_url'
+	  
 	end
   end
 
