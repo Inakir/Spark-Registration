@@ -15,4 +15,26 @@ class SessionsHelperTest < ActionView::TestCase
     @user = StudentUser.new(email: "admin@domain.com", password: "password", password_confirmation: "password")
     assert_equal nil, student_log_in(@user)
   end
+  
+  test "test if admin_logged_in?" do
+    assert_equal false, admin_logged_in?
+  end
+  
+  test "test admin current user" do
+    assert_equal nil, admin_current_user
+  end
+  
+  test "admin log in" do
+    @user = StudentUser.new(email: "admin@domain.com", password: "password", password_confirmation: "password")
+    assert_equal nil, admin_log_in(@user)
+  end
+  
+  test "current user" do
+    assert_equal nil,current_user
+  end
+  
+  test "logged in?" do
+    assert_equal false, logged_in?
+  end
+  
 end
