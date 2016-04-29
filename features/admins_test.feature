@@ -2,9 +2,9 @@ Feature: This should not work
   
 Scenario: Forcefully creating a new admin
   Given we are on the admins new page.
-  When I fill "admin[email]" with "eramon224@tamu.edu"
-  And I fill "admin[password]" with "444444"
-  And I fill "admin[password_confirmation]" with "4444444"
+  When I fill "admin[email]" with "austinktang@gmail.com"
+  And I fill "admin[password]" with "test123"
+  And I fill "admin[password_confirmation]" with "test123"
   Then I click the button, "Create Admin"
   
 Scenario: Admin wants to send email to all unpaid users
