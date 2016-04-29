@@ -35,6 +35,18 @@ class AdminsController < ApplicationController
     @admin = Admin.find_by(id: @id)
     render 'admins/changepassword'
   end
+  
+  def edit_market_url
+     @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
+    render 'admins/change_market_url'
+  end
+  
+  def edit_right_sig_url
+     @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
+    render 'admins/change_right_sig_url'
+  end
 
   def super_admin
     @id = session[:user_id]
@@ -254,6 +266,34 @@ class AdminsController < ApplicationController
      end
     end
   end
+
+def change_market_url
+    @id = @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
+    respond_to do |format|
+     if @admin.update_attribute(:mkt_place_url, params[:admin][:mkt_place_url])
+       format.html { redirect_to @admin, notice: 'Marketplace url was successfully updated!' }
+       format.json { render :show, status: :ok, location: @admin }
+     else
+       format.html { redirect_to change_market_url_admin_path(@admin), notice: 'Enter a valid URL for the marketplace' } 
+       format.json { render json: @admin.errors, status: :unprocessable_entity }
+     end
+    end
+end
+
+def change_right_sig_url
+    @id = @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
+    respond_to do |format|
+     if  @admin.update_attribute(:right_sig_url, params[:admin][:right_sig_url])
+       format.html { redirect_to @admin, notice: 'Right Signature URL was sucessfully updated!' }
+       format.json { render :show, status: :ok, location: @admin }
+     else
+       format.html { redirect_to change_right_sig_url_admin_path(@admin), notice: 'Enter a valid URL for the Right signature form' } 
+       format.json { render json: @admin.errors, status: :unprocessable_entity }
+     end
+    end
+end
 
 #Delete the admin
   def destroy
