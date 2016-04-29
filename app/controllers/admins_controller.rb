@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :set_advisor_user, only: [:show, :edit, :update, :destroy, :editlogin, :changelogin, :changepassword, :editpassword, :home]
+  before_action :check_permission
   
   def index
     @admin = Admin.all
@@ -17,20 +17,13 @@ class AdminsController < ApplicationController
   end
 
   def show
+     @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
   end
 
   def edit
   end
   
-  # redirects to admins/changelogin
-  # def editlogin
-  #   render 'admins/changelogin'
-  # end
-  # # renders admins/changepassword
-  # def editpassword
-  #   render 'admins/changepassword'
-  # end
-  # renders admins/changelogin
   def editlogin
      @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
@@ -44,7 +37,8 @@ class AdminsController < ApplicationController
   end
 
   def super_admin
-    
+    @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
   end
 
   def advisor_edit_method
@@ -248,6 +242,8 @@ class AdminsController < ApplicationController
 
   #Changes password, password must be 6 characters long and match confirmation
   def changepassword
+    @id = @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
     respond_to do |format|
      if @admin.update(admin_params)
        format.html { redirect_to @admin, notice: 'Admin password was successfully updated!' }
@@ -270,14 +266,19 @@ class AdminsController < ApplicationController
   
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_advisor_user
-      #@admin = Admin.first
-      @admin = Admin.find_by_id(params[:id])
+    
+    def check_permission
+      if (session[:admin_current_user].nil?)
+        flash[:alert]= "You don't have access"
+        redirect_to "/registration_home/index"
+      end
     end
+    
     def admin_params
       params.require(:admin).permit(:email, :password, :password_confirmation, :name, :phone, :fax, :right_sig_url, :mkt_place_url)
     end
-     def student_user_params
+    
+    def student_user_params
       params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
 end

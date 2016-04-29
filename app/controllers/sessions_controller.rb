@@ -60,7 +60,9 @@ class SessionsController < ApplicationController
         if user.authenticate(params[:session][:password])
           flash.now[:flash] = 'Successfully logged in'
           admin_log_in user
+          session[:admin_current_user]=user.id
           if user.super_admin == true
+            @id = session[:user_id]
             render 'admins/super_admin' 
           else  
             @id = session[:user_id]
