@@ -18,7 +18,7 @@ Scenario: Admin wants to send email to all unpaid users
   And I click the button, "Submit email"
   Then I should see "Advisor Users"
   
-  Scenario: Admin wants to send email to all unpaid users
+  Scenario: Admin wants to send email to all Paid users
   Given I am on the registration home page.
   When I click the link, "Login"
   And I fill "session[email]" with "admin@gmail.com"
@@ -28,7 +28,16 @@ Scenario: Admin wants to send email to all unpaid users
   And I click the button, "Email All Paid Users"
   And I click the button, "Submit email"
   Then I should see "Advisor Users"
-
+  
+  Scenario: Admin wants to return to the home page
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "admin@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Advisor & Student Information"
+  And I click the button, "Return Home"
+  Then I should see "Advisor & Student Information"  
 
 Scenario: Admin wants to send email to one unpaid user
   Given I am on the registration home page.

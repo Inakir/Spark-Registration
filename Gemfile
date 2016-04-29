@@ -16,6 +16,8 @@ gem 'capybara'
 
 gem 'brakeman'
 
+gem 'seed_dump'
+
 gem 'selenium-webdriver'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
