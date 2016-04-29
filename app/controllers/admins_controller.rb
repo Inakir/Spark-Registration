@@ -128,12 +128,14 @@ class AdminsController < ApplicationController
   end
   
    def send_admin_email
-    @admin = Admin.find(session[:admin_id])
     @subject= params[:subject]
     @text= params[:email_text]
-    UserMailer.welcome_email(@admin.email,@subject,@text).deliver_now
-    render 'admins/index'
+      Admin.all.each do |admin|
+          UserMailer.welcome_email(admin.email,@subject,@text).deliver
+      end
+       render 'admins/index'
    end
+   
   #send payment email to all unpaid users
   def unpaid_email_group
     @subject= params[:subject]
