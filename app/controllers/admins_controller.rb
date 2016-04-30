@@ -18,7 +18,7 @@ class AdminsController < ApplicationController
 
   def show
      @id = session[:user_id]
-    @admin = Admin.find_by(id: @id)
+     @admin = Admin.find_by(id: @id)
   end
 
   def edit
@@ -26,14 +26,26 @@ class AdminsController < ApplicationController
   
   def editlogin
      @id = session[:user_id]
-    @admin = Admin.find_by(id: @id)
-    render 'admins/changelogin'
+     @admin = Admin.find_by(id: @id)
+     render 'admins/changelogin'
   end
   # renders admins/changepassword
   def editpassword
     @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
     render 'admins/changepassword'
+  end
+  
+  def edit_market_url
+     @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
+    render 'admins/change_market_url'
+  end
+  
+  def edit_right_sig_url
+     @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
+    render 'admins/change_right_sig_url'
   end
 
   def super_admin
@@ -88,7 +100,7 @@ class AdminsController < ApplicationController
   # Updates admin email data based on the changes and redirects to admin home page.
   # Throws out error "Email Invalid" for invalid entries (not following standard template user@domain.com)
   def changelogin
-   @id = session[:user_id]
+    @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
     respond_to do |format|
       if @admin.update_attribute(:email, params[:admin][:email])
@@ -111,12 +123,12 @@ class AdminsController < ApplicationController
     render 'admins/see_info'
   end
   
-    def mark_unpaid
+  def mark_unpaid
     @student_user = StudentUser.find(params[:id]) #finds correct student
     @student_user.pay_status = "no"
     @student_user.save(validate: false) #validate: false prevents it from asking for a password upon update
     render 'admins/see_info'
-    end
+  end
   
   #send email to a specific student
   def send_email
@@ -127,13 +139,23 @@ class AdminsController < ApplicationController
     render 'admins/see_info'
   end
   
-   def send_admin_email
+  def send_admin_email
     @admin = Admin.find(session[:admin_id])
     @subject= params[:subject]
     @text= params[:email_text]
     UserMailer.welcome_email(@admin.email,@subject,@text).deliver_now
     render 'admins/index'
-   end
+  end
+  
+  def send_admin_email
+    @subject= params[:subject]
+    @text= params[:email_text]
+      Admin.all.each do |admin|
+          UserMailer.welcome_email(admin.email,@subject,@text).deliver
+      end
+       render 'admins/index'
+  end
+   
   #send payment email to all unpaid users
   def unpaid_email_group
     @subject= params[:subject]
@@ -146,7 +168,7 @@ class AdminsController < ApplicationController
        render 'admins/see_info'
   end
   
-    def paid_email_group
+  def paid_email_group
     @subject= params[:subject]
     @text= params[:email_text]
       StudentUser.all.each do |student|
@@ -155,7 +177,7 @@ class AdminsController < ApplicationController
         end
       end
        render 'admins/see_info'
-    end
+  end
 
   #email_page action
   def email_page
@@ -170,11 +192,11 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
-   def email_paid
+  def email_paid
     session[:selector]="paid"
     session[:student_id]= params[:student_id]
     render 'admins/email_page'
-   end
+  end
   
   def send_stud_email
     session[:selector]=""
@@ -182,11 +204,11 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
-   def admin_email
+  def admin_email
     session[:selector]="admin"
     session[:admin_id]= params[:admin_id]
     render 'admins/email_page'
-   end
+  end
   
   def send_all
     session[:selector]="all"
@@ -217,27 +239,27 @@ class AdminsController < ApplicationController
   
   end
   #send email to all users, advisors, and admins
-   def email_all
-      @subject= params[:subject]
-      @text= params[:email_text]
-      StudentUser.all.each do |student|
-          UserMailer.welcome_email(student.email,@subject,@text).deliver
-      end
-      AdvisorUser.all.each do |advisor|
-          UserMailer.welcome_email(advisor.username,@subject,@text).deliver
-      end
-      Admin.all.each do |admin|
-          UserMailer.welcome_email(admin.email,@subject,@text).deliver
-      end
-       render 'admins/see_info'
-   end
+  def email_all
+    @subject= params[:subject]
+    @text= params[:email_text]
+    StudentUser.all.each do |student|
+        UserMailer.welcome_email(student.email,@subject,@text).deliver
+    end
+    AdvisorUser.all.each do |advisor|
+        UserMailer.welcome_email(advisor.username,@subject,@text).deliver
+    end
+    Admin.all.each do |admin|
+        UserMailer.welcome_email(admin.email,@subject,@text).deliver
+    end
+     render 'admins/see_info'
+  end
   
   #send email to all advisors
   def email_advisors
-      AdvisorUser.all.each do |advisor|
-          UserMailer.unpaid_email_groups(advisor.username).deliver
-      end
-       render 'admins/see_info'
+    AdvisorUser.all.each do |advisor|
+        UserMailer.unpaid_email_groups(advisor.username).deliver
+    end
+     render 'admins/see_info'
   end
 
   #Changes password, password must be 6 characters long and match confirmation
@@ -255,6 +277,34 @@ class AdminsController < ApplicationController
     end
   end
 
+def change_market_url
+    @id = @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
+    respond_to do |format|
+     if @admin.update_attribute(:mkt_place_url, params[:admin][:mkt_place_url])
+       format.html { redirect_to @admin, notice: 'Marketplace url was successfully updated!' }
+       format.json { render :show, status: :ok, location: @admin }
+     else
+       format.html { redirect_to change_market_url_admin_path(@admin), notice: 'Enter a valid URL for the marketplace' } 
+       format.json { render json: @admin.errors, status: :unprocessable_entity }
+     end
+    end
+end
+
+def change_right_sig_url
+    @id = @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
+    respond_to do |format|
+     if  @admin.update_attribute(:right_sig_url, params[:admin][:right_sig_url])
+       format.html { redirect_to @admin, notice: 'Right Signature URL was sucessfully updated!' }
+       format.json { render :show, status: :ok, location: @admin }
+     else
+       format.html { redirect_to change_right_sig_url_admin_path(@admin), notice: 'Enter a valid URL for the Right signature form' } 
+       format.json { render json: @admin.errors, status: :unprocessable_entity }
+     end
+    end
+end
+
 #Delete the admin
   def destroy
     @admin.destroy
@@ -267,18 +317,18 @@ class AdminsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     
-    def check_permission
-      if (session[:admin_current_user].nil?)
-        flash[:alert]= "You don't have access"
-        redirect_to "/registration_home/index"
-      end
+  def check_permission
+    if (session[:admin_current_user].nil?)
+      flash[:alert]= "You don't have access"
+      redirect_to "/registration_home/index"
     end
+  end
     
-    def admin_params
-      params.require(:admin).permit(:email, :password, :password_confirmation, :name, :phone, :fax, :right_sig_url, :mkt_place_url)
-    end
+  def admin_params
+    params.require(:admin).permit(:email, :password, :password_confirmation, :name, :phone, :fax, :right_sig_url, :mkt_place_url)
+  end
     
-    def student_user_params
-      params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
-    end
+  def student_user_params
+    params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
+  end
 end
