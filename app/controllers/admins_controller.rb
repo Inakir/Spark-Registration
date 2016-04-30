@@ -257,7 +257,7 @@ class AdminsController < ApplicationController
     def email_unpaid_stud
      StudentUser.all.each do |student|
         if (student.pay_status != "yes")
-          UserMailer.welcome_email(student.email).deliver
+          UserMailer.thanks_email(student.email).deliver
         end
       end
        render 'admins/see_info'
