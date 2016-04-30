@@ -106,6 +106,15 @@ Scenario: Admin wants to mark user as paid
   And I click the link, "CSV"
   Then I should receive a file.
   
+  Scenario: Admin wants to logout
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "admin@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the button, "Logout"
+  Then I should see "SPARK Registration"
+  
   Scenario: Admin wants to change his or her email information
   Given I am on the registration home page.
   When I click the link, "Login"
