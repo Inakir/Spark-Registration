@@ -46,7 +46,6 @@ class SessionsController < ApplicationController
   
   def log_out_students#logout for non-CAS users aka students/advisors
     reset_session
-    Rails.cache.clear
     flash.now[:danger] = 'You have sucessfully Logged Out! :)'
     redirect_to root_path
   end
@@ -109,19 +108,5 @@ class SessionsController < ApplicationController
   def destroy
   end
   
-  private
-    def admin_check
-      if (session[:admin_current_user].nil?)
-        flash[:alert]= "You don't have access"
-        redirect_to "/registration_home/index"
-      end
-    end
-  
-    def student check
-      if ((session[:student_current_user].nil? || session[:student_current_user]==false) &&
-         (session[:current_user].nil? || session[:current_user]==false))
-        flash[:alert]= "You don't have access"
-        redirect_to "/registration_home/index"
-      end
-    end
+
 end
