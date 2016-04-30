@@ -1,4 +1,5 @@
 class AdvisorUsersController < ApplicationController
+  before_filter :set_cache_buster
   before_action :set_advisor_user, only: [:show, :edit, :update, :destroy]
   before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
@@ -116,5 +117,11 @@ class AdvisorUsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def advisor_user_params
       params.require(:advisor_user).permit(:username, :password, :password_confirmation, :first_name, :last_name, :school_level, :school_name, :pay_code)
+    end
+    
+    def set_cache_buster
+       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+       response.headers["Pragma"] = "no-cache"
+       response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
     end
 end

@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
   def log_out#have to change to check first if user is CAS logged-in first. if not, do regular logout
   #CASClient::Frameworks::Rails::Filter.logout(self)
   #render 'index'
-  reset_session
+    reset_session
     flash.now[:danger] = 'You have sucessfully Logged Out! :)'
     redirect_to root_path
   end
