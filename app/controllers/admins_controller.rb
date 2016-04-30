@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :check_permission
+  before_action :super_check_permission, only: [:new,:edit_market_url, :edit_right_sig_url, :change_market_url, :change_right_sig_url,:index] 
   
   def index
     @admin = Admin.all
@@ -323,7 +324,14 @@ end
       redirect_to "/registration_home/index"
     end
   end
-    
+  
+  def super_check_permission
+    if(session[:super_admin_current_user].nil?)
+      flash[:alert]= "You don't have access"
+      redirect_to "/registration_home/index"
+    end
+  end
+  
   def admin_params
     params.require(:admin).permit(:email, :password, :password_confirmation, :name, :phone, :fax, :right_sig_url, :mkt_place_url)
   end
