@@ -14,5 +14,4 @@ class AdvisorUser < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, confirmation: true
   validates_confirmation_of :password
-
 end

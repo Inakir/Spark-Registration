@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def login
-      if (session.nil?)
-        flash[:alert]= "You don't have access"
-        redirect_to "/registration_home/index"
-      end
-  end
+  # def login
+  #     if (session.nil?)
+  #       flash[:alert]= "You don't have access"
+  #       redirect_to "/registration_home/index"
+  #     end
+  # end
   
   def check_permission
     if(session[:current_user].nil?)
@@ -21,16 +21,16 @@ class SessionsController < ApplicationController
     end
   end
 
-  def admin_new
-    @email = session[:cas_user] + "@tamu.edu"
-    admin = Admin.where(:email => @email).first()
-    if admin.nil?
-      flash.now[:flash] = 'Invalid Admin user name and password'
-      #CASClient::Frameworks::Rails::Filter.logout(self)
-    else
-      render 'admins/home'
-    end
-  end
+  # def admin_new
+  #   @email = session[:cas_user] + "@tamu.edu"
+  #   admin = Admin.where(:email => @email).first()
+  #   if admin.nil?
+  #     flash.now[:flash] = 'Invalid Admin user name and password'
+  #     #CASClient::Frameworks::Rails::Filter.logout(self)
+  #   else
+  #     render 'admins/home'
+  #   end
+  # end
   
   def new_student
 
