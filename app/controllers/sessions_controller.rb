@@ -94,7 +94,6 @@ class SessionsController < ApplicationController
               redirect_to action: "index", controller: 'student_users', id: user.id
             else
                if(session.nil? || session[:password] = nil || session[:email] = nil)
-                  flash[:alert]= "You Shall Not Pass!"
                   redirect_to "/registration_home/index"
                end
                   #create an error message

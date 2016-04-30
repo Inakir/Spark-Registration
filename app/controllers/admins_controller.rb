@@ -331,14 +331,12 @@ end
     
   def check_permission
     if (session[:admin_current_user].nil?)
-      flash[:alert]= "You don't have access"
       redirect_to "/registration_home/index"
     end
   end
   
   def super_check_permission
     if(session[:super_admin_current_user].nil?)
-      flash[:alert]= "You don't have access"
       redirect_to "/registration_home/index"
     end
   end

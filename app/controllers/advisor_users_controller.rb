@@ -103,14 +103,12 @@ class AdvisorUsersController < ApplicationController
       if(session[:register].to_s == @id.to_s || session[:advisor_current_user].to_s == @id.to_s)
         @advisor_user = AdvisorUser.find(params[:id])
       else
-        flash[:alert]= "You don't have access"
         redirect_to "/registration_home/index"
       end
     end
     
     def check_permission
       if (session[:register].nil? || session[:register]==false)
-        flash[:alert]= "You don't have access"
         redirect_to "/registration_home/index"
       end
     end

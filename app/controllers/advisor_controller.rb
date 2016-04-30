@@ -45,7 +45,6 @@ before_action :check_permission
   private
     def check_permission
       if (session[:current_user].nil?)
-        flash[:alert]= "You don't have access"
         redirect_to "/registration_home/index"
       end
     end

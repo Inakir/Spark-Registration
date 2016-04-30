@@ -114,7 +114,6 @@ class StudentUsersController < ApplicationController
         session[:admin_current_user] != nil)
         @student_user = StudentUser.find(params[:id])
       else
-        flash[:alert]= "You don't have access"
         redirect_to "/registration_home/index"
       end
     end
@@ -123,7 +122,6 @@ class StudentUsersController < ApplicationController
       if ((session[:register].nil? || session[:register]==false) &&
          (session[:student_current_user].nil? || session[:student_current_user]==false) &&
          (session[:admin_current_user].nil? || session[:admin_current_user]==false))
-        flash[:alert]= "You don't have access"
         redirect_to "/registration_home/index"
       end
     end
