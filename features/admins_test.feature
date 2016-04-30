@@ -34,6 +34,16 @@ Scenario: Admin wants to send email to all unpaid users
   And I click the button, "Submit email"
   Then I should see "Advisor Users"
   
+  Scenario: Admin wants to remind unpaid users
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "admin@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Advisor & Student Information"
+  And I click the button, "payment reminder email"
+  Then I should see "Advisor Users"
+  
   Scenario: Admin wants to return to the home page
   Given I am on the registration home page.
   When I click the link, "Login"
