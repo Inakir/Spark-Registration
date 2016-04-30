@@ -317,7 +317,6 @@ end
 
 #Delete the admin
   def destroy
-    @admin = Admin.find_by(id: @id)
     @admin.destroy
     respond_to do |format|
       format.html { redirect_to '/admins/see_admin_info', notice: 'Admin was successfully  destroyed.' }
