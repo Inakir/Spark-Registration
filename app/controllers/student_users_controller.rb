@@ -1,4 +1,5 @@
 class StudentUsersController < ApplicationController
+  before_filter :set_cache_buster
   before_action :set_student_user, only: [:show, :edit, :update, :destroy]  # add :changepassword, :editpassword, :changelogin, :editlogin
   before_action :check_permission, only: [:show, :edit, :update, :destroy, :index]
   # GET /student_users
@@ -131,4 +132,9 @@ class StudentUsersController < ApplicationController
       params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
     
+    def set_cache_buster
+     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+     response.headers["Pragma"] = "no-cache"
+     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+    end
 end
