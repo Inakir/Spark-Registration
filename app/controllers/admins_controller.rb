@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :check_permission
+  before_action :check_permission, only: [:destroy]
   before_action :super_check_permission, only: [:new,:edit_market_url, :edit_right_sig_url, :change_market_url, :change_right_sig_url,:index] 
   
   def index
@@ -320,9 +320,7 @@ end
     @admin = Admin.find_by(id: @id)
     @admin.destroy
     respond_to do |format|
-      format.html { redirect_to '/admins/see_admin_info', notice: 'Admin was successfully 
-      
-      oyed.' }
+      format.html { redirect_to '/admins/see_admin_info', notice: 'Admin was successfully  destroyed.' }
       format.json { head :no_content }
     end
   end
