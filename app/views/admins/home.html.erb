@@ -1,13 +1,10 @@
 <a href="/admins/see_info">
 	Advisor & Student Information
 </a>
-<%= button_to "Logout", admin_log_out_path, :method => "get" %>
-
 <div>
     <%= link_to "Change Email", changelogin_admin_path(@id) %>
 </div>
-
 <div>
     <%= link_to "Change Password", changepassword_admin_path(@id) %>
 </div>
- 
+<%= button_to "Logout", admin_log_out_path, :method => "get" %>
