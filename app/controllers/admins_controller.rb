@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+  before_filter :set_cache_buster
   before_action :check_permission
   before_action :super_check_permission, only: [:new,:edit_market_url, :edit_right_sig_url, :change_market_url, :change_right_sig_url,:index] 
   
@@ -348,4 +349,12 @@ end
   def student_user_params
     params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
   end
+  
+  private
+  
+    def set_cache_buster
+     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+     response.headers["Pragma"] = "no-cache"
+     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+    end
 end
