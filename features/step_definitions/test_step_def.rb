@@ -44,12 +44,7 @@ end
 When(/^I click the button, "([^"]*)"$/) do |arg1|
   click_button(arg1, match: :first)
 end
-=begin
-When (/^I confirm my decision$/) do 
-  Capybara.javascript_driver = :selenium
-  page.driver.browser.switch_to.alert.accept    
-end
-=end
+
 ######################################Then
 
 Then(/^I should see a link that says "([^"]*)"$/) do |text|
@@ -63,7 +58,7 @@ end
 Then(/^I should be on the "([^"]*)" page.$/) do |arg1|
   assert page.current_path == '/login'
 end
-=begin
-Then (/^I should get a download with the filename "([^\"]*)"$/) do |filename|
-  page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
-=end
+
+Then (/^I should receive a file\.$/) do
+  page.response_headers["Content-Disposition"].should == "attachment"
+end
