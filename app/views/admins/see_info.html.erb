@@ -3,12 +3,11 @@
 <% admin = Admin.where(:email => @email).first() %>
 <% #if !admin.nil? %>
 <p id="notice"><%= notice %></p>
- <div align = "right"><%= button_to "Return Home", admins_home_path, :method => "get" %></div>
+ <div align = "middle"><%= button_to "Return Home", admins_home_path, :method => "get" %></div>
 <thead>
   <%= form_tag("send_all") do %>
   <td><%= submit_tag("Email All Users") %></td>
   <% end %>
-  <%#= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
 </thead>
 <h1>Advisor Users</h1>
 
@@ -47,7 +46,12 @@
   <%= form_tag("email_unpaid") do %>
   <td><%= submit_tag("Email All Unpaid Users") %></td>
   <% end %>
-  <%#= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
+</thead>
+
+<thead>
+  <%= form_tag("email_unpaid_stud") do %>
+  <td><%= submit_tag("payment reminder email") %></td>
+  <% end %>
 </thead>
 
 <table border="1">
@@ -98,7 +102,6 @@
   <%= form_tag("email_paid") do %>
   <td><%= submit_tag("Email All Paid Users") %></td>
   <% end %>
-  <%#= button_to "Email All Unpaid Users", admins_email_page_path(:student_id => 0 ,:selector => "unpaid"), :method => "get" %>
 </thead>
 
 <table border="1">

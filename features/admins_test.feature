@@ -23,7 +23,7 @@ Scenario: Admin wants to send email to all unpaid users
   And I click the button, "Submit email"
   Then I should see "Advisor Users"
   
-  Scenario: Admin wants to send email to all Paid users
+  Scenario: Admin wants to send email to all paid users
   Given I am on the registration home page.
   When I click the link, "Login"
   And I fill "session[email]" with "admin@gmail.com"
@@ -55,7 +55,7 @@ Scenario: Admin wants to send email to one unpaid user
   And I click the button, "Submit email"
   Then I should see "Advisor Users"
 
-Scenario: Admin wants mark user as unpaid
+Scenario: Admin wants to mark user as unpaid
   Given I am on the registration home page.
   When I click the link, "Login"
   And I fill "session[email]" with "admin@gmail.com"
@@ -76,3 +76,57 @@ Scenario: Admin wants to send email to all users
   And I click the button, "Submit email"
   Then I should see "Advisor Users"
   
+Scenario: Admin wants to mark user as paid
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "admin@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Advisor & Student Information"
+  And I click the button, "Mark Paid"
+  Then I should see "Advisor Users"
+  
+  Scenario: Admin wants to download a CSV spreadsheet
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "admin@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Advisor & Student Information"
+  And I click the link, "CSV"
+  Then I should receive a file.
+  
+  Scenario: Admin wants to change his or her email information
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "admin@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Change Email"
+  And I fill "admin[email]" with "bostonjlang@gmail.com"
+  And I click the button, "Update Admin"
+  Then I should see "Admin email was successfully updated!"
+  
+  Scenario: Admin fails to change his or her password information
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "bostonjlang@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Change Password"
+  And I fill "admin[password]" with "password123"
+  And I fill "admin[password_confirmation]" with "password"
+  And I click the button, "Update Admin"
+  Then I should see "Password must be at least 6 characters long and must match confirmation"
+  
+  Scenario: Admin wants to change his or her password information
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "bostonjlang@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Change Password"
+  And I fill "admin[password]" with "password123"
+  And I fill "admin[password_confirmation]" with "password123"
+  And I click the button, "Update Admin"
+  Then I should see "Admin password was successfully updated!"

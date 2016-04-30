@@ -66,11 +66,11 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
 
     @admin.usertype="admin"
-
+    @admin_current_user = Admin.find_by(id: session[:admin_current_user])
     respond_to do |format|
       if @admin.save
-        format.html { render registration_home_index_path, notice: 'Advisor user was successfully created!' }
-        format.json { render registration_home_index_path, status: :created, location: @admin }
+        format.html { redirect_to admins_super_admin_path, notice: 'Advisor user was successfully created!' }
+        format.json { redirect_to admins_super_admin_path, status: :created, location: @admin }
       else
         format.html { render :new }
         format.json { render json: @admin.errors, status: :unprocessable_entity }
@@ -262,7 +262,16 @@ class AdminsController < ApplicationController
     end
      render 'admins/see_info'
   end
-
+  
+    def email_unpaid_stud
+     StudentUser.all.each do |student|
+        if (student.pay_status != "yes")
+          UserMailer.thanks_email(student.email).deliver
+        end
+      end
+       render 'admins/see_info'
+    end
+  
   #Changes password, password must be 6 characters long and match confirmation
   def changepassword
     @id = @id = session[:user_id]
