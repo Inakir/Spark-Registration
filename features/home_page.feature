@@ -36,4 +36,3 @@ Feature: Have the basic registration home page running
 	 And I click the button, "Log in"
 	 Then I should be on the "admins/see_info" page.
 	# Then I should see "Successfully Logged in!"
-	  

@@ -86,7 +86,7 @@ Scenario: Admin wants to mark user as paid
   And I click the button, "Mark Paid"
   Then I should see "Advisor Users"
   
-  Scenario: Admin wants to download a CSV spreadsheet
+  Scenario: Admin wants to download a spreadsheet
   Given I am on the registration home page.
   When I click the link, "Login"
   And I fill "session[email]" with "admin@gmail.com"

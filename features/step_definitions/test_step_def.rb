@@ -28,10 +28,6 @@ Given(/^I am on the elementary school registration page\.$/) do
   visit '/student_users/new?student_level=Elementary'
 end
 
-Given(/^I am seeing student info$/) do
-  visit '/see_info'
-end
-
 ######################################When
 When(/^I click the link, "([^"]*)"$/) do |arg1|
   first(:link, arg1).click
@@ -43,6 +39,10 @@ end
 
 When(/^I click the button, "([^"]*)"$/) do |arg1|
   click_button(arg1, match: :first)
+end
+
+When(/^I confirm the dialog box$/) do
+  page.evaluate_script('window.confirm = function() { return true; }')
 end
 
 ######################################Then

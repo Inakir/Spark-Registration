@@ -18,7 +18,7 @@ gem 'brakeman'
 
 gem 'seed_dump'
 
-gem 'capybara-webkit'
+gem 'selenium-webdriver'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
