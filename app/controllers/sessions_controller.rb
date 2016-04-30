@@ -2,7 +2,7 @@ require 'casclient'
 require 'casclient/frameworks/rails/filter'
 
 class SessionsController < ApplicationController
-  before_action CASClient::Frameworks::Rails::Filter, :check_session, :except => [:create, :new,:new_student, :log_out_students]#, :admin_new,:log_out, :login]
+  #before_action CASClient::Frameworks::Rails::Filter, :check_session, :except => [:create, :new,:new_student, :log_out_students]#, :admin_new,:log_out, :login]
 
   def new
   end
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     admin = Admin.where(:email => @email).first()
     if admin.nil?
       flash.now[:flash] = 'Invalid Admin user name and password'
-      CASClient::Frameworks::Rails::Filter.logout(self)
+      #CASClient::Frameworks::Rails::Filter.logout(self)
     else
       render 'admins/home'
     end
@@ -37,8 +37,11 @@ class SessionsController < ApplicationController
   end
 
   def log_out#have to change to check first if user is CAS logged-in first. if not, do regular logout
-  CASClient::Frameworks::Rails::Filter.logout(self)
+  #CASClient::Frameworks::Rails::Filter.logout(self)
   #render 'index'
+  reset_session
+    flash.now[:danger] = 'You have sucessfully Logged Out! :)'
+    redirect_to root_path
   end
   
   def log_out_students#logout for non-CAS users aka students/advisors
@@ -63,10 +66,11 @@ class SessionsController < ApplicationController
           session[:admin_current_user]=user.id
           if user.super_admin == true
             @id = session[:user_id]
-            render 'admins/super_admin' 
+            session[:super_admin_current_user]=user.id # lets super admin permissions
+            redirect_to '/admins/super_admin' 
           else  
             @id = session[:user_id]
-            render 'admins/home'
+            redirect_to '/admins/home'
           end
         
         else
@@ -80,14 +84,14 @@ class SessionsController < ApplicationController
         # log the user in and redirect to some page
         flash.now[:flash] = 'Successfully logged in'
         log_in user
-        render 'advisor/index'
+        redirect_to '/advisor/index'
       else
           user=StudentUser.find_by(email: params[:session][:email].downcase)
             if user && user.authenticate(params[:session][:password])
               flash.now[:flash] = 'Successfully logged in student'
               student_log_in user
               @student_current_user=user
-              render 'student_users/index'
+              redirect_to action: "index", controller: 'student_users', id: user.id
             else
                if(session.nil? || session[:password] = nil || session[:email] = nil)
                   flash[:alert]= "You Shall Not Pass!"
@@ -103,4 +107,6 @@ class SessionsController < ApplicationController
 
   def destroy
   end
+  
+
 end
