@@ -98,7 +98,7 @@ class SessionsController < ApplicationController
                   redirect_to "/registration_home/index"
                end
                   #create an error message
-              flash.now[:danger] = 'Invalid email/password combination 1'
+              flash.now[:danger] = 'Invalid email/password combination'
               render 'new'
             end
       end
