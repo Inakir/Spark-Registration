@@ -3,7 +3,7 @@
 <% admin = Admin.where(:email => @email).first() %>
 <% #if !admin.nil? %>
 <p id="notice"><%= notice %></p>
- <div align = "right"><%= button_to "Return Home", admins_home_path, :method => "get" %></div>
+ <div align = "middle"><%= button_to "Return Home", admins_home_path, :method => "get" %></div>
 <thead>
   <%= form_tag("send_all") do %>
   <td><%= submit_tag("Email All Users") %></td>
