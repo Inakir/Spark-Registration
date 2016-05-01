@@ -1,5 +1,10 @@
 <% if admin_logged_in? %>
-<div align = "left"><%= button_to "Back", admins_super_admin_path, :method => "get" %></div>
+<% if @admin.super_admin? %>
+  <div align = "left"><%= button_to "Back", admins_super_admin_path, :method => "get" %></div>
+<%end%>
+<% if @admin.super_admin? == false %>
+  <div align = "left"><%= button_to "Back", admins_home_path, :method => "get" %></div>
+<%end%>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -26,7 +31,8 @@
 <!--%= link_to 'Edit', edit_admin_path(@admin) %> | -->
 <%= link_to 'Change Email', changelogin_admin_path(@admin) %> |
 <%= link_to 'Change Password', changepassword_admin_path(@admin) %>|
-<%= link_to 'Change Marketplace URl', change_market_url_admin_path(@admin) %> |
-<%= link_to 'Change Right Signature URL', change_right_sig_url_admin_path(@admin) %>
-
-<% end %>
+<% if @admin.super_admin? %>
+  <%= link_to 'Change Marketplace URl', change_market_url_admin_path(@admin) %>|
+  <%= link_to 'Change Right Signature URL', change_right_sig_url_admin_path(@admin) %>
+<%end%>
+<%end%>
