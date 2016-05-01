@@ -36,3 +36,18 @@ Feature: Have the basic registration home page running
 	 And I click the button, "Log in"
 	 Then I should be on the "admins/see_info" page.
 	# Then I should see "Successfully Logged in!"
+	
+	Scenario: Create new advisor
+	  Given I am on the registration home page.
+	  When I click the link, "Login"
+	  And I click the link, "Sign up now!"
+	  Then I should see "New Advisor User"
+	 #And I fill "advisor[email]" with "austinjfang@gmail.com"
+	 # And I fill "session[password]" with "test123"
+	 # And I fill "session[password_confirmation]" with "test123"
+	 # And I fill "session[first_name]" with "Austin"
+	 # And I fill "session[last_name]" with "Fang"
+	 # And I fill "session[school_name]" with "TAMU"
+	 # And I fill "session[password]" with "test123"
+	 # And I click the button, "Create Advisor User"
+	 # Then I should see "Advisor user was successfully created."
