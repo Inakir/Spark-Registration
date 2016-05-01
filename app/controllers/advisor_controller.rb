@@ -43,7 +43,7 @@ before_action :check_permission
   end
 
   private
-    def check_permission
+    def check_permission # only advisors logged in have permissions to this controller
       if (session[:advisor_current_user].nil?)
         redirect_to "/registration_home/index"
       end
