@@ -42,7 +42,17 @@
 
 
 <h1>Unpaid Students</h1> <%= link_to "CSV", student_users_generate_path(format: "csv") %> | <%= link_to "Excel", student_users_generate_path(format: "xls") %> <br></br>
+<thead>
+  <%= form_tag("email_unpaid") do %>
+  <td><%= submit_tag("Email All Unpaid Users") %></td>
+  <% end %>
+</thead>
 
+<thead>
+  <%= form_tag("email_unpaid_stud") do %>
+  <td><%= submit_tag("payment reminder email") %></td>
+  <% end %>
+</thead>
 
 <table border="1">
   <thead>
@@ -71,13 +81,17 @@
             <td><%= student.school_name %></td>
             <td><%= student.school_level %></td>
             <td><%= student.team_code %></td>
-            <%= form_tag("mark_paid") do %>
-                <%= hidden_field_tag('id', student.id) %>
-                <td><%= submit_tag("Mark Paid") %></td>
+                <td>
+                  <%= form_tag("mark_paid") do %>
+                  <%= hidden_field_tag('id', student.id) %>
+                  <%= submit_tag("Mark Paid") %>
+                </td>
             <% end %>
-            <%= form_tag("send_stud_email") do %>
+              <td>
+                <%= form_tag("send_stud_email") do %>
                 <%= hidden_field_tag('student_id', student.id)%>
-              <td><%= submit_tag("send email") %></td>
+                <%= submit_tag("send email") %>
+              </td>
               <% end %>
             <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
@@ -88,7 +102,11 @@
 
 
 <h1>Paid Students</h1> <%= link_to "CSV", student_users_generate_path(format: "csv") %> | <%= link_to "Excel", student_users_generate_path(format: "xls") %>  <br></br>
-
+<thead>
+  <%= form_tag("email_paid") do %>
+  <td><%= submit_tag("Email All Paid Users") %></td>
+  <% end %>
+</thead>
 
 <table border="1">
   <thead>
@@ -116,13 +134,17 @@
             <td><%= student.school_name %></td>
             <td><%= student.school_level %></td>
             <td><%= student.team_code %></td>
-            <%= form_tag("mark_unpaid") do %>
-                <%= hidden_field_tag('id', student.id) %>
-                <td><%= submit_tag("Mark Unpaid") %></td>
+                <td> 
+                  <%= form_tag("mark_unpaid") do %>
+                  <%= hidden_field_tag('id', student.id) %>
+                  <%= submit_tag("Mark Unpaid") %>
+                </td>
             <% end %>
-            <%= form_tag("send_stud_email") do %>
+              <td>
+                <%= form_tag("send_stud_email") do %>
                 <%= hidden_field_tag('student_id', student.id)%>
-              <td><%= submit_tag("send email") %></td>
+                <%= submit_tag("send email") %>
+              </td>
               <% end %>
             <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
