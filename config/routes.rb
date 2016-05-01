@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   post 'admins/mark_unpaid' => 'admins#mark_unpaid'
   post 'admins/send_email' => 'admins#send_email'
   post 'admins/unpaid_email_group' => 'admins#unpaid_email_group'
-  post 'admins/email_unpaid_stud' => 'admins/email_unpaid_stud'
+  post 'admins/email_unpaid_stud' => 'admins#email_unpaid_stud'
  #post 'admins/stud_email_group' => 'admins#stud_email_group'
  #post 'admins/send_all_stud_email' => 'admins/send_all_stud_email'
 
