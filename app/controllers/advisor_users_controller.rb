@@ -100,7 +100,7 @@ class AdvisorUsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_advisor_user
       @id=params[:id]
-      if(session[:register].to_s == @id.to_s || session[:advisor_current_user].to_s == @id.to_s)
+      if(session[:register].to_s == @id.to_s || session[:advisor_current_user].to_s == @id.to_s||session[:admin_current_user]!=nil)
         @advisor_user = AdvisorUser.find(params[:id])
       else
         redirect_to "/registration_home/index"
@@ -108,7 +108,7 @@ class AdvisorUsersController < ApplicationController
     end
     
     def check_permission
-      if (session[:register].nil? || session[:register]==false)
+      if (session[:register].nil? || session[:register]==false)&&(session[:admin_current_user].nil?)&&(session[:advisor_current_user].nil?)
         redirect_to "/registration_home/index"
       end
     end

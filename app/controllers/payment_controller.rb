@@ -1,4 +1,5 @@
 class PaymentController < ApplicationController
+	#reset users that are logged in or are finished registering
   def index
   	reset_session
   end
