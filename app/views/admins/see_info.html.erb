@@ -42,17 +42,7 @@
 
 
 <h1>Unpaid Students</h1> <%= link_to "CSV", student_users_generate_path(format: "csv") %> | <%= link_to "Excel", student_users_generate_path(format: "xls") %> <br></br>
-<thead>
-  <%= form_tag("email_unpaid") do %>
-  <td><%= submit_tag("Email All Unpaid Users") %></td>
-  <% end %>
-</thead>
 
-<thead>
-  <%= form_tag("email_unpaid_stud") do %>
-  <td><%= submit_tag("payment reminder email") %></td>
-  <% end %>
-</thead>
 
 <table border="1">
   <thead>
@@ -98,11 +88,7 @@
 
 
 <h1>Paid Students</h1> <%= link_to "CSV", student_users_generate_path(format: "csv") %> | <%= link_to "Excel", student_users_generate_path(format: "xls") %>  <br></br>
-<thead>
-  <%= form_tag("email_paid") do %>
-  <td><%= submit_tag("Email All Paid Users") %></td>
-  <% end %>
-</thead>
+
 
 <table border="1">
   <thead>
