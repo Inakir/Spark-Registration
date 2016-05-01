@@ -317,7 +317,7 @@ def change_right_sig_url
     respond_to do |format|
      if  @admin.update_attribute(:right_sig_url, params[:admin][:right_sig_url])
        format.html { redirect_to @admin, notice: 'Right Signature URL was sucessfully updated!' }
-       format.json { render :show, status: :ok, location: @admin }
+       format.json { render check :show, status: :ok, location: @admin }
      else
        format.html { redirect_to change_right_sig_url_admin_path(@admin), notice: 'Enter a valid URL for the Right signature form' } 
        format.json { render json: @admin.errors, status: :unprocessable_entity }
