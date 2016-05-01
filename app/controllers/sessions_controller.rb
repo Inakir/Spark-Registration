@@ -14,12 +14,12 @@ class SessionsController < ApplicationController
   #     end
   # end
   
-  def check_permission
-    if(session[:current_user].nil?)
-        flash[:alert]= "You Shall Not Pass!"
-        redirect_to "/registration_home/index"
-    end
-  end
+  # def check_permission
+  #   if(session[:current_user].nil?)
+  #       flash[:alert]= "You Shall Not Pass!"
+  #       redirect_to "/registration_home/index"
+  #   end
+  # end
 
   # def admin_new
   #   @email = session[:cas_user] + "@tamu.edu"

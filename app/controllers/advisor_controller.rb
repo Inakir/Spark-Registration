@@ -12,7 +12,7 @@ before_action :check_permission
     team_params = {
         :team_name => params[:teamname],
         :team_code => new_team_code,
-        :advisor_user_id => current_user.id,
+        :advisor_users_id => current_user.id,
     }
     team = Team.new(team_params)
     team.save
@@ -44,7 +44,7 @@ before_action :check_permission
 
   private
     def check_permission
-      if (session[:current_user].nil?)
+      if (session[:advisor_current_user].nil?)
         redirect_to "/registration_home/index"
       end
     end

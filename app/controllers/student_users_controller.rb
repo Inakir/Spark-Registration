@@ -83,7 +83,7 @@ class StudentUsersController < ApplicationController
       end
     end
   end
-  
+  # changes student password
   def changepassword
     respond_to do |format|
      if @student_user.update(student_user_params)
@@ -117,7 +117,7 @@ class StudentUsersController < ApplicationController
         redirect_to "/registration_home/index"
       end
     end
-    
+    #checks if users have permission to access actions
     def check_permission
       if ((session[:register].nil? || session[:register]==false) &&
          (session[:student_current_user].nil? || session[:student_current_user]==false) &&
@@ -129,7 +129,7 @@ class StudentUsersController < ApplicationController
     def student_user_params
       params.require(:student_user).permit(:first_name, :last_name, :school_level, :password, :pay_status, :password_confirmation, :school_name, :team_name, :pay_code, :team_code, :email)
     end
-    
+    #makes browser not cache pages
     def set_cache_buster
      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
      response.headers["Pragma"] = "no-cache"
