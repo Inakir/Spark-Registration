@@ -3,7 +3,7 @@
 <h1>Listing Students</h1>
 
 <% Team.all.each do |team| %>
-    <% if team.advisor_user_id == current_user.id %>
+    <% if team.advisor_users_id == current_user.id %>
         <h3> Students on your team <%= team.team_name %> with team code <%= team.team_code %> </h3>
         <table>
           <thead>

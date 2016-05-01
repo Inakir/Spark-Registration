@@ -27,7 +27,7 @@
 
             <tbody>
                 <% Team.all.each do |team| %>
-                    <% if team.advisor_user_id == current_user.id %>
+                    <% if team.advisor_users_id == current_user.id %>
                         <tr>
                           <td><%= team.team_code %></td>
                           <td><%= team.team_name %></td>
