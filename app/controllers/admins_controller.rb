@@ -240,9 +240,9 @@ class AdminsController < ApplicationController
       unpaid_email_group()
     else if @send_to_who == "paid"
       paid_email_group()
-    else if @send_to_who == "admin"
-      send_admin_email_2()
     else if @send_to_who == "admin2"
+      send_admin_email_2()
+    else if @send_to_who == "admin"
       send_admin_email()  
     else if @send_to_who == "all"
       email_all()
