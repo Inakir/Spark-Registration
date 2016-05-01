@@ -158,7 +158,7 @@ class AdminsController < ApplicationController
     render 'admins/index'
   end
   
-  def send_admin_email
+  def send_admin_email_2
     @subject= params[:subject]
     @text= params[:email_text]
       Admin.all.each do |admin|
@@ -221,6 +221,12 @@ class AdminsController < ApplicationController
     render 'admins/email_page'
   end
   
+  def admin_email_2
+    session[:selector]="admin2"
+    session[:admin_id]= params[:admin_id]
+    render 'admins/email_page'
+  end
+  
   def send_all
     session[:selector]="all"
     render 'admins/email_page'
@@ -235,7 +241,9 @@ class AdminsController < ApplicationController
     else if @send_to_who == "paid"
       paid_email_group()
     else if @send_to_who == "admin"
-      send_admin_email()
+      send_admin_email_2()
+    else if @send_to_who == "admin2"
+      send_admin_email()  
     else if @send_to_who == "all"
       email_all()
     else
@@ -244,6 +252,8 @@ class AdminsController < ApplicationController
     
     end
   
+    end
+    
     end
     
     end
