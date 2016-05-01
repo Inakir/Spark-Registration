@@ -3,26 +3,31 @@ class AdminsController < ApplicationController
   before_action :check_permission
   before_action :super_check_permission, only: [:new,:edit_market_url, :edit_right_sig_url, :change_market_url, :change_right_sig_url,:index] 
   
+  #GET/admins
   def index
     @admin = Admin.all
   end
-
+  
+  #GET/admins/new
   def new
     @admin = Admin.new
   end
   
+  #GET/admins/home
   def home
    @id = session[:user_id]
    #params[:id] = session[:user_id]
    #flash[:notice] = "Howdy Yall"
    render 'admins/home'
   end
-
+  
+  #GET admins/:id
   def show
      @id = session[:user_id]
      @admin = Admin.find_by(id: @id)
   end
-
+  
+  #GET admins/:id/edit
   def edit
   end
   
@@ -31,6 +36,7 @@ class AdminsController < ApplicationController
      @admin = Admin.find_by(id: @id)
      render 'admins/changelogin'
   end
+  
   # renders admins/changepassword
   def editpassword
     @id = session[:user_id]
@@ -38,18 +44,20 @@ class AdminsController < ApplicationController
     render 'admins/changepassword'
   end
   
+  #change marketplace url change_market_url_admin_path
   def edit_market_url
      @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
     render 'admins/change_market_url'
   end
   
+  #change consentform url change_right_sig_url_admin_path
   def edit_right_sig_url
      @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
     render 'admins/change_right_sig_url'
   end
-
+ #GET admins/super_admin is the view for super admin user
   def super_admin
     @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
@@ -141,6 +149,7 @@ class AdminsController < ApplicationController
     render 'admins/see_info'
   end
   
+  #send only emails to admin
   def send_admin_email
     @admin = Admin.find(session[:admin_id])
     @subject= params[:subject]
