@@ -1,8 +1,8 @@
 <div class=center>
+<div align = "middle"><%= button_to "Back", admins_index_path, :method => "get" %></div>    
 <%= form_tag("edit_email") do %>
 <table>
     <tbody>
-<div align = "middle"><%= button_to "Back", admins_index_path, :method => "get" %></div>
         <tr><h1>Subject</h1>
             <%= text_field_tag :subject %>
             <br></form>
