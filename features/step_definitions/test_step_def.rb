@@ -41,10 +41,6 @@ When(/^I click the button, "([^"]*)"$/) do |arg1|
   click_button(arg1, match: :first)
 end
 
-When(/^I confirm the dialog box$/) do
-  page.evaluate_script('window.confirm = function() { return true; }')
-end
-
 ######################################Then
 
 Then(/^I should see a link that says "([^"]*)"$/) do |text|
