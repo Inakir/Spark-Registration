@@ -1,5 +1,11 @@
 <div class=center>
-<div align = "middle"><%= button_to "Back", admins_index_path, :method => "get" %></div>    
+<div align = "middle">
+    <% if session[:super_admin_current_user].nil?%>
+    <%= button_to "Back", admins_see_info_path, :method => "get" %>
+    <%else%>
+    <%= button_to "Back", admins_index_path, :method => "get" %>
+    
+</div>    
 <%= form_tag("edit_email") do %>
 <table>
     <tbody>
