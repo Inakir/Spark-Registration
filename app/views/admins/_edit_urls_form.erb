@@ -1,4 +1,4 @@
-<%= form_for( @admin, :url => change_market_url_admin_path(@admin) ) do |f| %>
+<%= form_for( @admin, :url => edit_urls_admin_path(@admin) ) do |f| %>
   <% if @admin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
@@ -21,6 +21,10 @@
   <div class="field">
      <%= f.label 'Marketplace URL' %><br>
      <%= f.text_field :mkt_place_url %>
+  </div>
+  <div class="field">
+     <%= f.label 'Right Signature URL' %><br>
+     <%= f.text_field :right_sig_url %>
   </div>
   <div class="actions">
     <%= f.submit %>

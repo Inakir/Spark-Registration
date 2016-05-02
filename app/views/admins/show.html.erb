@@ -29,10 +29,12 @@
 </p>
 
 <!--%= link_to 'Edit', edit_admin_path(@admin) %> | -->
-<%= link_to 'Change Email', changelogin_admin_path(@admin) %> |
+<% if @admin.super_admin? == false %>
+<%= link_to 'Change Email', changelogin_admin_path(@admin) %>|
+<%end%>
 <%= link_to 'Change Password', changepassword_admin_path(@admin) %>|
 <% if @admin.super_admin? %>
-  <%= link_to 'Change Marketplace URl', change_market_url_admin_path(@admin) %>|
-  <%= link_to 'Change Right Signature URL', change_right_sig_url_admin_path(@admin) %>
+<%= link_to 'Update Contact Info', update_info_admin_path(@admin) %>|
+  <%= link_to 'Change Marketplace and Right Signature URLs', edit_urls_admin_path(@admin) %>|
 <%end%>
 <%end%>
