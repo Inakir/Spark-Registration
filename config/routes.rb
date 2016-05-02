@@ -49,19 +49,6 @@ Rails.application.routes.draw do
  #post 'admins/stud_email_group' => 'admins#stud_email_group'
  #post 'admins/send_all_stud_email' => 'admins/send_all_stud_email'
 
-  resources :admins do
-	member do
-	  put 'changelogin' => 'admins#changelogin'
-          patch 'changelogin' => 'admins#changelogin'
-	  get 'changelogin' => 'admins#editlogin'
-	  put 'changepassword' => 'admins#changepassword'
-	  patch 'changepassword' => 'admins#changepassword'
-	  get 'changepassword' => 'admins#editpassword'
-	  post 'changelogin' => 'admins#editlogin'
-	  get 'sessions/admin_new'
-	end
-  end
-
   post 'admins/email_advisors' => 'admins#email_advisors'
   post 'admins/email_all' => 'admins#email_all'
   resources :admins do
@@ -72,14 +59,15 @@ Rails.application.routes.draw do
 	  put 'changepassword' => 'admins#changepassword'
 	  patch 'changepassword' => 'admins#changepassword'
 	  get 'changepassword' => 'admins#editpassword'
+	  #############################
+	   put 'update_info' => 'admins#update'
+          patch 'update_info' => 'admins#update'
+	  get 'update_info' => 'admins#update_info'
+	  #############3
 	  #post 'changelogin' => 'admins#editlogin'
-	   put 'change_market_url' => 'admins#change_market_url'
-          patch 'change_market_url' => 'admins#change_market_url'
-	  get 'change_market_url' => 'admins#edit_market_url'
-	  
-	   put 'change_right_sig_url' => 'admins#change_right_sig_url'
-          patch 'change_right_sig_url' => 'admins#change_right_sig_url'
-	  get 'change_right_sig_url' => 'admins#edit_right_sig_url'
+	   put 'edit_urls' => 'admins#edit_urls'
+          patch 'edit_urls' => 'admins#change_urls'
+	  get 'edit_urls' => 'admins#edit_urls'
 	  
 	end
   end

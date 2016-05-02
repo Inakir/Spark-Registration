@@ -12,6 +12,16 @@ Scenario: Forcefully creating a new admin
   And I fill "admin[password_confirmation]" with "test123"
   Then I click the button, "Create Admin"
   
+  Scenario: Admin wants to navigate back to index page.
+  Given I am on the registration home page.
+  When I click the link, "Login"
+  And I fill "session[email]" with "austinktang@gmail.com"
+  And I fill "session[password]" with "test123"
+  And I click the button, "Log in"
+  And I click the link, "Admin Information"
+  And I click the button, "Back"
+  Then I should see "Admin Information"
+  
 Scenario: Admin wants to send email to all unpaid users
   Given I am on the registration home page.
   When I click the link, "Login"

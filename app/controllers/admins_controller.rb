@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
   before_filter :set_cache_buster
   before_action :check_permission
-  before_action :super_check_permission, only: [:new,:edit_market_url, :edit_right_sig_url, :change_market_url, :change_right_sig_url,:index] 
+  before_action :super_check_permission, only: [:new,:index, :edit_urls] 
   
   #GET/admins
   def index
@@ -37,6 +37,12 @@ class AdminsController < ApplicationController
      render 'admins/changelogin'
   end
   
+  def update_info
+     @id = session[:user_id]
+     @admin = Admin.find_by(id: @id)
+     render 'admins/update_info'
+  end
+  
   # renders admins/changepassword
   def editpassword
     @id = session[:user_id]
@@ -45,18 +51,12 @@ class AdminsController < ApplicationController
   end
   
   #change marketplace url change_market_url_admin_path
-  def edit_market_url
-     @id = session[:user_id]
+  def edit_urls
+    @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
-    render 'admins/change_market_url'
+    render 'admins/edit_urls'
   end
   
-  #change consentform url change_right_sig_url_admin_path
-  def edit_right_sig_url
-     @id = session[:user_id]
-    @admin = Admin.find_by(id: @id)
-    render 'admins/change_right_sig_url'
-  end
  #GET admins/super_admin is the view for super admin user
   def super_admin
     @id = session[:user_id]
@@ -90,12 +90,12 @@ class AdminsController < ApplicationController
   #Updates admin username based on the changes and redirects to admin home page
   # updates other admin attributes - identifiers and urls.
   def update
-    @admin = session[:admin_current_user]
+    @id = session[:user_id]
+    @admin = Admin.find_by(id: @id)
     respond_to do |format|
-      if @admin.update_attribute(:name , params[:admin][:name]) | @admin.update_attribute(:right_sig_url , params[:admin][:right_sig_url]) |
-								  @admin.update_attribute(:mkt_place_url , params[:admin][:mkt_place_url]) |
+      if @admin.update_attribute(:name , params[:admin][:name]) |
 								  @admin.update_attribute(:phone , params[:admin][:phone]) |
-								  @admin.update_attribute(:fax , params[:admin][:fax])
+								  @admin.update_attribute(:email , params[:admin][:email])
 						  
         format.html { redirect_to @admin, notice: 'Admin user was successfully updated!' }
         format.json { render :show, status: :ok, location: @admin }
@@ -113,7 +113,10 @@ class AdminsController < ApplicationController
     @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
     respond_to do |format|
-      if @admin.update_attribute(:email, params[:admin][:email])
+      if @admin.update_attribute(:name , params[:admin][:name]) | @admin.update_attribute(:right_sig_url , params[:admin][:right_sig_url]) |
+								  @admin.update_attribute(:mkt_place_url , params[:admin][:mkt_place_url]) |
+								  @admin.update_attribute(:phone , params[:admin][:phone]) |
+								  @admin.update_attribute(:email , params[:admin][:email])
       #if @admin.update_attributes(:email => params[:admin][:email])
        format.html { redirect_to @admin, notice: 'Admin email was successfully updated!' }
        format.json { render :show, status: :ok, location: @admin }
@@ -307,29 +310,16 @@ class AdminsController < ApplicationController
     end
   end
 
-def change_market_url
+def change_urls
     @id = @id = session[:user_id]
     @admin = Admin.find_by(id: @id)
     respond_to do |format|
-     if @admin.update_attribute(:mkt_place_url, params[:admin][:mkt_place_url])
-       format.html { redirect_to @admin, notice: 'Marketplace url was successfully updated!' }
+     if @admin.update_attribute(:mkt_place_url , params[:admin][:mkt_place_url]) | 
+       @admin.update_attribute(:right_sig_url , params[:admin][:right_sig_url])
+       format.html { redirect_to @admin, notice: 'URLs were successfully updated!' }
        format.json { render :show, status: :ok, location: @admin }
      else
-       format.html { redirect_to change_market_url_admin_path(@admin), notice: 'Enter a valid URL for the marketplace' } 
-       format.json { render json: @admin.errors, status: :unprocessable_entity }
-     end
-    end
-end
-
-def change_right_sig_url
-    @id = @id = session[:user_id]
-    @admin = Admin.find_by(id: @id)
-    respond_to do |format|
-     if  @admin.update_attribute(:right_sig_url, params[:admin][:right_sig_url])
-       format.html { redirect_to @admin, notice: 'Right Signature URL was sucessfully updated!' }
-       format.json { render check :show, status: :ok, location: @admin }
-     else
-       format.html { redirect_to change_right_sig_url_admin_path(@admin), notice: 'Enter a valid URL for the Right signature form' } 
+       format.html { redirect_to edit_urls_admin_path(@admin), notice: 'Enter Valid URLs' } 
        format.json { render json: @admin.errors, status: :unprocessable_entity }
      end
     end
