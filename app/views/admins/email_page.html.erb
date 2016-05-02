@@ -4,7 +4,7 @@
     <%= button_to "Back", admins_see_info_path, :method => "get" %>
     <%else%>
     <%= button_to "Back", admins_index_path, :method => "get" %>
-    
+    <% end %>
 </div>    
 <%= form_tag("edit_email") do %>
 <table>
