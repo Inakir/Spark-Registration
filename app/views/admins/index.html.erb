@@ -34,9 +34,10 @@
         <td><%= admin.email %></td>
         <td><%= admin.phone %></td>
         <td><%= admin.fax %></td>
-        <%= form_tag("admin_email") do %>
+            <td>
+              <%= form_tag("admin_email") do %>
               <%= hidden_field_tag('admin_id', admin.id)%>
-            <td><%= submit_tag("send email") %></td>
+              <%= submit_tag("send email") %></td>
             <% end %>
         <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
